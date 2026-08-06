@@ -8,5 +8,5 @@
 | 2026-08-06 | Instalación de Docker Compose |
 | 2026-08-06 | Instalación/configuración de UFW |
 | 2026-08-06 | Creación de la estructura `~/docker/` |
-| 2026-08-06 | Auditoría inicial de hardware, software y servicios |
+| 2026-08-06 | Documentación inicial de hardware, software y servicios |
 | 2026-08-06 | Cierre documental de la sesión de Madre | Se deja registrado lo realizado y lo pendiente; no se ejecutan cambios adicionales en el sistema | Documentación alineada inicialmente | Auditoría y backups pendientes |
