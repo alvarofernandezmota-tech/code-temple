@@ -25,3 +25,42 @@
 
 Madre se encuentra en fase de reconstrucción. Primero se documenta el sistema
 base y después se instalarán los servicios de forma controlada.
+
+## Cierre de sesión documental — 2026-08-06
+
+### Hecho
+
+- Madre reinstalada con Arch Linux.
+- KDE Plasma configurado.
+- Git y GitHub CLI disponibles.
+- Docker y Docker Compose instalados.
+- UFW configurado con política restrictiva.
+- Inventario inicial de Madre documentado.
+- Normas operativas documentadas.
+- Auditoría y procedimientos documentados.
+- ADR iniciales creados.
+- Documentación publicada en `code-temple`.
+- Repositorio sincronizado con GitHub.
+- Árbol de trabajo limpio.
+
+### Pendiente
+
+- Ejecutar la auditoría real de Madre.
+- Comparar el estado real con todos los inventarios.
+- Confirmar el estado y los permisos de Docker.
+- Confirmar servicios activos y habilitados.
+- Confirmar red, puertos y reglas UFW.
+- Completar ADR adicionales si son necesarios.
+- Definir el destino de backups.
+- Definir cifrado y retención.
+- Ejecutar la primera copia de seguridad.
+- Probar una restauración.
+- Decidir si se instalará Tailscale.
+- Decidir qué servicios de aplicación se desplegarán.
+- Crear la estructura definitiva de `~/docker/`.
+
+### Estado de cierre
+
+Madre queda documentada a nivel estructural y operativo inicial.
+La auditoría real y la implementación de backups quedan pendientes.
+No se realizarán nuevas instalaciones hasta completar la auditoría.
