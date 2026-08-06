@@ -1,11 +1,21 @@
 # Repositorios locales en Madre
 
-## Repositorios activos
+> Última verificación: 2026-08-06
+
+## Repositorio de trabajo
 
 | Ruta | Repositorio | Función |
 |---|---|---|
-| `~/GitHub/personal/code-temple` | `code-temple` | Infraestructura y reconstrucción nueva |
-| `~/GitHub/personal/midgaror` | `midgaror` | Vida personal y formación |
+| `~/GitHub/trabajo/code-temple` | `code-temple` | Infraestructura, documentación técnica y reconstrucción del sistema |
+
+`code-temple` sustituye a `yggdrasil-dew` como repositorio principal de
+trabajo e infraestructura.
+
+## Repositorio personal
+
+| Ruta | Repositorio | Función |
+|---|---|---|
+| `~/GitHub/personal/midgaror` | `midgaror` | Vida personal, diarios y formación |
 
 ## Repositorio histórico
 
@@ -13,7 +23,9 @@
 |---|---|---|
 | `~/GitHub/trabajo/yggdrasil-dew` | `yggdrasil-dew` | Archivado; solo referencia histórica |
 
-## Regla
+## Reglas
 
-El trabajo nuevo de infraestructura se realiza en `code-temple`.
-`midgaror` conserva la información personal. `yggdrasil-dew` no se modifica.
+- La infraestructura nueva se documenta y desarrolla en `code-temple`.
+- La información personal se conserva en `midgaror`.
+- `yggdrasil-dew` no se modifica.
+- No se mezclan contenidos personales con la infraestructura de trabajo.
