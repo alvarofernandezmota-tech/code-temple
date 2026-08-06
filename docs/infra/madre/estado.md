@@ -1,39 +1,27 @@
-# Madre — infraestructura completa
+# Estado de Madre
 
-> Sistema reinstalado 2026-08-06 con Arch Linux puro. Reconstrucción desde cero.
-> Última verificación: 2026-08-06 19:57 CEST
+> Última auditoría: 2026-08-06.
+> Sistema reinstalado desde cero con Arch Linux.
 
-## Sistema base
+## Resumen
 
-- Hostname: `archlinux`
-- Kernel: `7.1.5-arch1-2`
-- Entorno de escritorio: **KDE Plasma**
-- Disco: `/dev/sda2` root 49G (14G usados) · `/dev/sda3` /home 866G (5,2G usados)
-- RAM: 15Gi total, ~5Gi en uso
+| Elemento | Estado |
+|---|---|
+| Sistema operativo | Arch Linux rolling |
+| Kernel | `7.1.5-arch1-2` |
+| Hostname | `archlinux` |
+| Escritorio | KDE Plasma |
+| CPU | Intel Core i5-8400, 6 núcleos |
+| RAM | 15 GiB |
+| Disco | WDC de 931,5 GiB |
+| Docker | Instalado y activo |
+| Contenedores | Ninguno |
+| Imágenes Docker | Ninguna |
+| Volúmenes Docker | Ninguno |
+| Firewall | UFW activo |
+| Tailscale | No instalado/documentado todavía |
 
-## Paquetes instalados
+## Estado actual
 
-- 119 explícitos, 829 totales con dependencias
-- Lista completa en `docs/infra/madre/paquetes-explicitos.txt`
-- AUR: yay (`~/yay-git/`)
-
-## Estructura de directorios
-
-~/GitHub/{personal,trabajo}/
-~/Proyectos/
-~/docs/legacy/
-~/docker/{stacks/{ia,automation,monitoring},data,backups}/
-~/yay-git/
-## Servicios systemd activos
-
-docker, containerd, NetworkManager, plasmalogin, wpa_supplicant
-
-## Docker
-
-docker 1:29.7.1-1, docker-compose 5.4.0-1, activo, sin contenedores todavía
-
-## Historial
-
-| Fecha | Qué | Comando |
-|---|---|---|
-| 2026-08-06 | Base + Docker | `pacman -S inetutils docker docker-compose git base-devel` |
+Madre se encuentra en fase de reconstrucción. Primero se documenta el sistema
+base y después se instalarán los servicios de forma controlada.

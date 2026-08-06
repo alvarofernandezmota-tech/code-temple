@@ -1,20 +1,32 @@
-# docs/infra/madre/ — índice
+# Infraestructura de Madre
 
-Documentación completa del equipo Madre (Arch Linux, KDE Plasma), reinstalado
-desde cero el 2026-08-06.
+Madre es el ordenador principal del ecosistema. Ejecuta Arch Linux con KDE
+Plasma y será la máquina donde se reconstruirán los servicios Docker.
 
-## Archivos de esta carpeta
+## Archivos
 
-| Archivo | Qué contiene |
+| Archivo | Contenido |
 |---|---|
-| [`estado.md`](./estado.md) | Estado general: sistema base, disco, RAM, estructura de directorios, servicios systemd, Docker |
-| [`paquetes-explicitos.txt`](./paquetes-explicitos.txt) | Lista completa de los 119 paquetes instalados explícitamente (`pacman -Qqe`) |
+| `estado.md` | Resumen general del estado actual |
+| `hardware.md` | Placa, CPU, memoria, discos y firmware |
+| `sistema.md` | Arch Linux, kernel, particiones y montajes |
+| `software.md` | Herramientas y versiones instaladas |
+| `servicios.md` | Servicios systemd activos y habilitados |
+| `docker.md` | Estado de Docker, redes, imágenes y volúmenes |
+| `repos.md` | Repositorios Git locales y su función |
+| `estructura.md` | Organización de carpetas de Madre |
+| `red.md` | NetworkManager, UFW y estado de red |
+| `backups.md` | Estado y futura estrategia de copias |
+| `cambios.md` | Historial de reconstrucción de Madre |
+| `paquetes-explicitos.txt` | Salida de `pacman -Qqe` |
 
-## Cómo mantener esto actualizado
+## Regla de actualización
 
-Cada vez que instales algo nuevo en Madre, añade una fila a la tabla
-"Historial de instalación" en `estado.md` y regenera el listado de paquetes:
+Después de instalar o eliminar software:
 
 ```bash
 pacman -Qqe > docs/infra/madre/paquetes-explicitos.txt
+git add docs/infra/madre
+git commit -m "docs(infra): actualizar inventario de Madre"
+git push origin main
 ```
