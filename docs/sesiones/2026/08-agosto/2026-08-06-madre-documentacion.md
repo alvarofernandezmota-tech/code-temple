@@ -1,0 +1,56 @@
+# Sesión de trabajo — Documentación de Madre
+
+- Fecha: 2026-08-06
+- Área: infraestructura
+- Sistema: Madre
+- Repositorio: `code-temple`
+
+## Objetivo
+
+Dejar documentada la infraestructura de Madre, sus normas operativas, sus
+procedimientos, sus auditorías y sus decisiones estructurales.
+
+## Trabajo realizado
+
+- Se revisó la estructura de `docs/infra/madre/`.
+- Se completó el inventario inicial de Madre.
+- Se documentaron normas operativas.
+- Se documentaron procedimientos.
+- Se creó la checklist de auditoría.
+- Se crearon ADR iniciales.
+- Se diferenció el estado real de las tareas pendientes.
+- Se registró el cierre documental de la sesión.
+- Se dejó el repositorio sincronizado con GitHub.
+
+## Decisiones
+
+- `code-temple` es la fuente documental de Madre.
+- La documentación técnica de Madre permanece en `docs/infra/madre/`.
+- Las sesiones de trabajo se registran en `docs/sesiones/`.
+- Los diarios personales se mantienen fuera de este repositorio.
+- No se instalarán nuevos servicios antes de auditar Madre.
+
+## Commits principales
+
+- `9b315c7` — Completar documentación operativa de Madre.
+- `c2c4769` — Registrar cierre y pendientes de Madre.
+- `f42f63e` — Aclarar el estado de la auditoría inicial.
+
+## Pendientes
+
+- Ejecutar la auditoría real de Madre.
+- Comparar el estado real con los inventarios.
+- Confirmar Docker, servicios, red y UFW.
+- Definir e implementar backups.
+- Probar una restauración.
+- Decidir si se instalará Tailscale.
+- Decidir qué servicios se desplegarán.
+
+## Resultado
+
+La documentación estructural y operativa inicial de Madre queda publicada.
+La auditoría real y los backups siguen pendientes.
+
+## Próximo paso
+
+Ejecutar la auditoría real de Madre en una sesión independiente.
