@@ -1,55 +1,74 @@
 # Procedimientos de Madre
 
-## Procedimiento estándar de cambio
+## Flujo estándar de cambio
 
-1. Entrar en `code-temple`.
-2. Leer `normas.md` y el documento afectado.
-3. Comprobar el estado actual de Madre.
-4. Consultar un runbook existente.
-5. Preparar backup si procede.
-6. Ejecutar un único cambio controlado.
-7. Verificar el resultado.
-8. Actualizar la documentación de Madre.
-9. Registrar el cambio en `cambios.md`.
-10. Crear o actualizar un ADR si cambia la arquitectura.
-11. Revisar el diff.
-12. Ejecutar las comprobaciones de auditoría aplicables.
-13. Crear el commit.
-14. Subirlo a GitHub.
-15. Confirmar que el árbol queda limpio.
+1. Entrar en el repositorio `code-temple`.
+2. Leer `normas.md`.
+3. Leer el documento de Madre que será afectado.
+4. Consultar un procedimiento existente.
+5. Comprobar el estado inicial del sistema.
+6. Preparar backup si procede.
+7. Ejecutar un único cambio controlado.
+8. Verificar el resultado.
+9. Actualizar los documentos afectados.
+10. Registrar el cambio en `cambios.md`.
+11. Crear o actualizar un ADR si procede.
+12. Ejecutar la auditoría aplicable.
+13. Revisar el diff.
+14. Crear el commit.
+15. Hacer push.
+16. Confirmar que el árbol Git queda limpio.
 
-## Instalación de software
+## Tipos de cambio
 
-- Registrar el motivo de la instalación.
-- Instalar el paquete.
-- Actualizar `paquetes-explicitos.txt`.
-- Actualizar `software.md`.
-- Comprobar si se han creado servicios.
-- Registrar el cambio.
-- Verificar el funcionamiento.
+### Paquetes
 
-## Modificación de red o firewall
+Actualizar:
 
-- Documentar el motivo.
-- Comprobar las reglas actuales.
-- Aplicar una sola modificación.
-- Verificar conectividad.
-- Verificar UFW.
-- Actualizar `red.md`.
-- Preparar rollback.
+- `paquetes-explicitos.txt`.
+- `software.md`.
+- `servicios.md`, si procede.
+- `cambios.md`.
 
-## Modificación de Docker
+### Servicios
 
-- Registrar el stack afectado.
-- Revisar volúmenes y datos persistentes.
-- Hacer backup si procede.
-- Validar el Compose.
-- Aplicar el cambio.
-- Verificar contenedores, redes y volúmenes.
-- Actualizar `docker.md`.
-- Registrar el cambio.
+Actualizar:
 
-## Finalización
+- `servicios.md`.
+- `software.md`, si se instaló software nuevo.
+- `cambios.md`.
 
-No se considera terminado un cambio si no están actualizados el inventario,
-el historial y el estado de Git.
+### Docker
+
+Actualizar:
+
+- `docker.md`.
+- `estructura.md`, si cambia la organización.
+- `backups.md`, si aparecen datos persistentes.
+- `cambios.md`.
+
+### Red
+
+Actualizar:
+
+- `red.md`.
+- `hardware.md` o `sistema.md`, si procede.
+- `cambios.md`.
+
+### Arquitectura
+
+Crear o actualizar un ADR en:
+
+```text
+docs/infra/madre/adr/
+```
+
+## Rollback
+
+Antes de ejecutar el cambio se debe saber:
+
+- Qué archivos se modifican.
+- Qué datos están en riesgo.
+- Qué backup existe.
+- Qué comando o acción deshace el cambio.
+- Cómo se comprobará la recuperación.

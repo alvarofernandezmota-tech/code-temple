@@ -63,6 +63,15 @@ Actualmente Madre solo contiene la base del sistema:
 - Sin contenedores, imágenes ni volúmenes Docker.
 - Sin Tailscale ni servicios de aplicación.
 
+## Operación y gobierno
+
+- [`normas.md`](./normas.md) — Normas operativas específicas de Madre.
+- [`auditoria.md`](./auditoria.md) — Checklist de auditoría de Madre.
+- [`procedimientos.md`](./procedimientos.md) — Flujo general de cambios.
+- [`adr/`](./adr/) — Decisiones de arquitectura de Madre.
+- [`procedimientos/`](./procedimientos/) — Procedimientos concretos de Madre.
+
+
 ## Regla de actualización
 
 Cada cambio real en Madre debe documentarse en el archivo correspondiente.

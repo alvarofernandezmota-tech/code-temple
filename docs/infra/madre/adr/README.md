@@ -1,16 +1,16 @@
 # ADR de Madre
 
-Aquí se registran las decisiones de arquitectura y operación exclusivas de
-Madre.
+Aquí se registran decisiones de arquitectura y operación exclusivas de Madre.
 
-## Formato
+## Formato obligatorio
 
 Cada ADR debe incluir:
 
+- Estado.
+- Fecha.
 - Contexto.
 - Problema.
 - Opciones consideradas.
 - Decisión.
 - Consecuencias.
-- Estado.
-- Fecha.
+- Método de revisión o reversión.

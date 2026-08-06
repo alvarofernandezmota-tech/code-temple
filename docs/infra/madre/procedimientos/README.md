@@ -1,17 +1,15 @@
 # Procedimientos específicos de Madre
 
-Esta carpeta contiene instrucciones operativas concretas para Madre.
+Esta carpeta contiene instrucciones concretas para operar Madre.
 
-## Procedimientos previstos
+## Procedimientos
 
-- Instalar o eliminar paquetes.
-- Actualizar el inventario.
-- Revisar servicios systemd.
-- Auditar Docker.
-- Modificar UFW.
-- Revisar almacenamiento.
-- Ejecutar backups.
-- Restaurar backups.
-- Recuperar Madre después de un fallo.
+- `instalar-paquete.md`
+- `actualizar-inventario.md`
+- `revisar-servicios.md`
+- `docker.md`
+- `red-firewall.md`
+- `backups.md`
+- `recuperacion.md`
 
-Los procedimientos generales se encuentran en `docs/runbooks/`.
+Antes de ejecutar cualquiera de ellos hay que leer `../normas.md`.
