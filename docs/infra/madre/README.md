@@ -49,7 +49,7 @@ con KDE Plasma y será la máquina donde se reconstruirán los servicios Docker.
 - `yggdrasil-dew`: repositorio histórico archivado; no se modifica.
 - `docs/infra/madre/`: documentación de este equipo.
 - `docs/infra/acer/`: documentación futura del portátil Acer.
-- `~/docker/`: futura ubicación de stacks, datos y backups Docker.
+- `~/docker/`: ubicación actual de stacks, datos y backups Docker.
 
 ## Estado de reconstrucción
 

@@ -1,8 +1,17 @@
 # Red y firewall de Madre
 
-> Última verificación: 2026-08-06
+> Última verificación: 2026-08-12
 
 ## Red
+
+## Interfaces detectadas
+
+- `enp0s20f0u3`: Ethernet conectado.
+- `wlp0s20f0u5`: Wi-Fi conectado a `ALVARO`.
+- `docker0`: bridge Docker activo.
+- `enp4s0`: Ethernet no disponible.
+- `lo`: loopback activo.
+
 
 - Gestor de red: NetworkManager
 - Wi-Fi: `wpa_supplicant.service` activo
@@ -28,7 +37,7 @@ La auditoría con:
 sudo ufw status numbered
 ```
 
-devuelve `Status: active` sin mostrar reglas numeradas. Actualmente no hay
+devuelve `Status: active` sin mostrar reglas numeradas. No hay reglas explícitas añadidas mediante UFW. Actualmente no hay
 reglas explícitas añadidas mediante UFW.
 
 ## Comprobaciones utilizadas

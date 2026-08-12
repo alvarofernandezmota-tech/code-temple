@@ -1,6 +1,6 @@
 # Estado de Madre
 
-> Última auditoría: 2026-08-06.
+> Última auditoría: 2026-08-12.
 > Sistema reinstalado desde cero con Arch Linux.
 
 ## Resumen
@@ -45,22 +45,19 @@ base y después se instalarán los servicios de forma controlada.
 
 ### Pendiente
 
-- Ejecutar la auditoría real de Madre.
-- Comparar el estado real con todos los inventarios.
-- Confirmar el estado y los permisos de Docker.
-- Confirmar servicios activos y habilitados.
-- Confirmar red, puertos y reglas UFW.
-- Completar ADR adicionales si son necesarios.
-- Definir el destino de backups.
-- Definir cifrado y retención.
+- Definir el destino definitivo de los backups.
+- Definir cifrado y retención de backups.
 - Ejecutar la primera copia de seguridad.
 - Probar una restauración.
 - Decidir si se instalará Tailscale.
 - Decidir qué servicios de aplicación se desplegarán.
-- Crear la estructura definitiva de `~/docker/`.
+- Crear y validar los stacks Docker de IA, automatización y monitorización.
+
+La auditoría base, el inventario de servicios, la comprobación de Docker, la
+red y la estructura de directorios ya fueron ejecutados el 2026-08-12.
 
 ### Estado de cierre
 
 Madre queda documentada a nivel estructural y operativo inicial.
-La auditoría real y la implementación de backups quedan pendientes.
+La implementación de backups y el despliegue de servicios de aplicación quedan pendientes.
 No se realizarán nuevas instalaciones hasta completar la auditoría.

@@ -1,8 +1,11 @@
 # Servicios de Madre
 
-## Servicios activos actualmente
+## Servicios activos actualmente (19)
 
 - `accounts-daemon.service`
+- `dirmngr@etc-pacman.d-gnupg.service`
+- `sshd.service`
+- `systemd-hostnamed.service`
 - `containerd.service`
 - `dbus-broker.service`
 - `docker.service`
@@ -19,7 +22,7 @@
 - `user@1000.service`
 - `wpa_supplicant.service`
 
-## Servicios habilitados al arranque
+## Servicios habilitados al arranque (10)
 
 - `bluetooth.service`
 - `docker.service`

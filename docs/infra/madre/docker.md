@@ -2,8 +2,10 @@
 
 ## Instalación
 
-- Docker instalado.
-- Docker Compose instalado.
+- Docker Engine `29.7.1` instalado.
+- Docker Compose `5.4.0` instalado.
+- containerd `2.3.3`.
+- runc `1.5.1`.
 - `docker.service` activo y habilitado.
 - `containerd.service` activo.
 
@@ -14,7 +16,7 @@
 - Volúmenes: 0
 - Redes estándar: `bridge`, `host`, `none`
 
-## Estructura prevista
+## Estructura actual
 
 ```text
 ~/docker/
