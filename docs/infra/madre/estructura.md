@@ -4,9 +4,9 @@
 /home/varopc/
 ├── GitHub/
 │   ├── personal/
-│   │   ├── code-temple/
 │   │   └── midgaror/
 │   └── trabajo/
+│       ├── code-temple/
 │       └── yggdrasil-dew/
 ├── Proyectos/
 ├── docs/
