@@ -27,19 +27,11 @@ jobs:
         run: |
           DATETIME=$(date +"%Y-%m-%d %H:%M:%S")
           echo "Actualizando a: $DATETIME"
-          
-          # Reemplazar la línea de última actualización
           sed -i "s/Última actualización:.*/Última actualización: $DATETIME/" docs/infra/madre/estado.md
-          
-          # Mostrar el cambio
-          echo "=== Contenido actualizado ==="
-          grep "Última actualización" docs/infra/madre/estado.md
-          echo "============================="
       
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git status
           git add docs/infra/madre/estado.md
           git diff --cached --quiet && echo "No changes to commit" || (git commit -m "docs(estado): Actualizar fecha y hora automáticamente [skip ci]" && git push origin main)
