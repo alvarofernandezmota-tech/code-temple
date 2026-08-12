@@ -6,15 +6,39 @@
 
 | Componente | Estado | Última Auditoría | Próxima Auditoría |
 |------------|--------|------------------|-------------------|
-| Estrategia | 🟡 PENDIENTE | - | 2026-08-19 |
-| Restore | 🟡 PENDIENTE | - | 2026-08-19 |
-| Testing | 🟡 PENDIENTE | - | 2026-08-19 |
+| Estrategia | 🟢 OK | 2026-08-12 | 2026-09-12 |
+| Restore | 🟡 PENDIENTE | - | 2026-09-12 |
+| Testing | 🟡 PENDIENTE | - | 2026-09-12 |
 
-## 📊 Estado
+## 📊 Estrategia de Backups
 
-- **Estrategia:** 🟡 PENDIENTE de documentar
-- **Último backup:** -
-- **Próxima auditoría:** 2026-08-19
+### Regla 3-2-1
+- **3 copias** de los datos (original + 2 backups)
+- **2 medios diferentes** (local + externo)
+- **1 copia fuera del sitio** (off-site)
+
+### Backups implementados
+- **Código:** Git (code-temple, yggdrasil-dew, midgaror)
+- **Configuraciones:** Scripts de backup en Madre
+- **Frecuencia:** Diaria (cron jobs)
+
+## 📝 Procedimientos
+
+### Backup de código
+```bash
+# Git ya gestiona versiones
+git push origin main
+```
+
+### Backup de configuraciones
+```bash
+# Backup de configs del sistema
+tar -czf system-config-$(date +%Y%m%d).tar.gz \
+  /etc/ \
+  /var/lib/systemd/ \
+  /root/ \
+  /home/
+```
 
 ## 🔍 Auditorías
 
@@ -24,10 +48,10 @@
 
 ## 📝 Próximos Pasos
 
-1. Documentar estrategia de backups
-2. Crear procedimientos de restore
-3. Testear restore
-4. Documentar RTO/RPO
+1. ✅ Documentar estrategia de backups
+2. 🟡 Crear procedimientos de restore
+3. 🟡 Testear restore
+4. 🟡 Documentar RTO/RPO
 
 ## 🔗 Links Útiles
 
