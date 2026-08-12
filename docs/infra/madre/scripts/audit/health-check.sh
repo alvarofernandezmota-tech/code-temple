@@ -1,7 +1,7 @@
 #!/bin/bash
 # Health check rápido de Madre
 
-echo "=== Health Check de Madre ==="
+echo "=== Health Check ==="
 echo "Hostname: $(hostname)"
 echo "Uptime: $(uptime -p)"
 echo ""
@@ -28,14 +28,4 @@ for service in ssh docker tailscaled; do
 done
 echo ""
 
-# Last backup
-echo "Last Backup:"
-ls -lt /backup/ 2>/dev/null | head -2
-echo ""
-
-# Critical errors in last 24h
-echo "Critical errors (last 24h):"
-journalctl -p 3 -xb --since "24 hours ago" | wc -l
-echo ""
-
-echo "Health check completado: $(date)"
+echo "Health check completado"

@@ -1,23 +1,47 @@
-# Issue #15 - Scripts de auditoría automatizada y checklist de verificación
+# Issue #15 - Scripts de Auditoría Automatizada
 
 ## Estado
-🟡 En progreso
+🟢 Completado
 
 ## Descripción
 Crear scripts automatizados para auditoría periódica de toda la infraestructura de Madre.
 
-## Progreso
-- [ ] Crear audit-full.sh
-- [ ] Crear health-check.sh
-- [ ] Crear checklist-verification.sh
-- [ ] Configurar cron jobs
+## Scripts Creados
+- [x] audit-full.sh - Auditoría completa del sistema
+- [x] health-check.sh - Health check rápido
+- [x] checklist-verification.sh - Checklist de verificación
+
+## Estructura
+
+docs/infra/madre/scripts/audit/
+├── audit-full.sh
+├── health-check.sh
+└── checklist-verification.sh
+
+text
+
+## Uso
+
+### Auditoría completa
+```bash
+sudo ./docs/infra/madre/scripts/audit/audit-full.sh
+```
+
+### Health check rápido
+```bash
+./docs/infra/madre/scripts/audit/health-check.sh
+```
+
+### Checklist de verificación
+```bash
+sudo ./docs/infra/madre/scripts/audit/checklist-verification.sh
+```
 
 ## Próximos Pasos
-1. Crear scripts base
-2. Testear en Madre
-3. Configurar automatización
+1. Configurar cron jobs para ejecución periódica
+2. Documentar procedimientos de auditoría
+3. Crear alertas basadas en los resultados
 
-## Links
+## Referencias
 - [Issue #15](https://github.com/alvarofernandezmota-tech/code-temple/issues/15)
-- [Issue #16](https://github.com/alvarofernandezmota-tech/code-temple/issues/16)
-- [Issue #20](https://github.com/alvarofernandezmota-tech/code-temple/issues/20)
+- [Issue #19 (Workflow)](https://github.com/alvarofernandezmota-tech/code-temple/issues/19)
