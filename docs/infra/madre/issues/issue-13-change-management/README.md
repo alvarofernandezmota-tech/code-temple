@@ -21,3 +21,20 @@ Documentar procedimientos formales de change management para actualizaciones y c
 - [Issue #13](https://github.com/alvarofernandezmota-tech/code-temple/issues/13)
 - [Issue #16](https://github.com/alvarofernandezmota-tech/code-temple/issues/16)
 - [Issue #20](https://github.com/alvarofernandezmota-tech/code-temple/issues/20)
+
+## Comandos Ejecutados
+
+### 2026-08-12 - Auditoría de change management inicial
+```bash
+cat /etc/os-release
+uname -r
+```
+
+**Outputs:**
+- [`outputs/os-info.txt`](outputs/os-info.txt)
+- [`outputs/kernel.txt`](outputs/kernel.txt)
+
+## Próximos Pasos
+1. Documentar procedimientos de actualización
+2. Crear change management policy
+3. Documentar rollback procedures
