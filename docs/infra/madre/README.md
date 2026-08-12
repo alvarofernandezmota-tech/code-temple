@@ -3,7 +3,7 @@
 Madre es el ordenador principal de trabajo del ecosistema. Ejecuta Arch Linux
 con KDE Plasma y será la máquina donde se reconstruirán los servicios Docker.
 
-> Estado documentado: 2026-08-06  
+> Estado documentado: 2026-08-12  
 > Fase actual: inventario y documentación, sin servicios de aplicación
 > desplegados.
 
@@ -86,3 +86,13 @@ git push origin main
 ```
 
 No se almacenan aquí contraseñas, tokens, claves privadas ni archivos `.env`.
+
+## Seguimiento de tareas pendientes
+
+Las tareas abiertas de Madre se gestionan como issues en `code-temple`:
+https://github.com/alvarofernandezmota-tech/code-temple/issues
+
+## Historial de sesiones relacionadas
+
+El detalle cronológico de las sesiones de trabajo sobre Madre vive en:
+[docs/sesiones/](https://github.com/alvarofernandezmota-tech/code-temple/tree/main/docs/sesiones)
