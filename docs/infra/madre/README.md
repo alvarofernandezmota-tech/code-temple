@@ -101,3 +101,21 @@ Las tareas pendientes se gestionan mediante los
 
 El historial cronológico de las sesiones se conserva fuera de esta carpeta, en
 [`docs/sesiones/`](../../sesiones/).
+
+## Estructura de Issues
+
+La documentación detallada de cada área se encuentra en el directorio [`issues/`](issues/):
+
+- [`issues/issue-05-hardware/`](issues/issue-05-hardware/) - Hardware completo
+- [`issues/issue-06-red/`](issues/issue-06-red/) - Red y firewall
+- [`issues/issue-07-servicios/`](issues/issue-07-servicios/) - Servicios del sistema
+- [`issues/issue-08-backups/`](issues/issue-08-backups/) - Estrategia de backups
+- [`issues/issue-09-security/`](issues/issue-09-security/) - Security hardening
+- [`issues/issue-10-disaster-recovery/`](issues/issue-10-disaster-recovery/) - Disaster recovery
+- [`issues/issue-11-monitoring/`](issues/issue-11-monitoring/) - Monitorización
+- [`issues/issue-12-performance/`](issues/issue-12-performance/) - Performance baseline
+- [`issues/issue-13-change-management/`](issues/issue-13-change-management/) - Change management
+- [`issues/issue-14-adr/`](issues/issue-14-adr/) - Architecture Decision Records
+- [`issues/issue-15-scripts/`](issues/issue-15-scripts/) - Scripts de auditoría
+
+Ver [`issues/README.md`](issues/README.md) para más detalles.
