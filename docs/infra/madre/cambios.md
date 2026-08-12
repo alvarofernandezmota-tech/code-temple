@@ -147,3 +147,4 @@ Para documentar nuevos cambios, usar el siguiente formato:
 
 **Responsable:** @alvarofernandezmota-tech
 # Actualización manual
+# Actualización manual
