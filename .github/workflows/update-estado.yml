@@ -19,6 +19,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+      
+      - name: Debug - Verificar PAT_TOKEN
+        run: |
+          if [ -z "${{ secrets.PAT_TOKEN }}" ]; then
+            echo "❌ PAT_TOKEN está vacío o no existe"
+            exit 1
+          else
+            echo "✅ PAT_TOKEN existe (longitud: ${#PAT_TOKEN})"
+          fi
       
       - name: Update fecha en estado.md
         run: |
