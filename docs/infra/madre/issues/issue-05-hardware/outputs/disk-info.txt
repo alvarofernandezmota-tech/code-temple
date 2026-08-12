@@ -1,0 +1,6 @@
+NAME   MODEL                SERIAL         SIZE TYPE MOUNTPOINT
+sda    WDC WD10EZEX-21M2NA0 WCC3FCX2RD4K 931,5G disk 
+├─sda1                                       1G part /boot
+├─sda2                                      50G part /
+└─sda3                                   880,5G part /home
+zram0                                        4G disk [SWAP]
