@@ -1,0 +1,34 @@
+name: Update estado.md
+
+on:
+  push:
+    paths:
+      - 'docs/infra/madre/hardware/**'
+      - 'docs/infra/madre/red/**'
+      - 'docs/infra/madre/servicios/**'
+      - 'docs/infra/madre/security/**'
+      - 'docs/infra/madre/backups/**'
+      - 'docs/infra/madre/disaster-recovery/**'
+      - 'docs/infra/madre/monitoring/**'
+      - 'docs/infra/madre/performance/**'
+      - 'docs/infra/madre/change-management/**'
+      - 'docs/infra/madre/procedimientos/**'
+
+jobs:
+  update-estado:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Update fecha en estado.md
+        run: |
+          DATE=$(date +%Y-%m-%d)
+          sed -i "s/Última actualización:.*/Última actualización: $DATE/" docs/infra/madre/estado.md
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/infra/madre/estado.md
+          git commit -m "docs(estado): Actualizar fecha automáticamente" || echo "No changes"
+          git push
