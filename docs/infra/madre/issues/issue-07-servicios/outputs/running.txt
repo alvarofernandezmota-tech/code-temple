@@ -1,0 +1,25 @@
+  UNIT                               LOAD   ACTIVE SUB     DESCRIPTION
+  accounts-daemon.service            loaded active running Accounts Service
+  containerd.service                 loaded active running containerd container runtime
+  dbus-broker.service                loaded active running D-Bus System Message Bus
+  dirmngr@etc-pacman.d-gnupg.service loaded active running GnuPG network certificate management daemon for /etc/pacman.d/gnupg
+  docker.service                     loaded active running Docker Application Container Engine
+  NetworkManager.service             loaded active running Network Manager
+  plasmalogin.service                loaded active running Plasma Login Manager
+  polkit.service                     loaded active running Authorization Manager
+  sshd.service                       loaded active running OpenSSH Daemon
+  systemd-journald.service           loaded active running Journal Service
+  systemd-logind.service             loaded active running User Login Management
+  systemd-timesyncd.service          loaded active running Network Time Synchronization
+  systemd-udevd.service              loaded active running Rule-based Manager for Device Events and Files
+  systemd-userdbd.service            loaded active running User Database Manager
+  udisks2.service                    loaded active running Disk Manager
+  upower.service                     loaded active running Daemon for power management
+  user@1000.service                  loaded active running User Manager for UID 1000
+  wpa_supplicant.service             loaded active running WPA supplicant
+
+Legend: LOAD   → Reflects whether the unit definition was properly loaded.
+        ACTIVE → The high-level unit activation state, i.e. generalization of SUB.
+        SUB    → The low-level unit activation state, values depend on unit type.
+
+18 loaded units listed.
