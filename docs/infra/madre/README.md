@@ -96,3 +96,18 @@ https://github.com/alvarofernandezmota-tech/code-temple/issues
 
 El detalle cronológico de las sesiones de trabajo sobre Madre vive en:
 [docs/sesiones/](https://github.com/alvarofernandezmota-tech/code-temple/tree/main/docs/sesiones)
+
+## Mantenimiento y referencias
+
+El procedimiento para actualizar esta carpeta está en
+[`procedimientos/actualizar-documentacion.md`](./procedimientos/actualizar-documentacion.md).
+
+Las decisiones de arquitectura están en [`adr/`](./adr/). La decisión sobre la
+ruta canónica de `code-temple` está documentada en
+[`adr/ADR-003-ruta-canonica-code-temple.md`](./adr/ADR-003-ruta-canonica-code-temple.md).
+
+Las tareas pendientes se gestionan mediante los
+[issues abiertos de code-temple](https://github.com/alvarofernandezmota-tech/code-temple/issues).
+
+El historial cronológico de las sesiones se conserva fuera de esta carpeta, en
+[`docs/sesiones/../../sesiones/`](../../sesiones/).
