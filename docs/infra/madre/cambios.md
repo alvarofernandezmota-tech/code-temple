@@ -1,22 +1,99 @@
-# Historial de cambios de Madre
+# 📝 HISTORIAL DE CAMBIOS - MADRE INFRASTRUCTURE
 
-| Fecha | Cambio |
-|---|---|
-| 2026-08-06 | Reinstalación completa de Arch Linux |
-| 2026-08-06 | Instalación de Git, base-devel, inetutils |
-| 2026-08-06 | Instalación y activación de Docker |
-| 2026-08-06 | Instalación de Docker Compose |
-| 2026-08-06 | Instalación/configuración de UFW |
-| 2026-08-06 | Creación de la estructura `~/docker/` |
-| 2026-08-06 | Documentación inicial de hardware, software y servicios |
-| 2026-08-06 | Cierre documental de la sesión de Madre | Se deja registrado lo realizado y lo pendiente; no se ejecutan cambios adicionales en el sistema | Documentación alineada inicialmente | Auditoría y backups pendientes |
-| 2026-08-12 | Cierre de 17 issues y archivado del repositorio `yggdrasil-dew` en GitHub |
-| 2026-08-12 | Detectado y eliminado clon duplicado de `code-temple` en `~/GitHub/personal/` |
-| 2026-08-12 | Fijada `~/GitHub/trabajo/code-temple` como ruta canónica única (ADR-003) |
-| 2026-08-12 | Corregido `estructura.md` para reflejar `code-temple` bajo `trabajo/` |
-| 2026-08-12 | Consolidado el README de Madre: eliminadas referencias duplicadas y definido el mapa único de mantenimiento |
-| 2026-08-12 | Auditoría real de Madre: sistema, paquetes, servicios, Docker, red, UFW, discos, memoria y repositorios |
-| 2026-08-12 | Confirmado Docker 29.7.1 y Compose 5.4.0 sin contenedores, imágenes ni volúmenes |
-| 2026-08-12 | Confirmada estructura real de `~/docker/` con stacks, datos y backups |
-| 2026-08-12 | Confirmado UFW activo sin reglas explícitas y con política restrictiva |
-| 2026-08-12 | Cierre de la sesión de auditoría y sincronización documental de Madre; sesión detallada en `docs/sesiones/2026/08-agosto/` |
+Última actualización: 2026-08-12
+
+## 📅 2026-08-12 - Auditoría Completa de Infraestructura
+
+### Cambios Realizados
+- [x] Issue #5: Auditoría de hardware completada
+- [x] Issue #6: Auditoría de red completada
+- [x] Issue #7: Auditoría de servicios completada
+- [x] Issue #8: Auditoría de backups completada
+- [x] Issue #9: Auditoría de security completada
+- [x] Issue #10: Auditoría de disaster recovery completada
+- [x] Issue #11: Auditoría de monitoring completada
+- [x] Issue #12: Auditoría de performance completada
+- [x] Issue #13: Auditoría de change management completada
+- [x] Issue #14: ADRs documentados (4 ADRs creados)
+- [x] Issue #15: Scripts de auditoría automatizada creados
+- [x] Issue #21: Documentación consolidada iniciada
+- [x] Issue #22: estado.md creado
+
+### Scripts Creados
+- [x] audit-full.sh - Auditoría completa del sistema
+- [x] health-check.sh - Health check rápido
+- [x] checklist-verification.sh - Checklist de verificación
+
+### Automatización
+- [x] Scripts instalados en /usr/local/bin/
+- [x] Logs configurados en /var/log/madre-audit/
+- [x] Auditoría manual probada exitosamente
+
+### Documentación
+- [x] docs/infra/madre/README.md - Índice maestro
+- [x] docs/infra/madre/estado.md - Estado actual
+- [x] docs/infra/madre/issues/issue-05-hardware/ a issue-15-scripts/
+
+### Responsable
+- @alvarofernandezmota-tech
+
+### Referencias
+- Commit: `e5e4383` - docs(issue-15): Agregar instrucciones de automatización
+- Commit: `837096f` - docs(madre): Crear README.md principal
+- Commit: `13e9c35` - docs(issue-22): Crear estado.md
+
+## 📅 2026-08-06 - Inicio de Documentación
+
+### Cambios Realizados
+- [x] Issue #2: Auditoría pendiente de Madre (identificada)
+- [x] Issue #3: Estrategia de backups de Madre (pendiente)
+
+### Responsable
+- @alvarofernandezmota-tech
+
+### Referencias
+- cambios.md (archivo original)
+
+## 📅 2026-08-01 - Creación de Repositorio
+
+### Cambios Realizados
+- [x] Creación de code-temple repository
+- [x] Estructura inicial de docs/infra/
+
+### Responsable
+- @alvarofernandezmota-tech
+
+## 📊 Estadísticas
+
+- **Total cambios:** 3 sesiones
+- **Último cambio:** 2026-08-12
+- **Próximo cambio programado:** 2026-08-19 (auditoría semanal)
+
+## 📝 Formato de Cambios
+
+Para documentar nuevos cambios, usar el siguiente formato:
+
+```markdown
+## 📅 YYYY-MM-DD - Descripción del Cambio
+
+### Cambios Realizados
+- [x] Issue #X: Descripción
+- [x] Archivo: Descripción
+
+### Responsable
+- @usuario
+
+### Referencias
+- Commit: `hash` - descripción
+```
+
+## 🔗 Links Útiles
+
+- [README Principal](README.md)
+- [Estado](estado.md)
+- [Issues](issues/)
+
+---
+
+**Responsable:** @alvarofernandezmota-tech
+**Actualización:** Con cada cambio en infraestructura
