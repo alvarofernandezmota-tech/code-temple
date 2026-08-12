@@ -146,3 +146,4 @@ Para documentar nuevos cambios, usar el siguiente formato:
 - 2026-09-12 (mensual)
 
 **Responsable:** @alvarofernandezmota-tech
+# Actualización manual
