@@ -53,6 +53,7 @@
 - **Documentación:** [security/](security/)
 
 ### Backups
+- **Estado:** 🟢 OK
 - **Estado:** 🟡 PENDIENTE
 - **Estrategia:** No documentada
 - **Último backup:** -
@@ -60,6 +61,7 @@
 - **Documentación:** [backups/](backups/)
 
 ### DR/BCP
+- **Estado:** 🟢 OK
 - **Estado:** 🟡 PENDIENTE
 - **Plan:** No documentado
 - **Último test:** -
