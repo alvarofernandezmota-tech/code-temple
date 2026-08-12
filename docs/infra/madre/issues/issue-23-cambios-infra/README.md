@@ -1,6 +1,10 @@
 # Issue #23 - Crear cambios.md (Historial de Cambios)
 
 ## Estado
+🟢 Completado
+
+**Fecha:** 2026-08-12
+
 🟡 En progreso
 
 ## Descripción

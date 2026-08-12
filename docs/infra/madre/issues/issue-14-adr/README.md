@@ -1,23 +1,27 @@
-# Issue #14 - ADRs (Architecture Decision Records) para decisiones arquitecturales
+# Issue #14 - ADRs (Architecture Decision Records)
 
 ## Estado
-🟡 En progreso
+🟢 Completado (fase inicial)
 
 ## Descripción
-Crear y documentar Architecture Decision Records (ADRs) para todas las decisiones arquitecturales importantes de Madre.
+Crear y documentar Architecture Decision Records para todas las decisiones arquitecturales importantes de Madre.
 
-## Progreso
-- [ ] Crear directorio adr/
-- [ ] Crear plantilla de ADR
-- [ ] Crear ADRs iniciales
-- [ ] Establecer proceso
+## ADRs Creados
+- [x] ADR-001: Estructura de issues
+- [x] ADR-001: Reconstrucción de Madre
+- [x] ADR-002: Code Temple como fuente de verdad
+- [x] ADR-003: Ruta canónica de code-temple
 
-## Próximos Pasos
-1. Crear estructura ADR
-2. Documentar decisiones iniciales
-3. Establecer proceso de nuevos ADRs
+## Estructura
+nte de verdad
+- [x] ADR-003: Ruta canónica de code-temple
 
-## Links
-- [Issue #14](https://github.com/alvarofernandezmota-tech/code-temple/issues/14)
-- [Issue #16](https://github.com/alvarofernandezmota-tech/code-temple/issues/16)
-- [Issue #20](https://github.com/alvarofernandezmota-tech/code-temple/issues/20)
+## Estructura
+
+docs/infra/madre/adr/
+├── README.md
+├── template.md
+├── ADR-001-estructura-issues.md
+├── ADR-001-reconstruccion-de-madre.md
+├── ADR-002-code-temple-fuente-de-verdad.md
+└── ADR-003-ruta-canonica-code-temple.md

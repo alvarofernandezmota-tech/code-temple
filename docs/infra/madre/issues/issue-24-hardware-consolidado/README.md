@@ -1,6 +1,10 @@
 # Issue #24 - Consolidar Documentación de Hardware
 
 ## Estado
+🟢 Completado
+
+**Fecha:** 2026-08-12
+
 🟡 En progreso
 
 ## Descripción

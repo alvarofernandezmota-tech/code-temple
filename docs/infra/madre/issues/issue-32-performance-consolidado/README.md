@@ -3,6 +3,10 @@
 ## Estado
 🟢 Completado
 
+**Fecha:** 2026-08-12
+
+🟢 Completado
+
 ## Descripción
 Crear docs/infra/madre/performance/README.md consolidando performance.
 

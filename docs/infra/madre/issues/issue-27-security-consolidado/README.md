@@ -1,6 +1,10 @@
 # Issue #27 - Consolidar Documentación de Security
 
 ## Estado
+🟢 Completado
+
+**Fecha:** 2026-08-12
+
 🟡 En progreso
 
 ## Descripción

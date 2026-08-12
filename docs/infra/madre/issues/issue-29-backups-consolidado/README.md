@@ -1,6 +1,10 @@
 # Issue #29 - Consolidar Documentación de Backups
 
 ## Estado
+🟢 Completado
+
+**Fecha:** 2026-08-12
+
 🟡 En progreso
 
 ## Descripción

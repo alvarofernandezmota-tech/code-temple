@@ -1,6 +1,10 @@
 # Issue #25 - Consolidar Documentación de Red
 
 ## Estado
+🟢 Completado
+
+**Fecha:** 2026-08-12
+
 🟡 En progreso
 
 ## Descripción

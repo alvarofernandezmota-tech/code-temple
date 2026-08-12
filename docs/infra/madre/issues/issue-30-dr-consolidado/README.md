@@ -1,6 +1,10 @@
 # Issue #30 - Consolidar Documentación de Disaster Recovery
 
 ## Estado
+🟢 Completado
+
+**Fecha:** 2026-08-12
+
 🟡 En progreso
 
 ## Descripción
