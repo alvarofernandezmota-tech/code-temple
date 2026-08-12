@@ -1,0 +1,32 @@
+name: Update cambios.md
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+jobs:
+  update-cambios:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Registrar en cambios.md
+        run: |
+          DATE=$(date +%Y-%m-%d)
+          echo "" >> docs/infra/madre/cambios.md
+          echo "## $DATE - Merge de PR #${{ github.event.pull_request.number }}" >> docs/infra/madre/cambios.md
+          echo "" >> docs/infra/madre/cambios.md
+          echo "- ${{ github.event.pull_request.title }}" >> docs/infra/madre/cambios.md
+          echo "- PR: ${{ github.event.pull_request.html_url }}" >> docs/infra/madre/cambios.md
+          echo "" >> docs/infra/madre/cambios.md
+          echo "**Responsable:** @${{ github.actor }}" >> docs/infra/madre/cambios.md
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/infra/madre/cambios.md
+          git commit -m "docs(cambios): Registrar merge de PR #${{ github.event.pull_request.number }}" || echo "No changes"
+          git push
