@@ -1,0 +1,36 @@
+name: Update adr/README.md
+
+on:
+  push:
+    paths:
+      - 'docs/infra/madre/adr/ADR-*.md'
+
+jobs:
+  update-adr-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Update índice de ADRs
+        run: |
+          # Listar ADRs
+          ADRS=$(ls -1 docs/infra/madre/adr/ADR-*.md | sort)
+          
+          # Generar índice
+          echo "# ADRs - Architecture Decision Records" > docs/infra/madre/adr/README.md
+          echo "" >> docs/infra/madre/adr/README.md
+          echo "## Índice" >> docs/infra/madre/adr/README.md
+          echo "" >> docs/infra/madre/adr/README.md
+          for adr in $ADRS; do
+            TITLE=$(grep "^# ADR-" $adr | head -1 | cut -d':' -f2-)
+            FILENAME=$(basename $adr)
+            echo "- [$FILENAME]($FILENAME)" >> docs/infra/madre/adr/README.md
+          done
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/infra/madre/adr/README.md
+          git commit -m "docs(adr): Actualizar índice de ADRs automáticamente" || echo "No changes"
+          git push
