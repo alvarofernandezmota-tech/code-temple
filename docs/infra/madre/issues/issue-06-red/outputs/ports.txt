@@ -1,0 +1,14 @@
+Netid State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0            0.0.0.0:5353       0.0.0.0:*    users:(("kdeconnectd",pid=1383,fd=18))
+udp   UNCONN 0      0            0.0.0.0:34688      0.0.0.0:*    users:(("kdeconnectd",pid=1383,fd=22))
+udp   UNCONN 0      0            0.0.0.0:51256      0.0.0.0:*    users:(("kdeconnectd",pid=1383,fd=20))
+udp   UNCONN 0      0            0.0.0.0:35306      0.0.0.0:*    users:(("kdeconnectd",pid=1383,fd=23))
+udp   UNCONN 0      0                  *:5353             *:*    users:(("kdeconnectd",pid=1383,fd=19))
+udp   UNCONN 0      0                  *:58423            *:*    users:(("kdeconnectd",pid=1383,fd=21))
+udp   UNCONN 0      0                  *:1716             *:*    users:(("kdeconnectd",pid=1383,fd=16))
+udp   UNCONN 0      0                  *:52532            *:*    users:(("kdeconnectd",pid=1383,fd=24))
+tcp   LISTEN 0      128          0.0.0.0:22         0.0.0.0:*   
+tcp   LISTEN 0      4096       127.0.0.1:40603      0.0.0.0:*   
+tcp   LISTEN 0      50                 *:1716             *:*    users:(("kdeconnectd",pid=1383,fd=17))
+tcp   LISTEN 0      128             [::]:22            [::]:*   
+tcp   LISTEN 0      50                 *:3389             *:*    users:(("krdpserver",pid=1246,fd=15))
