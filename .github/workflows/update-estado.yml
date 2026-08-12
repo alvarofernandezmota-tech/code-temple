@@ -26,15 +26,30 @@ jobs:
           token: ${{ secrets.PAT_TOKEN }}
           fetch-depth: 0
       
+      - name: Debug - Mostrar información del repo
+        run: |
+          echo "=== Debug Info ==="
+          echo "Current branch: $(git branch --show-current)"
+          echo "Remote URL: $(git remote get-url origin)"
+          echo "PAT_TOKEN length: ${#PAT_TOKEN}"
+          echo "================="
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+      
       - name: Update fecha en estado.md
         run: |
           DATE=$(date +%Y-%m-%d)
+          echo "Actualizando fecha a: $DATE"
           sed -i "s/Última actualización:.*/Última actualización: $DATE/" docs/infra/madre/estado.md
+          echo "=== Contenido actualizado ==="
+          grep "Última actualización" docs/infra/madre/estado.md
+          echo "============================="
       
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git status
           git add docs/infra/madre/estado.md
-          git diff --cached --quiet || git commit -m "docs(estado): Actualizar fecha automáticamente [skip ci]"
-          git push
+          git diff --cached --quiet && echo "No changes to commit" || git commit -m "docs(estado): Actualizar fecha automáticamente [skip ci]"
+          git push origin main
