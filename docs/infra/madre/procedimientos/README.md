@@ -1,62 +1,22 @@
-# 📖 PROCEDIMIENTOS - MADRE INFRASTRUCTURE
+# Procedimientos de Infraestructura
 
-Última actualización: 2026-08-12
+## Automatización
 
-## 📋 Índice
+### Workflows configurados
+- ✅ **estado.md** - Actualización automática de fecha y hora
+- ⏳ **README.md** - Pendiente (índice de archivos)
+- ⏳ **cambios.md** - Pendiente (registro de cambios)
 
-- [Auditorías](auditorias.md) - Procedimiento de auditorías
-- [Updates](updates.md) - Procedimiento de actualizaciones
-- [Rollback](rollback.md) - Procedimiento de rollback
+### Configuración requerida
+1. PAT_TOKEN en secrets del repo
+2. Permisos de escritura en GitHub Actions
+3. Workflow en .github/workflows/
 
-## 🔍 Auditorías
+### Sesiones de trabajo
+- [2026-08-12](sesiones/2026-08-12-automatizacion-workflows.md) - Automatización de workflows
 
-### Auditoría Completa
-```bash
-sudo /usr/local/bin/audit-full.sh
-```
-
-### Health Check
-```bash
-/usr/local/bin/health-check.sh
-```
-
-### Checklist
-```bash
-sudo /usr/local/bin/checklist-verification.sh
-```
-
-### Ver Logs
-```bash
-ls -lah /var/log/madre-audit/
-```
-
-## 🔄 Updates
-
-### Actualizar Sistema
-```bash
-sudo pacman -Syu
-```
-
-### Ver Paquetes Instalados
-```bash
-pacman -Qe
-```
-
-## ↩️ Rollback
-
-### Restaurar Paquetes
-```bash
-# Restaurar desde lista
-sudo pacman -S - < paquetes-backup.txt
-```
-
-## 🔗 Links Útiles
-
-- [README Principal](../README.md)
-- [Estado](../estado.md)
-- [Scripts](../scripts/)
-
----
-
-**Responsable:** @alvarofernandezmota-tech
-**Actualización:** Con cada cambio de procedimientos
+## Pendientes
+- README.md automático
+- cambios.md automático
+- Notificaciones (Slack/Email)
+- Workflows para security, backups, disaster-recovery, etc.
