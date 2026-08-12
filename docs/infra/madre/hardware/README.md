@@ -117,3 +117,6 @@ pacman -Qe > paquetes-oficiales.txt
 
 **Responsable:** @alvarofernandezmota-tech
 **Actualización:** Mensual (primer lunes de cada mes)
+
+## Prueba de automatización
+- Fecha: 2026-08-12
