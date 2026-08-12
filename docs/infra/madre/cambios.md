@@ -14,3 +14,4 @@
 | 2026-08-12 | Detectado y eliminado clon duplicado de `code-temple` en `~/GitHub/personal/` |
 | 2026-08-12 | Fijada `~/GitHub/trabajo/code-temple` como ruta canónica única (ADR-003) |
 | 2026-08-12 | Corregido `estructura.md` para reflejar `code-temple` bajo `trabajo/` |
+| 2026-08-12 | Consolidado el README de Madre: eliminadas referencias duplicadas y definido el mapa único de mantenimiento |

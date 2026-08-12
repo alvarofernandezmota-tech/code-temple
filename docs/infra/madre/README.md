@@ -87,16 +87,6 @@ git push origin main
 
 No se almacenan aquí contraseñas, tokens, claves privadas ni archivos `.env`.
 
-## Seguimiento de tareas pendientes
-
-Las tareas abiertas de Madre se gestionan como issues en `code-temple`:
-https://github.com/alvarofernandezmota-tech/code-temple/issues
-
-## Historial de sesiones relacionadas
-
-El detalle cronológico de las sesiones de trabajo sobre Madre vive en:
-[docs/sesiones/](https://github.com/alvarofernandezmota-tech/code-temple/tree/main/docs/sesiones)
-
 ## Mantenimiento y referencias
 
 El procedimiento para actualizar esta carpeta está en
@@ -110,4 +100,4 @@ Las tareas pendientes se gestionan mediante los
 [issues abiertos de code-temple](https://github.com/alvarofernandezmota-tech/code-temple/issues).
 
 El historial cronológico de las sesiones se conserva fuera de esta carpeta, en
-[`docs/sesiones/../../sesiones/`](../../sesiones/).
+[`docs/sesiones/`](../../sesiones/).
