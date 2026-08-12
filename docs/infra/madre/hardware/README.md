@@ -120,3 +120,6 @@ pacman -Qe > paquetes-oficiales.txt
 
 ## Prueba de automatización
 - Fecha: 2026-08-12
+
+## Prueba de automatización con PAT
+- Fecha: 2026-08-12
