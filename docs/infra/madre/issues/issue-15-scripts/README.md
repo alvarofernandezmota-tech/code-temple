@@ -45,3 +45,29 @@ sudo ./docs/infra/madre/scripts/audit/checklist-verification.sh
 ## Referencias
 - [Issue #15](https://github.com/alvarofernandezmota-tech/code-temple/issues/15)
 - [Issue #19 (Workflow)](https://github.com/alvarofernandezmota-tech/code-temple/issues/19)
+
+## Automatización
+
+### Instalar auditoría automática (diaria a las 3 AM)
+```bash
+sudo mkdir -p /var/log/madre-audit
+sudo chmod 755 /var/log/madre-audit
+sudo cp docs/infra/madre/scripts/audit/*.sh /usr/local/bin/
+sudo chmod +x /usr/local/bin/*.sh
+(crontab -l 2>/dev/null; echo "0 3 * * * /usr/local/bin/audit-full.sh") | crontab -
+```
+
+### Verificar cron jobs
+```bash
+crontab -l
+```
+
+### Ejecutar auditoría manual
+```bash
+sudo /usr/local/bin/audit-full.sh
+```
+
+### Ver logs de auditoría
+```bash
+ls -lah /var/log/madre-audit/
+```
