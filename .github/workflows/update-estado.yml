@@ -24,16 +24,17 @@ jobs:
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.PAT_TOKEN }}
+          fetch-depth: 0
       
       - name: Update fecha en estado.md
         run: |
           DATE=$(date +%Y-%m-%d)
           sed -i "s/Última actualización:.*/Última actualización: $DATE/" docs/infra/madre/estado.md
       
-      - name: Commit changes
+      - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add docs/infra/madre/estado.md
-          git commit -m "docs(estado): Actualizar fecha automáticamente" || echo "No changes"
+          git diff --cached --quiet || git commit -m "docs(estado): Actualizar fecha automáticamente [skip ci]"
           git push
