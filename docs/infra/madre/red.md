@@ -37,8 +37,7 @@ La auditoría con:
 sudo ufw status numbered
 ```
 
-devuelve `Status: active` sin mostrar reglas numeradas. No hay reglas explícitas añadidas mediante UFW. Actualmente no hay
-reglas explícitas añadidas mediante UFW.
+devuelve `Status: active` sin mostrar reglas numeradas. No hay reglas explícitas añadidas mediante UFW.
 
 ## Comprobaciones utilizadas
 

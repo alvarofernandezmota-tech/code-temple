@@ -60,4 +60,4 @@ red y la estructura de directorios ya fueron ejecutados el 2026-08-12.
 
 Madre queda documentada a nivel estructural y operativo inicial.
 La implementación de backups y el despliegue de servicios de aplicación quedan pendientes.
-No se realizarán nuevas instalaciones hasta completar la auditoría.
+No se desplegarán servicios de aplicación hasta completar la planificación de backups y la revisión de los stacks.
