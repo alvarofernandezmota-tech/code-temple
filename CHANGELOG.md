@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+11f30c3 Delete temple directory
+47534e2 chore(changelog): Actualizar automáticamente
 9b97cfa Create PLAN_MAESTRO.md with project overviewestaba en la carpta equibocadoa y va en raiz de madre no?¿
 dc95bcc chore(changelog): Actualizar automáticamente
 bf40791 feat: Crear scripts y automatizaciones para adr/ y sesiones/
@@ -24,5 +26,3 @@ f59ea7c chore(changelog): Actualizar automáticamente
 0bccb6d chore(changelog): Actualizar automáticamente
 dd18a92 Update SESION-2026-08-13.md
 0795313 chore(changelog): Actualizar automáticamente
-8d59819 Delete docs/infra/madre/SESION-2026-08-13.md
-c932a74 chore(changelog): Actualizar automáticamente
