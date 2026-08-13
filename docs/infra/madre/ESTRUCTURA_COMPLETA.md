@@ -189,9 +189,9 @@
   scripts/
     analizar-outputs.sh
     backup-madre.sh
+    cleanup-temp.sh
     consolidar-auditorias.sh
     generar-reporte.sh
-    monitor-new-files.py
     audit/
       audit-full.sh
       checklist-verification.sh
