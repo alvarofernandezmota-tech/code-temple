@@ -1,0 +1,4 @@
+=== RAM INFO ===
+               total       usado       libre  compartido   búf/caché  disponible
+Mem:            15Gi       6,1Gi       4,2Gi       104Mi       5,6Gi       9,4Gi
+Inter:         4,0Gi          0B       4,0Gi
