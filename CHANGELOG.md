@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+0a16916 feat: Crear scripts y generar estructura de Madre
+2511437 chore(changelog): Actualizar automáticamente
 52d68da feat: Automatizar estructura y README de Madre
 c0829cc chore(changelog): Actualizar automáticamente
 ea94858 docs: Documentar todos los comandos y scripts creados
@@ -24,5 +26,3 @@ c3fd6ff chore(changelog): Actualizar automáticamente
 54813c8 chore(changelog): Actualizar automáticamente
 89fafa0 fix(python): Corregir errores en reportes.py y crear datos de prueba
 4adf193 docs(temple): Crear PLAN_MAESTRO para Neural OS
-e127543 docs(issues): Crear issue #37 para infraestructura de empresa de IA
-f59ea7c chore(changelog): Actualizar automáticamente
