@@ -4,13 +4,13 @@
 
 - Python (.py): 12
 - Bash (.sh): 20
-- Markdown (.md): 103
+- Markdown (.md): 104
 - YAML (.yml): 2
 - Otros: 40
 
 ## Líneas de Código
 
-- Total líneas: 4537
-- Total archivos: 135
-- Promedio líneas/archivo: 33.6
+- Total líneas: 4553
+- Total archivos: 136
+- Promedio líneas/archivo: 33.5
 
