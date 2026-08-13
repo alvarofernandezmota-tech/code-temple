@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+ea94858 docs: Documentar todos los comandos y scripts creados
+27af423 chore(changelog): Actualizar automáticamente
 11f30c3 Delete temple directory
 47534e2 chore(changelog): Actualizar automáticamente
 9b97cfa Create PLAN_MAESTRO.md with project overviewestaba en la carpta equibocadoa y va en raiz de madre no?¿
@@ -24,5 +26,3 @@ e127543 docs(issues): Crear issue #37 para infraestructura de empresa de IA
 f59ea7c chore(changelog): Actualizar automáticamente
 1476c6a docs: Añadir documentación de sesión 2026-08-13 en directorio correcto
 0bccb6d chore(changelog): Actualizar automáticamente
-dd18a92 Update SESION-2026-08-13.md
-0795313 chore(changelog): Actualizar automáticamente
