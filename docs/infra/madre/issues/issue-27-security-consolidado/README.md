@@ -1,22 +1,20 @@
-# Issue #27 - Consolidar Documentación de Security
+# Issue #27 - Security Consolidado
 
-## Estado
-🟢 Completado
-
+**Estado:** 🟡 **PENDIENTE**  
+**Prioridad:** Alta  
 **Fecha:** 2026-08-12
 
-🟡 En progreso
+## Objetivo
 
-## Descripción
-Crear docs/infra/madre/security/README.md consolidando security.
+Consolidar toda la información de security del issue #9.
 
 ## Tareas
-- [x] Crear issue #27
-- [ ] Crear docs/infra/madre/security/README.md
-- [ ] Documentar firewall
-- [ ] Documentar SSH
-- [ ] Documentar usuarios
+
+- [ ] Analizar security (#9)
+- [ ] Consolidar en documentación única
+- [ ] Actualizar security.md
 
 ## Referencias
-- [Issue #9 - Security](issues/issue-09-security/)
-- [Issue #21 - Documentación Consolidada](issues/issue-21-documentacion-consolidada/)
+
+- [Issue #9 - Security](../issue-09-security/)
+- [docs/infra/madre/security.md](../security.md)

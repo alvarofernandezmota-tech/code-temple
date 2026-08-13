@@ -1,22 +1,20 @@
-# Issue #30 - Consolidar Documentación de Disaster Recovery
+# Issue #30 - DR Consolidado
 
-## Estado
-🟢 Completado
-
+**Estado:** 🟡 **PENDIENTE**  
+**Prioridad:** Alta  
 **Fecha:** 2026-08-12
 
-🟡 En progreso
+## Objetivo
 
-## Descripción
-Crear docs/infra/madre/disaster-recovery/README.md consolidando DR.
+Consolidar toda la información de DR del issue #10.
 
 ## Tareas
-- [x] Crear issue #30
-- [ ] Crear docs/infra/madre/disaster-recovery/README.md
-- [ ] Documentar plan de DR
-- [ ] Documentar procedimientos de recovery
-- [ ] Documentar RTO/RPO
+
+- [ ] Analizar DR (#10)
+- [ ] Consolidar en documentación única
+- [ ] Actualizar disaster-recovery.md
 
 ## Referencias
-- [Issue #10 - DR](issues/issue-10-disaster-recovery/)
-- [Issue #21 - Documentación Consolidada](issues/issue-21-documentacion-consolidada/)
+
+- [Issue #10 - DR](../issue-10-disaster-recovery/)
+- [docs/infra/madre/disaster-recovery.md](../disaster-recovery.md)

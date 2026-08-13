@@ -1,21 +1,22 @@
-# Issue #28 - Crear Procedimientos
+# Issue #28 - Procedimientos
 
-## Estado
-🟢 Completado
-
+**Estado:** 🟡 **PENDIENTE**  
+**Prioridad:** Alta  
 **Fecha:** 2026-08-12
 
-🟡 En progreso
+## Objetivo
 
-## Descripción
-Crear docs/infra/madre/procedimientos/README.md con procedimientos operativos.
+Documentar todos los procedimientos de infraestructura.
 
 ## Tareas
-- [x] Crear issue #28
-- [ ] Crear docs/infra/madre/procedimientos/README.md
-- [ ] Documentar procedimiento de auditoría
-- [ ] Documentar procedimiento de update
-- [ ] Documentar procedimiento de rollback
+
+- [ ] Documentar procedimientos de auditoría
+- [ ] Documentar procedimientos de backup
+- [ ] Documentar procedimientos de DR
+- [ ] Documentar procedimientos de monitoring
+- [ ] Crear checklist de operaciones
 
 ## Referencias
-- [Issue #21 - Documentación Consolidada](issues/issue-21-documentacion-consolidada/)
+
+- [Issue #13 - Change Management](../issue-13-change-management/)
+- [docs/infra/madre/cambios.md](../cambios.md)

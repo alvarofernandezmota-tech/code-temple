@@ -1,22 +1,20 @@
-# Issue #29 - Consolidar Documentación de Backups
+# Issue #29 - Backups Consolidado
 
-## Estado
-🟢 Completado
-
+**Estado:** 🟡 **PENDIENTE**  
+**Prioridad:** Alta  
 **Fecha:** 2026-08-12
 
-🟡 En progreso
+## Objetivo
 
-## Descripción
-Crear docs/infra/madre/backups/README.md consolidando backups.
+Consolidar toda la información de backups del issue #8.
 
 ## Tareas
-- [x] Crear issue #29
-- [ ] Crear docs/infra/madre/backups/README.md
-- [ ] Documentar estrategia de backups
-- [ ] Documentar procedimientos de restore
-- [ ] Documentar testing de backups
+
+- [ ] Analizar backups (#8)
+- [ ] Consolidar en documentación única
+- [ ] Actualizar backups.md
 
 ## Referencias
-- [Issue #8 - Backups](issues/issue-08-backups/)
-- [Issue #21 - Documentación Consolidada](issues/issue-21-documentacion-consolidada/)
+
+- [Issue #8 - Backups](../issue-08-backups/)
+- [docs/infra/madre/backups.md](../backups.md)

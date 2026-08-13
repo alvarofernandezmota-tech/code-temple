@@ -1,22 +1,20 @@
-# Issue #26 - Consolidar Documentación de Servicios
+# Issue #26 - Servicios Consolidado
 
-## Estado
-🟢 Completado
-
+**Estado:** 🟡 **PENDIENTE**  
+**Prioridad:** Alta  
 **Fecha:** 2026-08-12
 
-🟡 En progreso
+## Objetivo
 
-## Descripción
-Crear docs/infra/madre/servicios/README.md consolidando todos los servicios.
+Consolidar toda la información de servicios del issue #7.
 
 ## Tareas
-- [x] Crear issue #26
-- [ ] Crear docs/infra/madre/servicios/README.md
-- [ ] Listar servicios críticos
-- [ ] Documentar cada servicio
-- [ ] Documentar dependencias
+
+- [ ] Analizar servicios (#7)
+- [ ] Consolidar en documentación única
+- [ ] Actualizar servicios.md
 
 ## Referencias
-- [Issue #7 - Servicios](issues/issue-07-servicios/)
-- [Issue #21 - Documentación Consolidada](issues/issue-21-documentacion-consolidada/)
+
+- [Issue #7 - Servicios](../issue-07-servicios/)
+- [docs/infra/madre/servicios.md](../servicios.md)

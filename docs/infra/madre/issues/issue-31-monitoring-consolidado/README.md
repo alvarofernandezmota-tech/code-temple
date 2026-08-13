@@ -1,21 +1,20 @@
-# Issue #31 - Consolidar Documentación de Monitoring
+# Issue #31 - Monitoring Consolidado
 
-## Estado
-🟢 Completado
-
+**Estado:** 🟡 **PENDIENTE**  
+**Prioridad:** Alta  
 **Fecha:** 2026-08-12
 
-🟢 Completado
+## Objetivo
 
-## Descripción
-Crear docs/infra/madre/monitoring/README.md consolidando monitoring.
+Consolidar toda la información de monitoring del issue #11.
 
 ## Tareas
-- [x] Crear issue #31
-- [x] Crear docs/infra/madre/monitoring/README.md
-- [x] Documentar herramientas
-- [x] Documentar métricas
+
+- [ ] Analizar monitoring (#11)
+- [ ] Consolidar en documentación única
+- [ ] Actualizar monitoring.md
 
 ## Referencias
-- [Issue #11 - Monitoring](issues/issue-11-monitoring/)
-- [Issue #21 - Documentación Consolidada](issues/issue-21-documentacion-consolidada/)
+
+- [Issue #11 - Monitoring](../issue-11-monitoring/)
+- [docs/infra/madre/monitoring.md](../monitoring.md)

@@ -1,21 +1,20 @@
-# Issue #32 - Consolidar Documentación de Performance
+# Issue #32 - Performance Consolidado
 
-## Estado
-🟢 Completado
-
+**Estado:** 🟡 **PENDIENTE**  
+**Prioridad:** Alta  
 **Fecha:** 2026-08-12
 
-🟢 Completado
+## Objetivo
 
-## Descripción
-Crear docs/infra/madre/performance/README.md consolidando performance.
+Consolidar toda la información de performance del issue #12.
 
 ## Tareas
-- [x] Crear issue #32
-- [x] Crear docs/infra/madre/performance/README.md
-- [x] Documentar baseline
-- [x] Documentar benchmarks
+
+- [ ] Analizar performance (#12)
+- [ ] Consolidar en documentación única
+- [ ] Actualizar performance.md
 
 ## Referencias
-- [Issue #12 - Performance](issues/issue-12-performance/)
-- [Issue #21 - Documentación Consolidada](issues/issue-21-documentacion-consolidada/)
+
+- [Issue #12 - Performance](../issue-12-performance/)
+- [docs/infra/madre/performance.md](../performance.md)
