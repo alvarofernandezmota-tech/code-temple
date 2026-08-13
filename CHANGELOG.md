@@ -1,21 +1,28 @@
-# Changelog
+# CHANGELOG
 
-## [2026-08-12] - Automatización de workflows
+Todos los cambios importantes en este proyecto.
 
-### Added
-- Workflow `.github/workflows/update-estado.yml` para actualizar `estado.md` automáticamente
-- Documentación de sesión en `docs/infra/madre/procedimientos/sesiones/`
-- PAT_TOKEN como secret para permitir push desde workflows
+## [2026.08.13] - 2026-08-13
 
-### Changed
-- `estado.md` ahora incluye fecha y hora en formato `YYYY-MM-DD HH:MM:SS`
-- Permisos de GitHub Actions habilitados (Read and write)
+### Cambios Recientes
 
-### Fixed
-- Workflow de actualización de estado.md funcionando correctamente
-
-### Pending
-- Automatización de README.md (índice de archivos)
-- Automatización de cambios.md (registro de cambios)
-- Notificaciones (Slack/Email)
-- Workflows para security, backups, disaster-recovery, etc.
+c42e215 ci(workflows): Crear workflow para actualizar CHANGELOG.md
+4b2c5d6 docs(infra/madre): Actualizar README.md con índice completo
+58269c9 docs(issues): Cerrar issues #24-#36
+ddcdabe docs(issues): Crear issue #36 para revisión, auditoría y automatización
+9d6d959 docs(issues): Actualizar README.md de issues #24-#33 consolidados
+62e9ece docs(issues): Marcar issues #6-#13 como completados
+cb4653d docs(issues): Marcar issues #5-#13 como completados
+899aff4 docs(scripts): Crear scripts de automatización
+948c2e7 docs(issues): Crear issues #34-#35 para automatizaciones y scripts
+4df2674 docs(issues): Crear issues #34-#35 para automatizaciones y scripts
+6a61f9a docs(infra/madre): Crear resto de archivos .md
+4053513 docs(infra/madre): Actualizar documentación post-auditorías 2026-08-13
+c6caa06 docs(sesion): Cerrar sesión 2026-08-13
+1355395 docs(issue-23): Actualizar cambios
+e9e8596 docs(issue-22): Actualizar estado
+8c4e6a4 docs(sesion): Cerrar sesión 2026-08-13
+cdaa774 docs(issues): Completar auditorías de issues #7-#13
+4b8222c docs(issue-06): Agregar outputs de red
+cb12f5c docs(issue-06): Completar auditoría de red 2026-08-13
+0290304 docs(estado): Actualizar fecha y hora automáticamente [skip ci]
