@@ -1,0 +1,710 @@
+{
+  "estado.md": {
+    "hash": "0993d1ef7970208b08b8df39069f361c",
+    "mtime": 1786608121.8268235
+  },
+  "disaster-recovery.md": {
+    "hash": "41d77a44473a363798790eab2be71b75",
+    "mtime": 1786608161.9518428
+  },
+  "performance.md": {
+    "hash": "c3a6e3dadde66fc168024fe838f29568",
+    "mtime": 1786608161.9638429
+  },
+  "cambios.md": {
+    "hash": "a115def511fb966eb6006b8e75473b3a",
+    "mtime": 1786559462.5333056
+  },
+  "servicios.md": {
+    "hash": "2090e79e7de028ef2af85e80f67beac1",
+    "mtime": 1786608161.932843
+  },
+  "hardware.md": {
+    "hash": "72d43669a4093a93d11ae20cad60c68b",
+    "mtime": 1786608121.8238235
+  },
+  "README.md": {
+    "hash": "7b2c164b0fb4ae2b24fa6e5ef943281d",
+    "mtime": 1786620393.5166686
+  },
+  "backups.md": {
+    "hash": "b57498e429ac2073d46c2e5f798c51e5",
+    "mtime": 1786608161.946843
+  },
+  "security.md": {
+    "hash": "ac7ce049bf73ef8c626e054ce640313c",
+    "mtime": 1786608161.939843
+  },
+  "monitoring.md": {
+    "hash": "e0751eabe50e43ee9b8f3ee2ca3c1b93",
+    "mtime": 1786608161.9578428
+  },
+  "change-management.md": {
+    "hash": "f18242a96290f5b13dc2485c6bfd5603",
+    "mtime": 1786608161.968843
+  },
+  "ESTRUCTURA_COMPLETA.md": {
+    "hash": "5f1b29ff04ca8e8fdc1f4252e96e25ca",
+    "mtime": 1786620393.5166686
+  },
+  "red.md": {
+    "hash": "00801bc99bab79cc328385c163200607",
+    "mtime": 1786608121.8261747
+  },
+  "sesiones/CIERRE-SESION-2026-08-13.md": {
+    "hash": "8007a50a9748326ccfeca7a52966a0d3",
+    "mtime": 1786612793.495315
+  },
+  "sesiones/SESION-2026-08-13.md": {
+    "hash": "c20d1925c8c4990c82058c622d9bbced",
+    "mtime": 1786612793.4942286
+  },
+  "sesiones/README.md": {
+    "hash": "43ae6fcc8110c11e376df4957c238ac4",
+    "mtime": 1786616115.1032119
+  },
+  "sesiones/automatizaciones/workflow.yml": {
+    "hash": "a26738610d456520c470639335675c16",
+    "mtime": 1786616877.629575
+  },
+  "sesiones/scripts/generate_index.py": {
+    "hash": "db9087147ab89b744ee61e73c410288c",
+    "mtime": 1786616877.629575
+  },
+  "security/README.md": {
+    "hash": "8dfc91943ef3f6350f82d7e89d351432",
+    "mtime": 1786616877.629575
+  },
+  "red/README.md": {
+    "hash": "fa58571bf38e21a4c7102b12872d04c8",
+    "mtime": 1786616877.629575
+  },
+  "adr/ADR-001-estructura-issues.md": {
+    "hash": "5d0d83bf4ae28950c8a25bb44609f284",
+    "mtime": 1786553290.2241468
+  },
+  "adr/template.md": {
+    "hash": "ea4fcf396d5d2811a3df8d6e5e75fdab",
+    "mtime": 1786553290.222829
+  },
+  "adr/ADR-004-automatizacion-documentacion.md": {
+    "hash": "3569f022944d77390d65d65b6fed8d51",
+    "mtime": 1786558909.6320326
+  },
+  "adr/ADR-002-code-temple-fuente-de-verdad.md": {
+    "hash": "24d208f9b10d2a22eded658ca70552d7",
+    "mtime": 1786041208.3622315
+  },
+  "adr/README.md": {
+    "hash": "8c0fde367c4b6346f9dd96ee52d8f169",
+    "mtime": 1786619456.4627247
+  },
+  "adr/ADR-001-reconstruccion-de-madre.md": {
+    "hash": "96f3df63abb4eed06aafc8ed0aff37ec",
+    "mtime": 1786041202.7096782
+  },
+  "adr/ADR-003-ruta-canonica-code-temple.md": {
+    "hash": "01e75694b883dc83cc10d5fbf4474b2a",
+    "mtime": 1786545685.00202
+  },
+  "adr/automatizaciones/workflow.yml": {
+    "hash": "a49b173ae038f1a9165604295839bffc",
+    "mtime": 1786616877.6286838
+  },
+  "adr/scripts/generate_index.py": {
+    "hash": "dfa341fe56bf690620093053c104d1e9",
+    "mtime": 1786616877.6286838
+  },
+  "performance/README.md": {
+    "hash": "45a097257cb0e5b5b6c3dd9a56ea6ad4",
+    "mtime": 1786616877.629575
+  },
+  "backups/README.md": {
+    "hash": "70163755fab840942913120cecb388b3",
+    "mtime": 1786557389.4428852
+  },
+  "procedimientos/repos.md": {
+    "hash": "10df85c209d690d90a3822470c5f8407",
+    "mtime": 1786039985.0821495
+  },
+  "procedimientos/instalar-paquete.md": {
+    "hash": "bafce14efca5e649e8bd3899e3fb9542",
+    "mtime": 1786041219.3937922
+  },
+  "procedimientos/actualizar-documentacion.md": {
+    "hash": "59c20db8c9b62eefd0f773096e530a9b",
+    "mtime": 1786546519.6813445
+  },
+  "procedimientos/red-firewall.md": {
+    "hash": "133e404315cc462e8c5067c0895e6db4",
+    "mtime": 1786041245.9458404
+  },
+  "procedimientos/automatizacion.md": {
+    "hash": "6a0bfe229121711df3b084c3bc206ed8",
+    "mtime": 1786558901.0635614
+  },
+  "procedimientos/recuperacion.md": {
+    "hash": "bb6f5403c8a7d14a6d18f0279c1a7dc9",
+    "mtime": 1786041258.3489273
+  },
+  "procedimientos/estructura.md": {
+    "hash": "538b19bd834dc0212150bdffd94bbcda",
+    "mtime": 1786544937.6864762
+  },
+  "procedimientos/docker.md": {
+    "hash": "ddf6e4e1f9bff237c82dce0b7dbfb74b",
+    "mtime": 1786041238.7148318
+  },
+  "procedimientos/README.md": {
+    "hash": "6526fd07cd9caa712934174cf095f12d",
+    "mtime": 1786562196.9452198
+  },
+  "procedimientos/backups.md": {
+    "hash": "40dde39b146ac8083f29957efa6cf77d",
+    "mtime": 1786041253.0501714
+  },
+  "procedimientos/actualizar-inventario.md": {
+    "hash": "8ee28b40f95cd62ae141970d3c50b283",
+    "mtime": 1786041227.214362
+  },
+  "procedimientos/revisar-servicios.md": {
+    "hash": "ea4334e4c2d20efef96a0934be013874",
+    "mtime": 1786041232.725108
+  },
+  "procedimientos/normas.md": {
+    "hash": "593ed3e1c37f1d314de14321b6fef353",
+    "mtime": 1786041175.3107584
+  },
+  "procedimientos/pull-requests.md": {
+    "hash": "0ef095ead5d21afd09d384bffb6658f0",
+    "mtime": 1786561856.6661649
+  },
+  "procedimientos/auditoria.md": {
+    "hash": "7192ef81eb5a9f94bdc14bf1c451dae4",
+    "mtime": 1786042644.2541876
+  },
+  "procedimientos/sesiones/01-inicio-de-sesion.md": {
+    "hash": "3a7961456187d595e55bdbfa69e9df6b",
+    "mtime": 1786606024.9799082
+  },
+  "procedimientos/sesiones/2026-08-12-automatizacion-workflows.md": {
+    "hash": "a07006769544e593ef35a36e51bddda2",
+    "mtime": 1786561468.2041786
+  },
+  "procedimientos/sesiones/02-code-review.md": {
+    "hash": "41da0a78fbe288c09e8b30201431f62f",
+    "mtime": 1786606911.7640927
+  },
+  "procedimientos/workflows/update-estado.md": {
+    "hash": "ebc22e906447f4192d85bc6669bc4c93",
+    "mtime": 1786562146.0208566
+  },
+  "issues/README.md": {
+    "hash": "7ec30f78aa5b4a98d67bf6389723ad74",
+    "mtime": 1786553276.3722687
+  },
+  "issues/issue-10-disaster-recovery/README.md": {
+    "hash": "9ca8fa79e26494ce4c28841c800d2dbe",
+    "mtime": 1786609736.9597566
+  },
+  "issues/issue-10-disaster-recovery/commands/01-dr-info.sh": {
+    "hash": "219e99972f29a0c02f67b16fc1fec2d2",
+    "mtime": 1786553754.1732628
+  },
+  "issues/issue-10-disaster-recovery/outputs/cron-backup.txt": {
+    "hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "mtime": 1786553754.1720188
+  },
+  "issues/issue-10-disaster-recovery/outputs/2026-08-13/dr.txt": {
+    "hash": "7d22946e4507a1394718b882d2e8a320",
+    "mtime": 1786607328.639552
+  },
+  "issues/issue-10-disaster-recovery/audit/2026-08-13-audit.md": {
+    "hash": "134d1303a32926e2134552cc15692050",
+    "mtime": 1786607328.643552
+  },
+  "issues/issue-33-change-mgmt-consolidado/README.md": {
+    "hash": "77c3c1ad8dcc5b1625264e676fb8c02c",
+    "mtime": 1786609826.268959
+  },
+  "issues/templates/TEMPLATE-README.md": {
+    "hash": "7d273b541d77bbcec1976b40032d2346",
+    "mtime": 1786549037.331902
+  },
+  "issues/issue-22-estado-infra/README.md": {
+    "hash": "e216ceb997562c3f0948d749f0816337",
+    "mtime": 1786607595.9206553
+  },
+  "issues/issue-30-dr-consolidado/README.md": {
+    "hash": "38718c336ac24f2927a766e16a1c747e",
+    "mtime": 1786609826.2668533
+  },
+  "issues/issue-24-hardware-consolidado/README.md": {
+    "hash": "498b7c301b0d59ce798132f1e592e97d",
+    "mtime": 1786610344.1769824
+  },
+  "issues/issue-31-monitoring-consolidado/README.md": {
+    "hash": "b226ed240a7359dd0bd05be631f3b55f",
+    "mtime": 1786609826.2677813
+  },
+  "issues/issue-06-red/README.md": {
+    "hash": "5585982a1a7e6d1a7f31083f81a46717",
+    "mtime": 1786609736.9417567
+  },
+  "issues/issue-06-red/commands/01-network-info.sh": {
+    "hash": "65a6240221981bf95858079f2608e148",
+    "mtime": 1786553435.1501572
+  },
+  "issues/issue-06-red/outputs/interfaces.txt": {
+    "hash": "8908361f3d79758310284cb4e0f83da7",
+    "mtime": 1786553435.1497853
+  },
+  "issues/issue-06-red/outputs/routing.txt": {
+    "hash": "fc1556fadc143826c37695f58927b376",
+    "mtime": 1786553435.1498382
+  },
+  "issues/issue-06-red/outputs/firewall.txt": {
+    "hash": "c31b18aa9e0e6d838130cde39ff177cf",
+    "mtime": 1786553435.1497498
+  },
+  "issues/issue-06-red/outputs/ports.txt": {
+    "hash": "3e834385dc0db6cfbc527c20e0a62ec7",
+    "mtime": 1786553435.1498127
+  },
+  "issues/issue-06-red/outputs/2026-08-13/interfaces.txt": {
+    "hash": "83391fa857a841796756e8501208ca31",
+    "mtime": 1786607248.5329986
+  },
+  "issues/issue-06-red/outputs/2026-08-13/routing.txt": {
+    "hash": "fc1556fadc143826c37695f58927b376",
+    "mtime": 1786607248.5329986
+  },
+  "issues/issue-06-red/outputs/2026-08-13/firewall.txt": {
+    "hash": "82b35a042609b8bfd9875d2f45278a3b",
+    "mtime": 1786607248.5208044
+  },
+  "issues/issue-06-red/outputs/2026-08-13/ports.txt": {
+    "hash": "3e834385dc0db6cfbc527c20e0a62ec7",
+    "mtime": 1786607248.5329986
+  },
+  "issues/issue-06-red/audit/2026-08-13-red-audit.md": {
+    "hash": "b6c1158f5caf50d2c6b6c6550fc4938f",
+    "mtime": 1786607248.5208044
+  },
+  "issues/issue-28-procedimientos/README.md": {
+    "hash": "75b5a75ad1cfffe4368140cf38fa1cc3",
+    "mtime": 1786609826.265043
+  },
+  "issues/issue-09-security/README.md": {
+    "hash": "68dbca03a7155c63a8b712de359e7e11",
+    "mtime": 1786609736.9557567
+  },
+  "issues/issue-09-security/commands/01-security-info.sh": {
+    "hash": "601ada2f391cdb39315b4e06f357dfcb",
+    "mtime": 1786553693.1300616
+  },
+  "issues/issue-09-security/outputs/logins.txt": {
+    "hash": "0a3bd93bbea4e3cd04265d0ace898bb2",
+    "mtime": 1786553693.129217
+  },
+  "issues/issue-09-security/outputs/firewall.txt": {
+    "hash": "c31b18aa9e0e6d838130cde39ff177cf",
+    "mtime": 1786553693.1291811
+  },
+  "issues/issue-09-security/outputs/users.txt": {
+    "hash": "3f8a3cb35670790e2a4ba0a136ff8a56",
+    "mtime": 1786553693.129244
+  },
+  "issues/issue-09-security/outputs/2026-08-13/security.txt": {
+    "hash": "6c12c7ad3bd27613a9f3e615cd51873b",
+    "mtime": 1786607328.6265523
+  },
+  "issues/issue-09-security/audit/2026-08-13-audit.md": {
+    "hash": "b2556a3e2796b79b5ec3cae9f665930f",
+    "mtime": 1786607328.6325521
+  },
+  "issues/issue-11-monitoring/README.md": {
+    "hash": "8a97d8a0b05023343c7cb428c71768e3",
+    "mtime": 1786609736.9627564
+  },
+  "issues/issue-11-monitoring/commands/01-monitoring-info.sh": {
+    "hash": "d34fb10d6b9b408d8b190751400ae73c",
+    "mtime": 1786553810.9467263
+  },
+  "issues/issue-11-monitoring/outputs/monitoring-services.txt": {
+    "hash": "456135547362e7a048dbf2813e98548a",
+    "mtime": 1786553810.9466572
+  },
+  "issues/issue-11-monitoring/outputs/monitoring-processes.txt": {
+    "hash": "91e81bee8e0fbe4c50421258f84978b6",
+    "mtime": 1786553810.946621
+  },
+  "issues/issue-11-monitoring/outputs/2026-08-13/monitoring.txt": {
+    "hash": "6468b03cb14572795532567bd4fff5ae",
+    "mtime": 1786607328.649552
+  },
+  "issues/issue-11-monitoring/audit/2026-08-13-audit.md": {
+    "hash": "1dfe7f4bd9ea6ec858cc9fd51bc02e2b",
+    "mtime": 1786607328.653552
+  },
+  "issues/issue-37-docker-ia-local/README.md": {
+    "hash": "e7c8273b8f4bb9695577a2fa6ba1f7ab",
+    "mtime": 1786614312.655273
+  },
+  "issues/issue-27-security-consolidado/README.md": {
+    "hash": "63fad3b92035f5c25b433788423df094",
+    "mtime": 1786609826.2640972
+  },
+  "issues/issue-13-change-management/README.md": {
+    "hash": "a0d47ff0c57853999d9d3be7aef45f46",
+    "mtime": 1786609736.9697564
+  },
+  "issues/issue-13-change-management/commands/01-system-info.sh": {
+    "hash": "b4f2f33bbcd25e3305d34945bbb56f47",
+    "mtime": 1786553952.629913
+  },
+  "issues/issue-13-change-management/outputs/kernel.txt": {
+    "hash": "a6f99a8fe4baf5e64f42fcdef1bc8531",
+    "mtime": 1786553952.629689
+  },
+  "issues/issue-13-change-management/outputs/os-info.txt": {
+    "hash": "9e68a7f8464fa0b1186668069780d64f",
+    "mtime": 1786553952.629728
+  },
+  "issues/issue-13-change-management/outputs/2026-08-13/change-mgmt.txt": {
+    "hash": "011e641f20c094eb06e6624c73897c21",
+    "mtime": 1786607328.6715517
+  },
+  "issues/issue-13-change-management/audit/2026-08-13-audit.md": {
+    "hash": "6d3f50ff02c993322a7ff0c2636f26c4",
+    "mtime": 1786607328.6755517
+  },
+  "issues/issue-25-red-consolidado/README.md": {
+    "hash": "ca51817158f71750cf6bb83d05a514f7",
+    "mtime": 1786609826.2623208
+  },
+  "issues/issue-05-hardware/README.md": {
+    "hash": "e7aa5b1569764e198645bd5f153e0bcf",
+    "mtime": 1786609562.2419026
+  },
+  "issues/issue-05-hardware/commands/03-disk-info.sh": {
+    "hash": "cda4497b23edfb2d82336d6387784d8b",
+    "mtime": 1786549298.9759264
+  },
+  "issues/issue-05-hardware/commands/02-ram-info.sh": {
+    "hash": "60a687b97d9a47f99e467d85eb58b4c4",
+    "mtime": 1786549298.9751663
+  },
+  "issues/issue-05-hardware/commands/01-cpu-info.sh": {
+    "hash": "1098850c9ef4f66b18559a36420203c6",
+    "mtime": 1786549298.9742823
+  },
+  "issues/issue-05-hardware/outputs/ram-info.txt": {
+    "hash": "548268098bac0e8435cf5769afba8508",
+    "mtime": 1786549298.9729645
+  },
+  "issues/issue-05-hardware/outputs/disk-partitions.txt": {
+    "hash": "14e990b76db5b38285dfbb97813f5020",
+    "mtime": 1786549298.9729393
+  },
+  "issues/issue-05-hardware/outputs/ram-summary.txt": {
+    "hash": "c41c97e1f1593a27a3a5abcc534c0898",
+    "mtime": 1786549298.9729965
+  },
+  "issues/issue-05-hardware/outputs/cpu-detailed.txt": {
+    "hash": "04ab7cbf4f2e4d2d984a26b9aff5b0ae",
+    "mtime": 1786549298.9728332
+  },
+  "issues/issue-05-hardware/outputs/cpu-info.txt": {
+    "hash": "5456cbe60acf534936fab14586600dc2",
+    "mtime": 1786549298.9728837
+  },
+  "issues/issue-05-hardware/outputs/disk-info.txt": {
+    "hash": "90c5aec121a26362cc959ab7bc97ed79",
+    "mtime": 1786549298.9729123
+  },
+  "issues/issue-05-hardware/outputs/2026-08-13/ram-info.txt": {
+    "hash": "dca92b69fcf7e09747c84d45416897db",
+    "mtime": 1786606911.7873566
+  },
+  "issues/issue-05-hardware/outputs/2026-08-13/cpu-info.txt": {
+    "hash": "d1d691c3a837cec2a6b184ccab26f50a",
+    "mtime": 1786606911.7860925
+  },
+  "issues/issue-05-hardware/outputs/2026-08-13/disk-info.txt": {
+    "hash": "91e4bd236e41eecf2f9d2ae8ff714f63",
+    "mtime": 1786606911.7873566
+  },
+  "issues/issue-05-hardware/audit/2026-08-13-hardware-audit.md": {
+    "hash": "73b89215113ebe8119a296ef5467dc79",
+    "mtime": 1786606911.7860925
+  },
+  "issues/issue-36-revision-audit-automation/README.md": {
+    "hash": "f2112b258f33b7746d2ffbd00a04f662",
+    "mtime": 1786610087.1396005
+  },
+  "issues/issue-29-backups-consolidado/README.md": {
+    "hash": "2c3b4990c367cb0ea24de816dba8ca78",
+    "mtime": 1786609826.2659087
+  },
+  "issues/issue-34-automatizaciones/README.md": {
+    "hash": "8105b1174656fd89748e0ad101e8ad21",
+    "mtime": 1786610344.1782331
+  },
+  "issues/issue-14-adr/README.md": {
+    "hash": "1905ed79f2faeb925d2e4c1ee2372adb",
+    "mtime": 1786554163.5552282
+  },
+  "issues/issue-32-performance-consolidado/README.md": {
+    "hash": "4dd95383d42543b4b13d86d3688dd807",
+    "mtime": 1786609826.267959
+  },
+  "issues/issue-08-backups/README.md": {
+    "hash": "33ec46a9f8492f501cdaa8307c346238",
+    "mtime": 1786609736.9497566
+  },
+  "issues/issue-08-backups/commands/01-backup-info.sh": {
+    "hash": "f8f63a0a4015f458f4ba51e0eef22d21",
+    "mtime": 1786553635.081814
+  },
+  "issues/issue-08-backups/outputs/backup-space.txt": {
+    "hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "mtime": 1786553635.0795557
+  },
+  "issues/issue-08-backups/outputs/backup-dir.txt": {
+    "hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "mtime": 1786553635.0795557
+  },
+  "issues/issue-08-backups/outputs/2026-08-13/backups.txt": {
+    "hash": "6f807e2fe10397f54c0ddea5d77e70e4",
+    "mtime": 1786607328.6015525
+  },
+  "issues/issue-08-backups/audit/2026-08-13-audit.md": {
+    "hash": "b90f2d146682c9115caa9780af300fdb",
+    "mtime": 1786607328.6065526
+  },
+  "issues/issue-12-performance/README.md": {
+    "hash": "57380bb07b6082f9d8038f4206d4f0d4",
+    "mtime": 1786609736.9667563
+  },
+  "issues/issue-12-performance/commands/01-performance-info.sh": {
+    "hash": "f0f2b5ae54dec6c93c06fe24cc5ae8d7",
+    "mtime": 1786553868.014058
+  },
+  "issues/issue-12-performance/outputs/ram-info.txt": {
+    "hash": "9639c9a2db55b1b31b2db8db2528a4e4",
+    "mtime": 1786553868.0132787
+  },
+  "issues/issue-12-performance/outputs/cpu-info.txt": {
+    "hash": "8e9242ac778ef91cd12df8c374b98cc7",
+    "mtime": 1786553868.013218
+  },
+  "issues/issue-12-performance/outputs/disk-info.txt": {
+    "hash": "1a72668ff8457a0b4ddefd0f4416735d",
+    "mtime": 1786553868.0132515
+  },
+  "issues/issue-12-performance/outputs/2026-08-13/performance.txt": {
+    "hash": "363b75a49cb96f58f5fe098a3ec199f6",
+    "mtime": 1786607328.660552
+  },
+  "issues/issue-12-performance/audit/2026-08-13-audit.md": {
+    "hash": "4e6e44ba3602e038bd4454a3e4d30a82",
+    "mtime": 1786607328.664552
+  },
+  "issues/issue-26-servicios-consolidado/README.md": {
+    "hash": "627dbb1ad1845e422d4277faaaa876f1",
+    "mtime": 1786609826.2632177
+  },
+  "issues/issue-15-scripts/README.md": {
+    "hash": "a1aeed442afeb2fc49934dd524715f73",
+    "mtime": 1786554594.7263174
+  },
+  "issues/issue-07-servicios/README.md": {
+    "hash": "968fb1f4f23af5f52c4a19312c8111d0",
+    "mtime": 1786609736.9457567
+  },
+  "issues/issue-07-servicios/commands/01-services-info.sh": {
+    "hash": "112b842b3fbf3bccd1ac24706497e9d2",
+    "mtime": 1786553509.0809958
+  },
+  "issues/issue-07-servicios/outputs/enabled.txt": {
+    "hash": "0c1e08d56ef5168d3f23026a2d976084",
+    "mtime": 1786553509.0800855
+  },
+  "issues/issue-07-servicios/outputs/running.txt": {
+    "hash": "b200a3b7a4dc01a6e1bf60a2b4c6c0f9",
+    "mtime": 1786553509.0801518
+  },
+  "issues/issue-07-servicios/outputs/failed.txt": {
+    "hash": "10abb58d96ef24fe1dd908f91f3c8d99",
+    "mtime": 1786553509.0801187
+  },
+  "issues/issue-07-servicios/outputs/2026-08-13/services.txt": {
+    "hash": "b200a3b7a4dc01a6e1bf60a2b4c6c0f9",
+    "mtime": 1786607328.5885527
+  },
+  "issues/issue-07-servicios/audit/2026-08-13-audit.md": {
+    "hash": "0e18bfdbd70fcbf63683ae92af018623",
+    "mtime": 1786607328.5925527
+  },
+  "issues/issue-23-cambios-infra/README.md": {
+    "hash": "ff75af0974fd5664339e0ab7bef1dc9d",
+    "mtime": 1786607595.9858942
+  },
+  "issues/issue-35-scripts/README.md": {
+    "hash": "51cee6837e7255d0fcf2fd0e7a9b743b",
+    "mtime": 1786610344.179046
+  },
+  "automatizaciones/MAPA.md": {
+    "hash": "e89d5158e0112759c98a683298b18ebb",
+    "mtime": 1786616877.629575
+  },
+  "automatizaciones/ESTRUCTURA.md": {
+    "hash": "ca1b1010af69325aebc46de9a3e9fe7c",
+    "mtime": 1786616877.629575
+  },
+  "automatizaciones/README.md": {
+    "hash": "07ae2519a93039e49f73b08e2083862e",
+    "mtime": 1786619535.8721404
+  },
+  "automatizaciones/ESTADO.md": {
+    "hash": "da63dd859cfa553fb3a51efbd91336b0",
+    "mtime": 1786616877.6286838
+  },
+  "automatizaciones/scripts/generate_madre_structure.py": {
+    "hash": "4723e5f96c95eefc829481cf46e3d459",
+    "mtime": 1786617678.3128092
+  },
+  "automatizaciones/scripts/update_root_readme.py": {
+    "hash": "c1c04ec211f9bc3da5de15c22b769271",
+    "mtime": 1786617678.3128092
+  },
+  "automatizaciones/scripts/update_root_readme_all.py": {
+    "hash": "1674732172821496e8887f95a1b2a96c",
+    "mtime": 1786618919.5455418
+  },
+  "change-management/README.md": {
+    "hash": "a38c41bbe24891f38f4b535ac15e0e4b",
+    "mtime": 1786556070.8932505
+  },
+  "servicios/docker.md": {
+    "hash": "c4c1a714df4b6aae3ea4d27463feb929",
+    "mtime": 1786547469.2330654
+  },
+  "servicios/README.md": {
+    "hash": "c7a4dcee0e67d9885f514b564756d406",
+    "mtime": 1786555625.2262707
+  },
+  "scripts/monitor-new-files.py": {
+    "hash": "6f60402e65c373c8cb44842273048ec1",
+    "mtime": 1786620829.5152087
+  },
+  "scripts/generar-reporte.sh": {
+    "hash": "6ea1b1c9d6e80d8ed72dea4267e6d5b4",
+    "mtime": 1786609242.9339821
+  },
+  "scripts/consolidar-auditorias.sh": {
+    "hash": "1772383dc72c77e36a07e5b912143a74",
+    "mtime": 1786609242.9310536
+  },
+  "scripts/analizar-outputs.sh": {
+    "hash": "262f0bbf7c2cfb9e66806bfab65dfff8",
+    "mtime": 1786609242.932003
+  },
+  "scripts/sync-git.sh": {
+    "hash": "3b404c2cd3b9513918029845c7f44009",
+    "mtime": 1786620708.9062839
+  },
+  "scripts/update-readme.sh": {
+    "hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "mtime": 1786559090.901216
+  },
+  "scripts/paquetes-explicitos.txt": {
+    "hash": "19f03ca7f5da33517cb50300fc79489d",
+    "mtime": 1786547111.1739786
+  },
+  "scripts/backup-madre.sh": {
+    "hash": "8af769360383079762a4a0c9ea8bbbd2",
+    "mtime": 1786620708.9034204
+  },
+  "scripts/audit/checklist-verification.sh": {
+    "hash": "83297e016dd24cdb78a94ba6a0bcd219",
+    "mtime": 1786554359.5511193
+  },
+  "scripts/audit/audit-full.sh": {
+    "hash": "58c5e7141d58dea8a9b977b0c2c52113",
+    "mtime": 1786554359.5481803
+  },
+  "scripts/audit/health-check.sh": {
+    "hash": "0660a13a885ab09026b1762ff6c7e5e1",
+    "mtime": 1786554359.5498493
+  },
+  "python/procesador.py": {
+    "hash": "77b2e068a5e182fa594a9b6baedf1f5e",
+    "mtime": 1786618174.9766536
+  },
+  "python/utils.py": {
+    "hash": "d8e76154df34b0f53481c7fb8291843a",
+    "mtime": 1786618174.9766536
+  },
+  "python/organizador.py": {
+    "hash": "26df9ab894de782b1fff28f60844dae4",
+    "mtime": 1786618174.9766536
+  },
+  "python/reportes.py": {
+    "hash": "42adc804b75ee0483a3b037a942cacd4",
+    "mtime": 1786618174.9766536
+  },
+  "python/datos/archivo1.txt": {
+    "hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "mtime": 1786618174.975717
+  },
+  "python/datos/archivo3.txt": {
+    "hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "mtime": 1786618174.9766536
+  },
+  "python/datos/archivo2.txt": {
+    "hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "mtime": 1786618174.975717
+  },
+  "python/__pycache__/reportes.cpython-314.pyc": {
+    "hash": "79d9035a73d6301c2588a3ee09c29a84",
+    "mtime": 1786614325.8789322
+  },
+  "python/__pycache__/utils.cpython-314.pyc": {
+    "hash": "55065b57c8f46022eb0d77b59b11062a",
+    "mtime": 1786614190.795051
+  },
+  "python/__pycache__/organizador.cpython-314.pyc": {
+    "hash": "a4b0fd4a850df6217ecffdc328d855f8",
+    "mtime": 1786614198.607574
+  },
+  "python/__pycache__/procesador.cpython-314.pyc": {
+    "hash": "b2b86efb6bb31a93d865a37d7b3a37aa",
+    "mtime": 1786614194.657457
+  },
+  "monitoring/README.md": {
+    "hash": "8a3a1ebb3d50729bcacaa08e5f4dfce6",
+    "mtime": 1786556066.891308
+  },
+  "hardware/sistema.md": {
+    "hash": "29ed50c3492198daa3a427e079f1ae5a",
+    "mtime": 1786039656.580424
+  },
+  "hardware/paquetes-oficiales.txt": {
+    "hash": "ceb7fb7797b3ee156b26d2422e26131d",
+    "mtime": 1786555537.2428641
+  },
+  "hardware/README.md": {
+    "hash": "dbd3cf301c9e9c88e361267c0bf0c133",
+    "mtime": 1786561273.3866134
+  },
+  "hardware/software.md": {
+    "hash": "c36497ed93d039312462f6fc669a54c2",
+    "mtime": 1786039656.5819573
+  },
+  "disaster-recovery/README.md": {
+    "hash": "762f667667674af097d12e342fa94375",
+    "mtime": 1786557397.0799458
+  }
+}
