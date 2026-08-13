@@ -31,13 +31,20 @@ def validate_structure(folder):
             # Verifica README.md
             readme_path = os.path.join(folder_path, 'README.md')
             if not os.path.exists(readme_path) and folder_name not in ['python', 'scripts', 'scriptscd']:
-                warnings.append(f"⚠  {folder_name}/ no tiene README.md")
+                warnings.append(f"⚠️  {folder_name}/ no tiene README.md")
         else:
             errors.append(f"❌ Carpeta esperada: {folder_name}/")
     
     # Verifica archivos sueltos en la raíz
     root_files = [f for f in os.listdir(folder) if os.path.isfile(os.path.join(folder, f))]
-    allowed_root_files = ['.gitignore', 'README.md', 'ESTRUCTURA_COMPLETA.md', 'ESTADISTICAS.md', 'file_state.json']
+    allowed_root_files = [
+        '.gitignore', 'README.md', 'ESTRUCTURA_COMPLETA.md', 
+        'ESTADISTICAS.md', 'file_state.json',
+        # Archivos de índice/enlace
+        'estado.md', 'backups.md', 'cambios.md', 'change-management.md',
+        'disaster-recovery.md', 'hardware.md', 'monitoring.md', 'performance.md',
+        'red.md', 'security.md', 'servicios.md', 'sesiones.md'
+    ]
     for file in root_files:
         if file not in allowed_root_files:
             errors.append(f"❌ Archivo suelto en raíz: {file}")
@@ -45,7 +52,7 @@ def validate_structure(folder):
     # Reporta
     print(f"\n=== RESULTADOS ===")
     print(f"✅ Errores: {len(errors)}")
-    print(f"⚠  Advertencias: {len(warnings)}")
+    print(f"⚠️  Advertencias: {len(warnings)}")
     
     if errors:
         print("\nErrores:")
