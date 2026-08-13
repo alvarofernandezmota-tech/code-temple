@@ -1,23 +1,25 @@
-# Automatizaciones de Madre
+# Infraestructura de Madre
 
-## Scripts Generales
+**Última actualización:** 2026-08-13 13:09
 
-- `generate_report.py` - Genera reportes de auditoría
-- `check_status.py` - Verifica estado del sistema
-- `cleanup.py` - Limpia archivos temporales
-- `backup.py` - Crea backup automático
-- `monitor_changes.py` - Monitoriza cambios
+## Resumen
 
-## Documentación
+- **Total carpetas:** 1
+- **Total documentos:** 0
+- **Total scripts:** 0
+- **Total workflows:** 4
 
-- `ESTRUCTURA.md` - Estructura de automatizaciones
-- `MAPA.md` - Mapa de workflows
-- `ESTADO.md` - Estado actual
+## Automatización
 
-## Issues Relacionados
+✅ Scripts: 0
+✅ Workflows: 4
+✅ Auditorías: 5
+✅ Actualización: Automática
 
-- [Issue #44](https://github.com/alvarofernandezmota-tech/code-temple/issues/44) - Scripts generales
+## Carpetas
 
-## Referencias
+### Scripts
 
-- [docs/infra/madre/](../README.md)
+- Documentos: 0
+- Scripts: 0
+
