@@ -6,6 +6,18 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+c52b3fa docs: Cerrar sesión y probar comandos
+b30167e docs: Auto-generate sesiones README
+22dd5c2 docs: Documentar scripts individualmente
+ad800f0 Merge branch 'main' of https://github.com/alvarofernandezmota-tech/code-temple
+e01249d docs: Documentar scripts
+e7612c5 docs: Documentar scripts
+b52d630 docs: Documentar scripts de Madre
+b1511b4 docs: Documentar scripts
+44e2aaf feat: Agregar scripts de cleanup, stats y validate
+230a9b1 docs: Auto-update Madre structure and README
+84061e2 feat: Agregar scripts de cleanup, stats y validate
+8ee66ac chore(changelog): Actualizar automáticamente
 0adc127 feat: Agregar monitor de nuevos archivos
 6700df6 feat: Agregar workflow de monitor-new-files
 c0c8c38 docs: Auto-update Madre structure and README
@@ -14,15 +26,3 @@ c0c8c38 docs: Auto-update Madre structure and README
 483991d feat: Agregar scripts de backup y sync
 d41e909 chore(changelog): Actualizar automáticamente
 1fb1118 fix: Mover CHANGELOG.md a temple/
-dcb4cb3 chore(changelog): Actualizar automáticamente
-2314bde fix: Mover archivos de la raíz a temple/
-5932bb7 docs: Auto-update Madre structure and README
-a2c55dc docs: Agregar workflow y actualizar README
-eafc6a6 Merge branch 'main' of https://github.com/alvarofernandezmota-tech/code-temple
-6273bae feat: Mover archivos de la raíz a temple/
-41733e2 feat: Agregar auto_cierre_temple.py y REPORTE_CIERRE.md
-29bfeef fix: Reparar auto_cierre_madre.py
-fae7046 chore(changelog): Actualizar automáticamente
-7b68a5f fix: Reparar auto_cierre_madre.py
-fbd2153 docs: Auto-generate ADR README
-733328e feat: Agregar auto_cierre_madre.py
