@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+a2e4f97 docs(infra/madre): Conectar cada carpeta con su cometido y automatización
+c3fd6ff chore(changelog): Actualizar automáticamente
 6028fb3 docs(sesiones): Crear sesión 01 de Neural OS - Planificación y desarrollo
 94caef1 chore(changelog): Actualizar automáticamente
 4cbd137 fix: Limpiar rutas duplicadas y organizar estructura
@@ -24,5 +26,3 @@ c932a74 chore(changelog): Actualizar automáticamente
 c961258 chore(changelog): Actualizar automáticamente
 f037dd4 docs: Añadir documentación completa de la sesión 2026-08-13
 3cb9ec4 chore(changelog): Actualizar automáticamente
-c42e215 ci(workflows): Crear workflow para actualizar CHANGELOG.md
-4b2c5d6 docs(infra/madre): Actualizar README.md con índice completo
