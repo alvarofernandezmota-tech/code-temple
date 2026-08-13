@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+bf40791 feat: Crear scripts y automatizaciones para adr/ y sesiones/
+2ee478e chore(changelog): Actualizar automáticamente
 a2e4f97 docs(infra/madre): Conectar cada carpeta con su cometido y automatización
 c3fd6ff chore(changelog): Actualizar automáticamente
 6028fb3 docs(sesiones): Crear sesión 01 de Neural OS - Planificación y desarrollo
@@ -24,5 +26,3 @@ dd18a92 Update SESION-2026-08-13.md
 c932a74 chore(changelog): Actualizar automáticamente
 59d461c Create SESION-2026-08-13.md
 c961258 chore(changelog): Actualizar automáticamente
-f037dd4 docs: Añadir documentación completa de la sesión 2026-08-13
-3cb9ec4 chore(changelog): Actualizar automáticamente
