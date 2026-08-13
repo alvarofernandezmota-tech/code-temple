@@ -6,6 +6,14 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+2314bde fix: Mover archivos de la raíz a temple/
+5932bb7 docs: Auto-update Madre structure and README
+a2c55dc docs: Agregar workflow y actualizar README
+eafc6a6 Merge branch 'main' of https://github.com/alvarofernandezmota-tech/code-temple
+6273bae feat: Mover archivos de la raíz a temple/
+41733e2 feat: Agregar auto_cierre_temple.py y REPORTE_CIERRE.md
+29bfeef fix: Reparar auto_cierre_madre.py
+fae7046 chore(changelog): Actualizar automáticamente
 7b68a5f fix: Reparar auto_cierre_madre.py
 fbd2153 docs: Auto-generate ADR README
 733328e feat: Agregar auto_cierre_madre.py
@@ -18,11 +26,3 @@ e9a9336 docs: Actualizar README y estructura después de mover python/
 76410d4 docs: Auto-update Madre structure and README
 649aaba fix: Mover Madre/python/ dentro de docs/infra/madre/
 765348a chore(changelog): Actualizar automáticamente
-effd6f8 feat: Crear workflow de auditorías programadas
-471facb docs: Auto-update Madre structure and README
-ee4b00a fix: Arreglar rutas de scripts y generar estructura
-4f0235d chore(changelog): Actualizar automáticamente
-0a16916 feat: Crear scripts y generar estructura de Madre
-2511437 chore(changelog): Actualizar automáticamente
-52d68da feat: Automatizar estructura y README de Madre
-c0829cc chore(changelog): Actualizar automáticamente
