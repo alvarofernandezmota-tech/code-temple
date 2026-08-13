@@ -1,12 +1,10 @@
 # Performance
 
-## Índice de Performance
+## Métricas de Performance
 
-- [README.md](README.md) - Este archivo
-
-## Automatización
-
-Este README se actualiza automáticamente con cada nuevo tema de performance.
+- [ ] Tiempo de respuesta
+- [ ] Uso de CPU
+- [ ] Uso de memoria
 
 ## Referencias
 

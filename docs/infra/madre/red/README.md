@@ -1,12 +1,10 @@
 # Red
 
-## Índice de Red
+## Configuración de Red
 
-- [README.md](README.md) - Este archivo
-
-## Automatización
-
-Este README se actualiza automáticamente con cada nuevo tema de red.
+- [ ] Red local
+- [ ] Puertos abiertos
+- [ ] Firewall
 
 ## Referencias
 

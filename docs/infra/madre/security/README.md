@@ -1,12 +1,10 @@
 # Seguridad
 
-## Índice de Seguridad
+## Políticas de Seguridad
 
-- [README.md](README.md) - Este archivo
-
-## Automatización
-
-Este README se actualiza automáticamente con cada nuevo tema de seguridad.
+- [ ] Revisión de código
+- [ ] Dependencias actualizadas
+- [ ] Secrets gestionados
 
 ## Referencias
 

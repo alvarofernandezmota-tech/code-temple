@@ -1,0 +1,25 @@
+name: Auto-Generate Sesiones README
+
+on:
+  push:
+    paths:
+      - 'docs/infra/madre/sesiones/*.md'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Generate README
+        run: |
+          cd docs/infra/madre/sesiones
+          python3 scripts/generate_index.py
+      
+      - name: Commit
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add docs/infra/madre/sesiones/README.md
+          git commit -m "docs: Auto-generate sesiones README" || echo "No changes"
+          git push
