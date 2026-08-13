@@ -1,62 +1,51 @@
-# 🏛 MADRE INFRASTRUCTURE
+# Documentación de Infraestructura - Madre
 
-Documentación completa de la infraestructura de Madre.
-
-## 📋 Índice
-
-- [Estado](estado.md) - Estado actual de la infraestructura
-- [Cambios](cambios.md) - Historial de cambios
-- [Hardware](hardware/) - Hardware y sistema
-- [Red](red/) - Configuración de red
-- [Servicios](servicios/) - Servicios del sistema
-- [Security](security/) - Seguridad y hardening
-- [Backups](backups/) - Estrategia de backups
-- [Disaster Recovery](disaster-recovery/) - Plan de recovery
-- [Monitoring](monitoring/) - Monitorización y alertas
-- [Performance](performance/) - Performance y benchmarks
-- [Change Management](change-management/) - Gestión de cambios
-- [Procedimientos](procedimientos/) - Procedimientos y workflows
-- [ADRs](adr/) - Decisiones arquitecturales
-- [Scripts](scripts/) - Scripts de auditoría
-- [Issues](issues/) - Auditorías detalladas por issue
-
-## 🎯 Estado Actual
-
-| Categoría | Estado | Última Auditoría |
-|-----------|--------|------------------|
-| Hardware | 🟢 Completado | 2026-08-12 |
-| Red | 🟢 Completado | 2026-08-12 |
-| Servicios | 🟢 Completado | 2026-08-12 |
-| Backups | 🟡 Pendiente | - |
-| Security | 🟢 Completado | 2026-08-12 |
-| DR/BCP | 🟡 Pendiente | - |
-| Monitoring | 🟢 Completado | 2026-08-12 |
-| Performance | 🟢 Completado | 2026-08-12 |
-| Change Mgmt | 🟢 Completado | 2026-08-12 |
-| Procedimientos | 🟢 Completado | 2026-08-12 |
-| Scripts | 🟢 Completado | 2026-08-12 |
-
-## 📊 Auditorías
-
-- **Issue #5**: [Hardware](issues/issue-05-hardware/)
-- **Issue #6**: [Red](issues/issue-06-red/)
-- **Issue #7**: [Servicios](issues/issue-07-servicios/)
-- **Issue #8**: [Backups](issues/issue-08-backups/)
-- **Issue #9**: [Security](issues/issue-09-security/)
-- **Issue #10**: [Disaster Recovery](issues/issue-10-disaster-recovery/)
-- **Issue #11**: [Monitoring](issues/issue-11-monitoring/)
-- **Issue #12**: [Performance](issues/issue-12-performance/)
-- **Issue #13**: [Change Management](issues/issue-13-change-management/)
-- **Issue #17**: [Procedimientos](procedimientos/)
-
-## 🔗 Links Útiles
-
-- [Issue #16 - Índice Maestro](https://github.com/alvarofernandezmota-tech/code-temple/issues/16)
-- [Issue #17 - Procedimientos](https://github.com/alvarofernandezmota-tech/code-temple/issues/17)
-- [Issue #19 - Workflow](https://github.com/alvarofernandezmota-tech/code-temple/issues/19)
-- [Issue #20 - Comandos](https://github.com/alvarofernandezmota-tech/code-temple/issues/20)
-
----
-
-**Última actualización:** 2026-08-12
+**Última actualización:** 2026-08-13  
 **Responsable:** @alvarofernandezmota-tech
+
+## Índice de Archivos
+
+### Documentación Principal
+- [estado.md](estado.md) - Estado general de infraestructura
+- [cambios.md](cambios.md) - Registro de cambios
+- [hardware.md](hardware.md) - Hardware del sistema
+- [red.md](red.md) - Configuración de red
+- [servicios.md](servicios.md) - Servicios del sistema
+- [security.md](security.md) - Seguridad
+- [backups.md](backups.md) - Backups
+- [disaster-recovery.md](disaster-recovery.md) - Disaster Recovery
+- [monitoring.md](monitoring.md) - Monitoring
+- [performance.md](performance.md) - Performance
+- [change-management.md](change-management.md) - Change Management
+
+### Issues
+- **Issues #5-#13:** Auditorías completadas ✅
+- **Issues #24-#33:** Consolidados completados ✅
+- **Issues #34-#35:** Automatizaciones completadas ✅
+- **Issue #36:** Revisión y auditoría continua ✅
+
+### Scripts
+- [scripts/](scripts/) - Scripts de automatización
+  - `consolidar-auditorias.sh`
+  - `analizar-outputs.sh`
+  - `generar-reporte.sh`
+  - `update-readme.sh`
+
+## Estado General
+
+| Área | Estado | Última Auditoría |
+|------|--------|------------------|
+| Hardware | 🟢 OK | 2026-08-13 |
+| Red | 🟢 OK | 2026-08-13 |
+| Servicios | 🟢 OK | 2026-08-13 |
+| Security | 🟢 OK | 2026-08-13 |
+| Backups | 🟢 OK | 2026-08-13 |
+| Disaster Recovery | 🟢 OK | 2026-08-13 |
+| Monitoring | 🟢 OK | 2026-08-13 |
+| Performance | 🟢 OK | 2026-08-13 |
+| Change Management | 🟢 OK | 2026-08-13 |
+
+## Enlaces
+
+- [Repositorio Principal](https://github.com/alvarofernandezmota-tech/code-temple)
+- [Issues](https://github.com/alvarofernandezmota-tech/code-temple/issues)
