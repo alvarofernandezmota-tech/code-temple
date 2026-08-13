@@ -1,27 +1,14 @@
 # Infraestructura de Madre
 
-**Última actualización:** 2026-08-13 12:51
+**Última actualización:** 2026-08-13 11:26
 
 ## Resumen
 
-- **Total carpetas:** 7
+- **Total carpetas:** 6
 - **Total documentos:** 17
 - **Total scripts:** 5
-- **Total workflows:** 4
-
-## Automatización
-
-✅ Scripts: 5
-✅ Workflows: 4
-✅ Auditorías: 5
-✅ Actualización: Automática
 
 ## Carpetas
-
-### Python
-
-- Documentos: 0
-- Scripts: 0
 
 ### Sesiones
 
@@ -51,28 +38,12 @@
 ### Automatizaciones
 
 - Documentos: 4
-- Scripts: 4
+- Scripts: 3
 
-## Workflows
+## Automatización
 
-- `update-estado.yml` - Actualiza fecha y hora
-- `auto-generate-all-readmes.yml` - Genera READMEs
-- `update-madre-root.yml` - Actualiza estructura
-- `scheduled-audits.yml` - Auditorías programadas
-
-## Auditorías
-
-- `audit_security.py` - Seguridad
-- `audit_workflows.py` - Workflows
-- `audit_docs.py` - Documentación
-- `check_status.py` - Estado
-- `monitor_changes.py` - Cambios
-
-## Estructura Completa
-
-Ver: [ESTRUCTURA_COMPLETA.md](ESTRUCTURA_COMPLETA.md)
+Este README se actualiza automáticamente con cada cambio.
 
 ## Referencias
 
 - [code-temple](../../README.md)
-- [temple](../../temple/PLAN_MAESTRO.md)
