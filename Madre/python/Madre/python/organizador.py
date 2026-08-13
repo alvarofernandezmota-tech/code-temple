@@ -1,1 +1,0 @@
-# ... (contenido de organizador.py)
