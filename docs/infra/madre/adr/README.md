@@ -1,16 +1,16 @@
-# ADR de Madre
+# Decisiones Arquitectónicas (ADR)
 
-Aquí se registran decisiones de arquitectura y operación exclusivas de Madre.
+## Índice de ADRs
 
-## Formato obligatorio
+- [ADR-001](ADR-001-estructura-issues.md) - Estructura de issues
+- [ADR-002](ADR-002-code-temple-fuente-de-verdad.md) - Code Temple como fuente de verdad
+- [ADR-003](ADR-003-ruta-canonica-code-temple.md) - Ruta canónica
+- [ADR-004](ADR-004-automatizacion-documentacion.md) - Automatización de documentación
 
-Cada ADR debe incluir:
+## Automatización
 
-- Estado.
-- Fecha.
-- Contexto.
-- Problema.
-- Opciones consideradas.
-- Decisión.
-- Consecuencias.
-- Método de revisión o reversión.
+Este README se actualiza automáticamente con cada nuevo ADR.
+
+## Referencias
+
+- [docs/infra/madre/](../README.md)

@@ -1,51 +1,25 @@
-# Documentación de Infraestructura - Madre
+# Infraestructura de Madre
 
-**Última actualización:** 2026-08-13  
-**Responsable:** @alvarofernandezmota-tech
+## Carpetas
 
-## Índice de Archivos
+- [sesiones/](sesiones/) - Sesiones de desarrollo
+- [adr/](adr/) - Decisiones arquitectónicas
+- [security/](security/) - Seguridad
+- [red/](red/) - Red
+- [performance/](performance/) - Performance
+- [automatizaciones/](automatizaciones/) - Automatizaciones
 
-### Documentación Principal
-- [estado.md](estado.md) - Estado general de infraestructura
-- [cambios.md](cambios.md) - Registro de cambios
-- [hardware.md](hardware.md) - Hardware del sistema
-- [red.md](red.md) - Configuración de red
-- [servicios.md](servicios.md) - Servicios del sistema
-- [security.md](security.md) - Seguridad
-- [backups.md](backups.md) - Backups
-- [disaster-recovery.md](disaster-recovery.md) - Disaster Recovery
-- [monitoring.md](monitoring.md) - Monitoring
-- [performance.md](performance.md) - Performance
-- [change-management.md](change-management.md) - Change Management
+## Archivos
 
-### Issues
-- **Issues #5-#13:** Auditorías completadas ✅
-- **Issues #24-#33:** Consolidados completados ✅
-- **Issues #34-#35:** Automatizaciones completadas ✅
-- **Issue #36:** Revisión y auditoría continua ✅
+- [estado.md](estado.md) - Estado automatizado
+- [disaster-recovery.md](disaster-recovery.md) - Recuperación ante desastres
 
-### Scripts
-- [scripts/](scripts/) - Scripts de automatización
-  - `consolidar-auditorias.sh`
-  - `analizar-outputs.sh`
-  - `generar-reporte.sh`
-  - `update-readme.sh`
+## Automatización
 
-## Estado General
+- `estado.md` se actualiza automáticamente con fecha y hora
+- Cada README de carpeta se actualiza automáticamente
 
-| Área | Estado | Última Auditoría |
-|------|--------|------------------|
-| Hardware | 🟢 OK | 2026-08-13 |
-| Red | 🟢 OK | 2026-08-13 |
-| Servicios | 🟢 OK | 2026-08-13 |
-| Security | 🟢 OK | 2026-08-13 |
-| Backups | 🟢 OK | 2026-08-13 |
-| Disaster Recovery | 🟢 OK | 2026-08-13 |
-| Monitoring | 🟢 OK | 2026-08-13 |
-| Performance | 🟢 OK | 2026-08-13 |
-| Change Management | 🟢 OK | 2026-08-13 |
+## Referencias
 
-## Enlaces
-
-- [Repositorio Principal](https://github.com/alvarofernandezmota-tech/code-temple)
-- [Issues](https://github.com/alvarofernandezmota-tech/code-temple/issues)
+- [Madre/](../../README.md)
+- [docs/](../README.md)
