@@ -6,6 +6,12 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+2250f1e fix: Resolver conflictos en README y ESTRUCTURA
+5e91f57 docs: Actualizar README con python/ incluido
+e9a9336 docs: Actualizar README y estructura después de mover python/
+76410d4 docs: Auto-update Madre structure and README
+649aaba fix: Mover Madre/python/ dentro de docs/infra/madre/
+765348a chore(changelog): Actualizar automáticamente
 effd6f8 feat: Crear workflow de auditorías programadas
 471facb docs: Auto-update Madre structure and README
 ee4b00a fix: Arreglar rutas de scripts y generar estructura
@@ -20,9 +26,3 @@ ea94858 docs: Documentar todos los comandos y scripts creados
 47534e2 chore(changelog): Actualizar automáticamente
 9b97cfa Create PLAN_MAESTRO.md with project overviewestaba en la carpta equibocadoa y va en raiz de madre no?¿
 dc95bcc chore(changelog): Actualizar automáticamente
-bf40791 feat: Crear scripts y automatizaciones para adr/ y sesiones/
-2ee478e chore(changelog): Actualizar automáticamente
-a2e4f97 docs(infra/madre): Conectar cada carpeta con su cometido y automatización
-c3fd6ff chore(changelog): Actualizar automáticamente
-6028fb3 docs(sesiones): Crear sesión 01 de Neural OS - Planificación y desarrollo
-94caef1 chore(changelog): Actualizar automáticamente
