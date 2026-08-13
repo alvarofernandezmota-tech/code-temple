@@ -6,6 +6,10 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+effd6f8 feat: Crear workflow de auditorías programadas
+471facb docs: Auto-update Madre structure and README
+ee4b00a fix: Arreglar rutas de scripts y generar estructura
+4f0235d chore(changelog): Actualizar automáticamente
 0a16916 feat: Crear scripts y generar estructura de Madre
 2511437 chore(changelog): Actualizar automáticamente
 52d68da feat: Automatizar estructura y README de Madre
@@ -22,7 +26,3 @@ a2e4f97 docs(infra/madre): Conectar cada carpeta con su cometido y automatizaci�
 c3fd6ff chore(changelog): Actualizar automáticamente
 6028fb3 docs(sesiones): Crear sesión 01 de Neural OS - Planificación y desarrollo
 94caef1 chore(changelog): Actualizar automáticamente
-4cbd137 fix: Limpiar rutas duplicadas y organizar estructura
-54813c8 chore(changelog): Actualizar automáticamente
-89fafa0 fix(python): Corregir errores en reportes.py y crear datos de prueba
-4adf193 docs(temple): Crear PLAN_MAESTRO para Neural OS
