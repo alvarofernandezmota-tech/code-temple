@@ -191,7 +191,7 @@
     backup-madre.sh
     consolidar-auditorias.sh
     generar-reporte.sh
-    paquetes-explicitos.txt
+    monitor-new-files.py
     audit/
       audit-full.sh
       checklist-verification.sh
