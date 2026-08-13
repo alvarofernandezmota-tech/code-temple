@@ -1,15 +1,29 @@
 # Issue #35 - Scripts de Automatización
 
-**Estado:** 🟡 Pendiente
+**Estado:** ✅ **COMPLETADO**  
+**Prioridad:** Alta  
+**Fecha:** 2026-08-13  
+**Cierre:** 2026-08-13
 
-## Scripts por Desarrollar
+## Objetivo
 
-1. [ ] Consolidar auditorías
-2. [ ] Analizar outputs automáticamente
-3. [ ] Generar reportes de estado
-4. [ ] Actualizar documentación
+Crear scripts de automatización para el proyecto.
+
+## Tareas
+
+- ✅ Crear script consolidar-auditorias.sh
+- ✅ Crear script analizar-outputs.sh
+- ✅ Crear script generar-reporte.sh
+- ✅ Crear script update-readme.sh
+
+## Scripts Creados
+
+- `docs/infra/madre/scripts/consolidar-auditorias.sh`
+- `docs/infra/madre/scripts/analizar-outputs.sh`
+- `docs/infra/madre/scripts/generar-reporte.sh`
+- `docs/infra/madre/scripts/update-readme.sh`
 
 ## Referencias
 
-- [Issue #15 - Scripts](https://github.com/alvarofernandezmota-tech/code-temple/issues/15)
-- [Issue #34 - Automatizaciones](https://github.com/alvarofernandezmota-tech/code-temple/issues/34)
+- [Issue #34 - Automatizaciones](../issue-34-automatizaciones/)
+- [docs/infra/madre/scripts/](../scripts/)
