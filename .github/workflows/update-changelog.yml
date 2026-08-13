@@ -1,0 +1,33 @@
+name: Update CHANGELOG.md
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  update-changelog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      
+      - name: Generar CHANGELOG.md
+        run: |
+          echo "# CHANGELOG" > CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "Todos los cambios importantes en este proyecto." >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "## [$(date +%Y.%m.%d)] - $(date +%Y-%m-%d)" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "### Cambios Recientes" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          git log --oneline -20 >> CHANGELOG.md
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add CHANGELOG.md
+          git commit -m "chore(changelog): Actualizar automáticamente" || echo "No changes"
+          git push
