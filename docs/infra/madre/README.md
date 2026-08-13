@@ -51,7 +51,7 @@
 ### Automatizaciones
 
 - Documentos: 4
-- Scripts: 3
+- Scripts: 4
 
 ## Workflows
 
