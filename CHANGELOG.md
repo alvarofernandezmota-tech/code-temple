@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+1476c6a docs: Añadir documentación de sesión 2026-08-13 en directorio correcto
+0bccb6d chore(changelog): Actualizar automáticamente
 dd18a92 Update SESION-2026-08-13.md
 0795313 chore(changelog): Actualizar automáticamente
 8d59819 Delete docs/infra/madre/SESION-2026-08-13.md
@@ -24,5 +26,3 @@ cb4653d docs(issues): Marcar issues #5-#13 como completados
 899aff4 docs(scripts): Crear scripts de automatización
 948c2e7 docs(issues): Crear issues #34-#35 para automatizaciones y scripts
 4df2674 docs(issues): Crear issues #34-#35 para automatizaciones y scripts
-6a61f9a docs(infra/madre): Crear resto de archivos .md
-4053513 docs(infra/madre): Actualizar documentación post-auditorías 2026-08-13
