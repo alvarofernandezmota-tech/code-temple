@@ -2,11 +2,11 @@
 
 ```
 ./
+  ESTADISTICAS.md
   ESTRUCTURA_COMPLETA.md
   README.md
   backups.md
   cambios.md
-  change-management.md
   performance/
     README.md
   issues/
@@ -62,7 +62,6 @@
       commands/
         01-dr-info.sh
       outputs/
-        cron-backup.txt
         2026-08-13/
           dr.txt
       audit/
@@ -105,8 +104,6 @@
       commands/
         01-backup-info.sh
       outputs/
-        backup-dir.txt
-        backup-space.txt
         2026-08-13/
           backups.txt
       audit/
@@ -169,10 +166,6 @@
     procesador.py
     reportes.py
     utils.py
-    datos/
-      archivo1.txt
-      archivo2.txt
-      archivo3.txt
   red/
     README.md
   security/
@@ -187,11 +180,11 @@
   change-management/
     README.md
   scripts/
+    README.md
     analizar-outputs.sh
+    backup-madre.md
     backup-madre.sh
-    cleanup-temp.sh
-    consolidar-auditorias.sh
-    generar-reporte.sh
+    cleanup-temp.md
     audit/
       audit-full.sh
       checklist-verification.sh
