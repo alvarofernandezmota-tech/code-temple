@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+4cbd137 fix: Limpiar rutas duplicadas y organizar estructura
+54813c8 chore(changelog): Actualizar automáticamente
 89fafa0 fix(python): Corregir errores en reportes.py y crear datos de prueba
 4adf193 docs(temple): Crear PLAN_MAESTRO para Neural OS
 e127543 docs(issues): Crear issue #37 para infraestructura de empresa de IA
@@ -24,5 +26,3 @@ c42e215 ci(workflows): Crear workflow para actualizar CHANGELOG.md
 4b2c5d6 docs(infra/madre): Actualizar README.md con índice completo
 58269c9 docs(issues): Cerrar issues #24-#36
 ddcdabe docs(issues): Crear issue #36 para revisión, auditoría y automatización
-9d6d959 docs(issues): Actualizar README.md de issues #24-#33 consolidados
-62e9ece docs(issues): Marcar issues #6-#13 como completados
