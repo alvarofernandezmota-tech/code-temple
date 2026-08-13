@@ -17,5 +17,5 @@
 
 ## Links
 
-- [Issue #19 - Workflow](https://github.com/alvarofernandezmota-tech/code-temple/issues/19)
-- [Issue #28 - Procedimientos](https://github.com/alvarofernandezmota-tech/code-temple/issues/28)
+- [Issue #19 - Workflow](https://github.com/alvarofernandezmota-tech/code-te[varopc@archlinux issues]$ ssues #24-#33
+3. Actualizar procedimientos
