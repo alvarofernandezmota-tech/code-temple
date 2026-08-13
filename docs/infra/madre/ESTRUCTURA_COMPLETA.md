@@ -188,10 +188,10 @@
     README.md
   scripts/
     analizar-outputs.sh
+    backup-madre.sh
     consolidar-auditorias.sh
     generar-reporte.sh
     paquetes-explicitos.txt
-    update-readme.sh
     audit/
       audit-full.sh
       checklist-verification.sh
