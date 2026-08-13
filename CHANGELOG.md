@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+ea36114 test: Probar comandos de Madre
+480d275 chore(changelog): Actualizar automáticamente
 c52b3fa docs: Cerrar sesión y probar comandos
 b30167e docs: Auto-generate sesiones README
 22dd5c2 docs: Documentar scripts individualmente
@@ -24,5 +26,3 @@ c0c8c38 docs: Auto-update Madre structure and README
 438dbf2 feat: Agregar monitor de nuevos archivos
 39c3d15 docs: Auto-update Madre structure and README
 483991d feat: Agregar scripts de backup y sync
-d41e909 chore(changelog): Actualizar automáticamente
-1fb1118 fix: Mover CHANGELOG.md a temple/
