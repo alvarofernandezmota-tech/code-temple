@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+6028fb3 docs(sesiones): Crear sesión 01 de Neural OS - Planificación y desarrollo
+94caef1 chore(changelog): Actualizar automáticamente
 4cbd137 fix: Limpiar rutas duplicadas y organizar estructura
 54813c8 chore(changelog): Actualizar automáticamente
 89fafa0 fix(python): Corregir errores en reportes.py y crear datos de prueba
@@ -24,5 +26,3 @@ f037dd4 docs: Añadir documentación completa de la sesión 2026-08-13
 3cb9ec4 chore(changelog): Actualizar automáticamente
 c42e215 ci(workflows): Crear workflow para actualizar CHANGELOG.md
 4b2c5d6 docs(infra/madre): Actualizar README.md con índice completo
-58269c9 docs(issues): Cerrar issues #24-#36
-ddcdabe docs(issues): Crear issue #36 para revisión, auditoría y automatización
