@@ -1,0 +1,31 @@
+name: Update Madre Root README
+
+on:
+  push:
+    paths:
+      - 'docs/infra/madre/**'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Generate Structure
+        run: |
+          cd docs/infra/madre
+          python3 automatizaciones/scripts/generate_madre_structure.py
+      
+      - name: Update README
+        run: |
+          cd docs/infra/madre
+          python3 automatizaciones/scripts/update_root_readme.py
+      
+      - name: Commit
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add docs/infra/madre/
+          git commit -m "docs: Auto-update Madre structure and README" || echo "No changes"
+          git push
