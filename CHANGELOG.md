@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+8d59819 Delete docs/infra/madre/SESION-2026-08-13.md
+c932a74 chore(changelog): Actualizar automáticamente
 59d461c Create SESION-2026-08-13.md
 c961258 chore(changelog): Actualizar automáticamente
 f037dd4 docs: Añadir documentación completa de la sesión 2026-08-13
@@ -24,5 +26,3 @@ cb4653d docs(issues): Marcar issues #5-#13 como completados
 4053513 docs(infra/madre): Actualizar documentación post-auditorías 2026-08-13
 c6caa06 docs(sesion): Cerrar sesión 2026-08-13
 1355395 docs(issue-23): Actualizar cambios
-e9e8596 docs(issue-22): Actualizar estado
-8c4e6a4 docs(sesion): Cerrar sesión 2026-08-13
