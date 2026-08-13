@@ -1,23 +1,34 @@
 # Issue #6 - Red
 
-## Estado
-🟢 Completado
+**Estado:** ✅ **COMPLETADO**  
+**Prioridad:** Alta  
+**Fecha:** 2026-08-12  
+**Cierre:** 2026-08-13
 
-## Auditorías
-- 2026-08-13: Red ✅
-- 2026-08-12: Auditoría inicial ✅
+## Objetivo
+
+Auditar configuración de red (interfaces, routing, puertos, firewall).
+
+## Tareas
+
+- ✅ Recopilar información de interfaces
+- ✅ Recopilar información de routing
+- ✅ Recopilar información de puertos
+- ✅ Recopilar información de firewall
+- ✅ Generar auditoría de red
+- ✅ Documentar en red.md
 
 ## Outputs
-- outputs/2026-08-13/interfaces.txt
-- outputs/2026-08-13/routing.txt
-- outputs/2026-08-13/ports.txt
-- outputs/2026-08-13/firewall.txt
+
+- `outputs/2026-08-13/interfaces.txt`
+- `outputs/2026-08-13/routing.txt`
+- `outputs/2026-08-13/ports.txt`
+- `outputs/2026-08-13/firewall.txt`
 
 ## Audit
-- audit/2026-08-13-red-audit.md
 
-## Próximos Pasos
-1. Analizar configuración de red
-2. Documentar firewall
-3. Crear diagrama de red
-4. Actualizar red.md
+- `audit/2026-08-13-red-audit.md`
+
+## Links
+
+- [docs/infra/madre/red.md](../red.md)
