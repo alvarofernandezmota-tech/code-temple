@@ -2,15 +2,13 @@
 
 ## Índice de ADRs
 
-- [ADR-001](ADR-001-estructura-issues.md) - Estructura de issues
-- [ADR-002](ADR-002-code-temple-fuente-de-verdad.md) - Code Temple como fuente de verdad
-- [ADR-003](ADR-003-ruta-canonica-code-temple.md) - Ruta canónica
-- [ADR-004](ADR-004-automatizacion-documentacion.md) - Automatización de documentación
+- [ADR-001-estructura-issues.md](ADR-001-estructura-issues.md)
+- [ADR-001-reconstruccion-de-madre.md](ADR-001-reconstruccion-de-madre.md)
+- [ADR-002-code-temple-fuente-de-verdad.md](ADR-002-code-temple-fuente-de-verdad.md)
+- [ADR-003-ruta-canonica-code-temple.md](ADR-003-ruta-canonica-code-temple.md)
+- [ADR-004-automatizacion-documentacion.md](ADR-004-automatizacion-documentacion.md)
+- [template.md](template.md)
 
 ## Automatización
 
 Este README se actualiza automáticamente con cada nuevo ADR.
-
-## Referencias
-
-- [docs/infra/madre/](../README.md)
