@@ -1,0 +1,33 @@
+name: Test Madre
+
+on:
+  push:
+    paths:
+      - 'docs/infra/madre/**'
+  pull_request:
+    paths:
+      - 'docs/infra/madre/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Test scripts
+        run: |
+          cd docs/infra/madre
+          python3 scripts/validate-structure.py
+          python3 scripts/stats-madre.py
+      
+      - name: Test cleanup
+        run: |
+          cd docs/infra/madre
+          ./scripts/cleanup-temp.sh
