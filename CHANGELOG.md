@@ -6,6 +6,11 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+8903d05 feat: Agregar auto-close y auto-open
+0dff085 docs: Auto-update Madre structure and README
+27635a2 fix: Actualizar validación
+da69065 fix: Actualizar validación para permitir archivos de índice
+7777b2f chore(changelog): Actualizar automáticamente
 ea36114 test: Probar comandos de Madre
 480d275 chore(changelog): Actualizar automáticamente
 c52b3fa docs: Cerrar sesión y probar comandos
@@ -21,8 +26,3 @@ b1511b4 docs: Documentar scripts
 84061e2 feat: Agregar scripts de cleanup, stats y validate
 8ee66ac chore(changelog): Actualizar automáticamente
 0adc127 feat: Agregar monitor de nuevos archivos
-6700df6 feat: Agregar workflow de monitor-new-files
-c0c8c38 docs: Auto-update Madre structure and README
-438dbf2 feat: Agregar monitor de nuevos archivos
-39c3d15 docs: Auto-update Madre structure and README
-483991d feat: Agregar scripts de backup y sync
