@@ -31,7 +31,7 @@ def validate_structure(folder):
             # Verifica README.md
             readme_path = os.path.join(folder_path, 'README.md')
             if not os.path.exists(readme_path) and folder_name not in ['python', 'scripts', 'scriptscd']:
-                warnings.append(f"⚠️  {folder_name}/ no tiene README.md")
+                warnings.append(f"⚠  {folder_name}/ no tiene README.md")
         else:
             errors.append(f"❌ Carpeta esperada: {folder_name}/")
     
@@ -45,7 +45,7 @@ def validate_structure(folder):
     # Reporta
     print(f"\n=== RESULTADOS ===")
     print(f"✅ Errores: {len(errors)}")
-    print(f"⚠️  Advertencias: {len(warnings)}")
+    print(f"⚠  Advertencias: {len(warnings)}")
     
     if errors:
         print("\nErrores:")
