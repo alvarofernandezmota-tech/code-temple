@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+9b97cfa Create PLAN_MAESTRO.md with project overviewestaba en la carpta equibocadoa y va en raiz de madre no?¿
+dc95bcc chore(changelog): Actualizar automáticamente
 bf40791 feat: Crear scripts y automatizaciones para adr/ y sesiones/
 2ee478e chore(changelog): Actualizar automáticamente
 a2e4f97 docs(infra/madre): Conectar cada carpeta con su cometido y automatización
@@ -24,5 +26,3 @@ dd18a92 Update SESION-2026-08-13.md
 0795313 chore(changelog): Actualizar automáticamente
 8d59819 Delete docs/infra/madre/SESION-2026-08-13.md
 c932a74 chore(changelog): Actualizar automáticamente
-59d461c Create SESION-2026-08-13.md
-c961258 chore(changelog): Actualizar automáticamente
