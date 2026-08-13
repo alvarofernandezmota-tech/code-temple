@@ -7,44 +7,146 @@
   backups.md
   cambios.md
   change-management.md
-  performance/
+  python/
+    organizador.py
+    procesador.py
+    reportes.py
+    utils.py
+    datos/
+      archivo1.txt
+      archivo2.txt
+      archivo3.txt
+  disaster-recovery/
     README.md
+  servicios/
+    README.md
+    docker.md
+  hardware/
+    README.md
+    paquetes-oficiales.txt
+    sistema.md
+    software.md
   issues/
     README.md
-    issue-25-red-consolidado/
+    issue-23-cambios-infra/
       README.md
-    issue-36-revision-audit-automation/
+    issue-13-change-management/
       README.md
-    issue-14-adr/
-      README.md
-    issue-32-performance-consolidado/
-      README.md
-    issue-06-red/
-      README.md
-      commands/
-        01-network-info.sh
-      outputs/
-        firewall.txt
-        interfaces.txt
-        ports.txt
-        routing.txt
-        2026-08-13/
-          firewall.txt
-          interfaces.txt
-          ports.txt
-          routing.txt
       audit/
-        2026-08-13-red-audit.md
-    issue-37-docker-ia-local/
+        2026-08-13-audit.md
+      outputs/
+        kernel.txt
+        os-info.txt
+        2026-08-13/
+          change-mgmt.txt
+      commands/
+        01-system-info.sh
+    issue-24-hardware-consolidado/
       README.md
     issue-15-scripts/
       README.md
+    issue-25-red-consolidado/
+      README.md
+    issue-28-procedimientos/
+      README.md
+    issue-29-backups-consolidado/
+      README.md
+    templates/
+      TEMPLATE-README.md
+    issue-31-monitoring-consolidado/
+      README.md
+    issue-11-monitoring/
+      README.md
+      audit/
+        2026-08-13-audit.md
+      outputs/
+        monitoring-processes.txt
+        monitoring-services.txt
+        2026-08-13/
+          monitoring.txt
+      commands/
+        01-monitoring-info.sh
+    issue-09-security/
+      README.md
+      audit/
+        2026-08-13-audit.md
+      outputs/
+        firewall.txt
+        logins.txt
+        users.txt
+        2026-08-13/
+          security.txt
+      commands/
+        01-security-info.sh
+    issue-12-performance/
+      README.md
+      audit/
+        2026-08-13-audit.md
+      outputs/
+        cpu-info.txt
+        disk-info.txt
+        ram-info.txt
+        2026-08-13/
+          performance.txt
+      commands/
+        01-performance-info.sh
+    issue-37-docker-ia-local/
+      README.md
+    issue-10-disaster-recovery/
+      README.md
+      audit/
+        2026-08-13-audit.md
+      outputs/
+        cron-backup.txt
+        2026-08-13/
+          dr.txt
+      commands/
+        01-dr-info.sh
+    issue-36-revision-audit-automation/
+      README.md
+    issue-22-estado-infra/
+      README.md
+    issue-35-scripts/
+      README.md
+    issue-30-dr-consolidado/
+      README.md
+    issue-08-backups/
+      README.md
+      audit/
+        2026-08-13-audit.md
+      outputs/
+        backup-dir.txt
+        backup-space.txt
+        2026-08-13/
+          backups.txt
+      commands/
+        01-backup-info.sh
+    issue-07-servicios/
+      README.md
+      audit/
+        2026-08-13-audit.md
+      outputs/
+        enabled.txt
+        failed.txt
+        running.txt
+        2026-08-13/
+          services.txt
+      commands/
+        01-services-info.sh
+    issue-33-change-mgmt-consolidado/
+      README.md
+    issue-27-security-consolidado/
+      README.md
+    issue-32-performance-consolidado/
+      README.md
+    issue-14-adr/
+      README.md
+    issue-34-automatizaciones/
+      README.md
     issue-05-hardware/
       README.md
-      commands/
-        01-cpu-info.sh
-        02-ram-info.sh
-        03-disk-info.sh
+      audit/
+        2026-08-13-hardware-audit.md
       outputs/
         cpu-detailed.txt
         cpu-info.txt
@@ -55,156 +157,32 @@
           cpu-info.txt
           disk-info.txt
           ram-info.txt
-      audit/
-        2026-08-13-hardware-audit.md
-    issue-10-disaster-recovery/
-      README.md
       commands/
-        01-dr-info.sh
-      outputs/
-        cron-backup.txt
-        2026-08-13/
-          dr.txt
-      audit/
-        2026-08-13-audit.md
-    issue-27-security-consolidado/
-      README.md
-    issue-23-cambios-infra/
-      README.md
-    issue-09-security/
-      README.md
-      commands/
-        01-security-info.sh
-      outputs/
-        firewall.txt
-        logins.txt
-        users.txt
-        2026-08-13/
-          security.txt
-      audit/
-        2026-08-13-audit.md
-    issue-29-backups-consolidado/
-      README.md
-    issue-11-monitoring/
-      README.md
-      commands/
-        01-monitoring-info.sh
-      outputs/
-        monitoring-processes.txt
-        monitoring-services.txt
-        2026-08-13/
-          monitoring.txt
-      audit/
-        2026-08-13-audit.md
-    issue-35-scripts/
-      README.md
-    issue-28-procedimientos/
-      README.md
-    issue-08-backups/
-      README.md
-      commands/
-        01-backup-info.sh
-      outputs/
-        backup-dir.txt
-        backup-space.txt
-        2026-08-13/
-          backups.txt
-      audit/
-        2026-08-13-audit.md
-    issue-30-dr-consolidado/
-      README.md
+        01-cpu-info.sh
+        02-ram-info.sh
+        03-disk-info.sh
     issue-26-servicios-consolidado/
       README.md
-    issue-13-change-management/
+    issue-06-red/
       README.md
-      commands/
-        01-system-info.sh
-      outputs/
-        kernel.txt
-        os-info.txt
-        2026-08-13/
-          change-mgmt.txt
       audit/
-        2026-08-13-audit.md
-    issue-22-estado-infra/
-      README.md
-    issue-07-servicios/
-      README.md
-      commands/
-        01-services-info.sh
+        2026-08-13-red-audit.md
       outputs/
-        enabled.txt
-        failed.txt
-        running.txt
+        firewall.txt
+        interfaces.txt
+        ports.txt
+        routing.txt
         2026-08-13/
-          services.txt
-      audit/
-        2026-08-13-audit.md
-    templates/
-      TEMPLATE-README.md
-    issue-24-hardware-consolidado/
-      README.md
-    issue-31-monitoring-consolidado/
-      README.md
-    issue-33-change-mgmt-consolidado/
-      README.md
-    issue-34-automatizaciones/
-      README.md
-    issue-12-performance/
-      README.md
+          firewall.txt
+          interfaces.txt
+          ports.txt
+          routing.txt
       commands/
-        01-performance-info.sh
-      outputs/
-        cpu-info.txt
-        disk-info.txt
-        ram-info.txt
-        2026-08-13/
-          performance.txt
-      audit/
-        2026-08-13-audit.md
-  disaster-recovery/
-    README.md
-  red/
+        01-network-info.sh
+  change-management/
     README.md
   security/
     README.md
-  hardware/
-    README.md
-    paquetes-oficiales.txt
-    sistema.md
-    software.md
-  backups/
-    README.md
-  change-management/
-    README.md
-  scripts/
-    analizar-outputs.sh
-    consolidar-auditorias.sh
-    generar-reporte.sh
-    paquetes-explicitos.txt
-    update-readme.sh
-    audit/
-      audit-full.sh
-      checklist-verification.sh
-      health-check.sh
-  sesiones/
-    CIERRE-SESION-2026-08-13.md
-    README.md
-    SESION-2026-08-13.md
-    scripts/
-      generate_index.py
-    automatizaciones/
-      workflow.yml
-  adr/
-    ADR-001-estructura-issues.md
-    ADR-001-reconstruccion-de-madre.md
-    ADR-002-code-temple-fuente-de-verdad.md
-    ADR-003-ruta-canonica-code-temple.md
-    ADR-004-automatizacion-documentacion.md
-    scripts/
-      generate_index.py
-    automatizaciones/
-      workflow.yml
   procedimientos/
     README.md
     actualizar-documentacion.md
@@ -217,9 +195,18 @@
       01-inicio-de-sesion.md
       02-code-review.md
       2026-08-12-automatizacion-workflows.md
-  servicios/
+  monitoring/
     README.md
-    docker.md
+  adr/
+    ADR-001-estructura-issues.md
+    ADR-001-reconstruccion-de-madre.md
+    ADR-002-code-temple-fuente-de-verdad.md
+    ADR-003-ruta-canonica-code-temple.md
+    ADR-004-automatizacion-documentacion.md
+    automatizaciones/
+      workflow.yml
+    scripts/
+      generate_index.py
   automatizaciones/
     ESTADO.md
     ESTRUCTURA.md
@@ -228,6 +215,28 @@
     scripts/
       generate_madre_structure.py
       update_root_readme.py
-  monitoring/
+  red/
+    README.md
+  sesiones/
+    CIERRE-SESION-2026-08-13.md
+    README.md
+    SESION-2026-08-13.md
+    automatizaciones/
+      workflow.yml
+    scripts/
+      generate_index.py
+  scripts/
+    analizar-outputs.sh
+    consolidar-auditorias.sh
+    generar-reporte.sh
+    paquetes-explicitos.txt
+    update-readme.sh
+    audit/
+      audit-full.sh
+      checklist-verification.sh
+      health-check.sh
+  performance/
+    README.md
+  backups/
     README.md
 ```
