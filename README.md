@@ -1,15 +1,17 @@
-# code-temple
+# Issue #XX - [Nombre]
 
-Base técnica limpia del ecosistema. Reconstruida desde cero el 2026-08-06,
-tras archivar el clúster yggdrasil-* (13 repos) por acumulación de deuda
-técnica sin resolver.
+## Estado
+🟢 Completado
 
-## Estructura
+## Auditorías
+- $(date +%Y-%m-%d): [área] ✅
 
-- `docs/infra/` — estado real de Madre (servidor) y equipo local, verificado
-- `docs/canon/` — protocolos vigentes (solo los que se usan de verdad)
-- `docs/adr/` — decisiones arquitectónicas, una por archivo
+## Outputs
+- outputs/$(date +%Y-%m-%d)/info.txt
 
-## Relacionado
+## Audit
+- audit/$(date +%Y-%m-%d)-[area]-audit.md
 
-- [midgaror](https://github.com/alvarofernandezmota-tech/midgaror) — repo personal (vida + formación)
+## Próximos Pasos
+1. Analizar outputs
+2. Actualizar [area].md
