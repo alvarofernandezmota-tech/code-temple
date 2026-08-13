@@ -1,0 +1,80 @@
+name: Scheduled Audits
+
+on:
+  schedule:
+    # Ejecutar todos los lunes a las 9:00 AM
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Security Audit
+        run: |
+          cd docs/infra/madre/security
+          python3 scripts/audit_security.py
+      
+      - name: Commit Report
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add docs/infra/madre/security/
+          git commit -m "docs: Auto-generate security audit report" || echo "No changes"
+          git push
+
+  workflow-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Workflow Audit
+        run: |
+          cd docs/infra/madre/security
+          python3 scripts/audit_workflows.py
+      
+      - name: Commit Report
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add docs/infra/madre/security/
+          git commit -m "docs: Auto-generate workflow audit report" || echo "No changes"
+          git push
+
+  docs-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Docs Audit
+        run: |
+          cd docs/infra/madre/sesiones
+          python3 scripts/audit_docs.py
+      
+      - name: Commit Report
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add docs/infra/madre/sesiones/
+          git commit -m "docs: Auto-generate docs audit report" || echo "No changes"
+          git push
+
+  status-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Status Check
+        run: |
+          cd docs/infra/madre/automatizaciones
+          python3 scripts/check_status.py
+      
+      - name: Commit Report
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          git add docs/infra/madre/automatizaciones/
+          git commit -m "docs: Auto-generate status check report" || echo "No changes"
+          git push
