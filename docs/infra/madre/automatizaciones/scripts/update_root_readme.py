@@ -11,10 +11,11 @@ def update_readme():
     # Cuenta archivos por carpeta
     folders_stats = {}
     for folder in ['sesiones', 'adr', 'security', 'red', 'performance', 'automatizaciones']:
-        folder_path = f'docs/infra/madre/{folder}'
+        folder_path = folder
         if os.path.exists(folder_path):
             files = [f for f in os.listdir(folder_path) if f.endswith('.md')]
-            scripts = [f for f in os.listdir(f'{folder_path}/scripts')] if os.path.exists(f'{folder_path}/scripts') else []
+            scripts_path = f'{folder_path}/scripts'
+            scripts = [f for f in os.listdir(scripts_path)] if os.path.exists(scripts_path) else []
             folders_stats[folder] = {
                 'docs': len(files),
                 'scripts': len(scripts)
@@ -40,10 +41,10 @@ def update_readme():
     readme += f"- [code-temple](../../README.md)\n"
     
     # Guarda README
-    with open('docs/infra/madre/README.md', 'w') as f:
+    with open('README.md', 'w') as f:
         f.write(readme)
     
-    print("✅ README actualizado: docs/infra/madre/README.md")
+    print("✅ README actualizado: README.md")
 
 if __name__ == '__main__':
     update_readme()

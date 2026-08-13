@@ -1,25 +1,49 @@
 # Infraestructura de Madre
 
+**Última actualización:** 2026-08-13 12:41
+
+## Resumen
+
+- **Total carpetas:** 6
+- **Total documentos:** 17
+- **Total scripts:** 4
+
 ## Carpetas
 
-- [sesiones/](sesiones/) - Sesiones de desarrollo
-- [adr/](adr/) - Decisiones arquitectónicas
-- [security/](security/) - Seguridad
-- [red/](red/) - Red
-- [performance/](performance/) - Performance
-- [automatizaciones/](automatizaciones/) - Automatizaciones
+### Sesiones
 
-## Archivos
+- Documentos: 3
+- Scripts: 1
 
-- [estado.md](estado.md) - Estado automatizado
-- [disaster-recovery.md](disaster-recovery.md) - Recuperación ante desastres
+### Adr
+
+- Documentos: 7
+- Scripts: 1
+
+### Security
+
+- Documentos: 1
+- Scripts: 0
+
+### Red
+
+- Documentos: 1
+- Scripts: 0
+
+### Performance
+
+- Documentos: 1
+- Scripts: 0
+
+### Automatizaciones
+
+- Documentos: 4
+- Scripts: 2
 
 ## Automatización
 
-- `estado.md` se actualiza automáticamente con fecha y hora
-- Cada README de carpeta se actualiza automáticamente
+Este README se actualiza automáticamente con cada cambio.
 
 ## Referencias
 
-- [Madre/](../../README.md)
-- [docs/](../README.md)
+- [code-temple](../../README.md)
