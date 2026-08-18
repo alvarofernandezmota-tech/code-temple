@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+a7ade81 Delete docs/infra/madre/automatizaciones directory
+99445d1 chore(changelog): Actualizar automáticamente
 74a1932 Delete docs/infra/madre/adr directory
 4c987a7 docs(estado): Actualizar fecha y hora automáticamente [skip ci]
 51a62f0 Elimina todo el código/automatización de infra madre; conserva toda la documentación .md
@@ -24,5 +26,3 @@ e121e60 feat: Agregar contexto-repo
 7064eba docs: Agregar índice de scripts
 e41a0bd feat: Agregar workflow de test-madre
 8a98221 chore(changelog): Actualizar automáticamente
-8903d05 feat: Agregar auto-close y auto-open
-0dff085 docs: Auto-update Madre structure and README
