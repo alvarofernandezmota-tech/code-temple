@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+76f8c3f Reorganiza docs/sesiones/ por mes; neural-os-sesion-01 queda aparte al no tener fecha
+028c27f chore(changelog): Actualizar automáticamente
 a9f5d20 Añade revisar-madre.sh: script manual de solo lectura para comparar estado real vs documentado
 21e1769 chore(changelog): Actualizar automáticamente
 2ab4e2c Actualiza README de infra madre con la estructura final real
@@ -24,5 +26,3 @@ bec734c Consolida estados vacíos de infra madre en archivo; conserva ADRs, issu
 32a46ef chore(changelog): Actualizar automáticamente
 611933e Delete docs/infra/madre/backups directory
 fb4d625 chore(changelog): Actualizar automáticamente
-a7ade81 Delete docs/infra/madre/automatizaciones directory
-99445d1 chore(changelog): Actualizar automáticamente
