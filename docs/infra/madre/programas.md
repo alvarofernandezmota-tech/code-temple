@@ -1,3 +1,4 @@
+
 # Programas instalados en Madre
 
 Lista completa de paquetes explícitos (instalados a propósito, no dependencias).
