@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+a9f5d20 Añade revisar-madre.sh: script manual de solo lectura para comparar estado real vs documentado
+21e1769 chore(changelog): Actualizar automáticamente
 2ab4e2c Actualiza README de infra madre con la estructura final real
 de25e76 docs(estado): Actualizar fecha y hora automáticamente [skip ci]
 e9cabdf Consolida infra madre: solo README, estado, cambios, sistema, software y docker con contenido real
@@ -24,5 +26,3 @@ bec734c Consolida estados vacíos de infra madre en archivo; conserva ADRs, issu
 fb4d625 chore(changelog): Actualizar automáticamente
 a7ade81 Delete docs/infra/madre/automatizaciones directory
 99445d1 chore(changelog): Actualizar automáticamente
-74a1932 Delete docs/infra/madre/adr directory
-4c987a7 docs(estado): Actualizar fecha y hora automáticamente [skip ci]
