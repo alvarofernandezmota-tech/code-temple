@@ -10,6 +10,8 @@ información real y verificada — sin checklists vacíos ni automatización.
 - [sistema.md](sistema.md) — sistema operativo, kernel, hostname
 - [software.md](software.md) — paquetes instalados (explícitos, totales, AUR)
 - [docker.md](docker.md) — versión de Docker, Compose y containerd
+- [auditoria.md](auditoria.md) — cómo se comprueba que todo lo anterior sigue siendo cierto
+- [revisar-madre.sh](revisar-madre.sh) — script manual de solo lectura usado en la auditoría
 
 ## Regla
 
