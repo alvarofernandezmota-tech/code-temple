@@ -1,5 +1,0 @@
-default via 10.139.197.180 dev enp0s20f0u3 proto dhcp src 10.139.197.206 metric 100 
-default via 10.189.27.96 dev wlp0s20f0u5 proto dhcp src 10.189.27.228 metric 600 
-10.139.197.0/24 dev enp0s20f0u3 proto kernel scope link src 10.139.197.206 metric 100 
-10.189.27.0/24 dev wlp0s20f0u5 proto kernel scope link src 10.189.27.228 metric 600 
-172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown 

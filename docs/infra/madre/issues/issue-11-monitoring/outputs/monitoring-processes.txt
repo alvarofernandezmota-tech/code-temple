@@ -1,2 +1,0 @@
-root        1428  0.0  0.0   2932  2080 ?        Ss   ago10   0:00 fusermount3 -o rw,nosuid,nodev,fsname=portal,auto_unmount,subtype=portal -- /run/user/1000/doc
-varopc    183192  0.0  0.0   7016  4412 ?        S+   18:56   0:00 grep --color=auto -iE (prometheus|grafana|node|zabbix|nagios)

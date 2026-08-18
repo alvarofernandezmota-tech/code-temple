@@ -53,3 +53,67 @@ sesión, un commit y una ubicación documental coherente.
 ## Estado
 
 La sesión queda abierta hasta terminar la reconciliación documental.
+
+## Hallazgos iniciales — 2026-08-16
+
+### Sincronización Git
+
+El primer `push` de esta sesión fue rechazado porque `origin/main` había
+avanzado mediante commits automáticos de GitHub Actions.
+
+Se ejecutó:
+
+```bash
+git fetch origin
+git pull --rebase origin main
+git push origin main
+```
+
+La reconciliación terminó correctamente y `main` quedó sincronizada con
+`origin/main`.
+
+### Automatizaciones detectadas
+
+Se encontraron 12 workflows activos:
+
+- `auto-cierre-madre.yml`
+- `auto-cierre-temple.yml`
+- `auto-close-session.yml`
+- `auto-generate-all-readmes.yml`
+- `monitor-new-files.yml`
+- `scheduled-audits.yml`
+- `test-madre.yml`
+- `update-adr-index.yml`
+- `update-cambios.yml`
+- `update-changelog.yml`
+- `update-estado.yml`
+- `update-madre-root.yml`
+
+También se detectaron scripts de auditoría, backups, sincronización, validación,
+monitorización, generación de informes, actualización de estructuras y cierre
+automático de issues o sesiones.
+
+### Incidencias
+
+- Existen ejecuciones fallidas de workflows.
+- Hay varios commits automáticos consecutivos.
+- El historial mezcla sesiones humanas, commits manuales y commits generados
+  por GitHub Actions.
+- Hay varias convenciones de nombres y ubicaciones para las sesiones.
+- La automatización puede estar reaccionando a sus propios commits.
+- No se debe asumir que un commit automático implica que el workflow haya
+  producido un resultado correcto.
+
+### Decisión provisional
+
+Se congela la creación de nuevas automatizaciones hasta completar:
+
+- Auditoría de cada workflow.
+- Revisión de ejecuciones fallidas.
+- Identificación de workflows redundantes.
+- Definición de una convención única de sesiones.
+- Definición de un único responsable para actualizar cada documento.
+- Revisión de dependencias y rutas de todos los scripts.
+
+No se borrará ningún workflow ni script hasta documentar su función y comprobar
+sus referencias.
