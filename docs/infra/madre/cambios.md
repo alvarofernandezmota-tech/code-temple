@@ -148,3 +148,10 @@ Para documentar nuevos cambios, usar el siguiente formato:
 **Responsable:** @alvarofernandezmota-tech
 # Actualización manual
 # Actualización manual
+
+## 2026-08-18
+
+Auditoría con `scripts/revisar-madre.sh`: 122 paquetes explícitos (lista
+completa en `programas.md`), Docker 29.7.1 instalado sin contenedores ni
+imágenes activas. `tree` no está instalado, así que `estructura.md` sigue
+pendiente hasta instalarlo.

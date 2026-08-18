@@ -1,31 +1,11 @@
 # Docker en Madre
 
-## Instalación
+- Docker: 29.7.1 (build e9452d6e78)
+- Docker Compose: 5.4.0
 
-- Docker Engine `29.7.1` instalado.
-- Docker Compose `5.4.0` instalado.
-- containerd `2.3.3`.
-- runc `1.5.1`.
-- `docker.service` activo y habilitado.
-- `containerd.service` activo.
+## Contenedores e imágenes
 
-## Estado de inventario
+A día de hoy, **no hay ningún contenedor ni imagen** en Madre. Docker y
+Compose están instalados pero no hay nada corriendo ni descargado.
 
-- Contenedores: 0
-- Imágenes: 0
-- Volúmenes: 0
-- Redes estándar: `bridge`, `host`, `none`
-
-## Estructura actual
-
-```text
-~/docker/
-├── stacks/
-│   ├── ia/
-│   ├── automation/
-│   └── monitoring/
-├── data/
-└── backups/
-```
-
-No se crea ningún stack hasta terminar la documentación de la infraestructura.
+Última comprobación: 2026-08-18
