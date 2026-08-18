@@ -1,49 +1,19 @@
 # Infraestructura de Madre
 
-**Última actualización:** 2026-08-13 11:47
+Documentación de qué es y qué corre en Madre (servidor Arch Linux). Solo
+información real y verificada — sin checklists vacíos ni automatización.
 
-## Resumen
+## Contenido
 
-- **Total carpetas:** 6
-- **Total documentos:** 17
-- **Total scripts:** 5
+- [estado.md](estado.md) — estado general de la infraestructura
+- [cambios.md](cambios.md) — historial de cambios reales, con fecha
+- [sistema.md](sistema.md) — sistema operativo, kernel, hostname
+- [software.md](software.md) — paquetes instalados (explícitos, totales, AUR)
+- [docker.md](docker.md) — versión de Docker, Compose y containerd
 
-## Carpetas
+## Regla
 
-### Sesiones
-
-- Documentos: 3
-- Scripts: 1
-
-### Adr
-
-- Documentos: 7
-- Scripts: 1
-
-### Security
-
-- Documentos: 1
-- Scripts: 0
-
-### Red
-
-- Documentos: 1
-- Scripts: 0
-
-### Performance
-
-- Documentos: 1
-- Scripts: 0
-
-### Automatizaciones
-
-- Documentos: 4
-- Scripts: 3
-
-## Automatización
-
-Este README se actualiza automáticamente con cada cambio.
-
-## Referencias
-
-- [code-temple](../../README.md)
+Ningún archivo aquí se actualiza solo. Todo lo que hay se escribió a mano
+tras comprobar el dato real en el servidor. Si algo lleva más de un mes sin
+actualizarse y ya no es cierto, se corrige o se borra — no se deja como
+plantilla vacía.
