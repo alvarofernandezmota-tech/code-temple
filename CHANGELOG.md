@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+e637e28 Añade auditoria.md y actualiza README con la estructura real completa de infra madre
+4e86230 chore(changelog): Actualizar automáticamente
 63fad80 Elimina FETCH_HEAD y main: archivos basura creados por paste accidental en terminal
 c9ae21a chore(changelog): Actualizar automáticamente
 76f8c3f Reorganiza docs/sesiones/ por mes; neural-os-sesion-01 queda aparte al no tener fecha
@@ -24,5 +26,3 @@ af922f2 docs(estado): Actualizar fecha y hora automáticamente [skip ci]
 b1998fd chore(changelog): Actualizar automáticamente
 6617598 Restaura docs/infra/madre/adr — se borró por error, son ADRs reales, no automatización
 cd02ed7 chore(changelog): Actualizar automáticamente
-bec734c Consolida estados vacíos de infra madre en archivo; conserva ADRs, issues, procedimientos y sesiones reales
-32a46ef chore(changelog): Actualizar automáticamente
