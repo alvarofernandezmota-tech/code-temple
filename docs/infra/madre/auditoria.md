@@ -1,28 +1,26 @@
 # Auditoría de Madre
 
-Cómo se comprueba que lo documentado en `sistema.md`, `software.md` y
-`docker.md` sigue siendo cierto.
+Cómo se comprueba que lo documentado en `sistema.md`, `software.md`,
+`programas.md`, `docker.md` y `estructura.md` sigue siendo cierto.
 
-## revisar-madre.sh
+## scripts/revisar-madre.sh
 
 Script de solo lectura. No modifica nada, no se ejecuta solo (sin cron, sin
-GitHub Action). Se lanza a mano cuando se quiere comprobar el estado real:
+GitHub Action). Se lanza a mano:
 
 ```bash
-bash docs/infra/madre/revisar-madre.sh
+bash docs/infra/madre/scripts/revisar-madre.sh
 ```
-
-Imprime kernel, hostname, distro, número de paquetes (explícitos, totales,
-AUR) y versión de Docker/Compose con los contenedores activos.
 
 ## Qué hacer con la salida
 
-Comparar cada bloque contra el `.md` correspondiente:
+Comparar cada bloque contra el `.md` correspondiente y actualizar a mano lo
+que no coincida, anotando la fecha en [cambios.md](cambios.md):
 
-- `=== SISTEMA ===` contra [sistema.md](sistema.md)
-- `=== PAQUETES ===` contra [software.md](software.md)
-- `=== DOCKER ===` contra [docker.md](docker.md)
+- `=== SISTEMA ===` → [sistema.md](sistema.md)
+- `=== PAQUETES (resumen) ===` → [software.md](software.md)
+- `=== PAQUETES (lista completa explícitos) ===` → [programas.md](programas.md)
+- `=== DOCKER ===` → [docker.md](docker.md)
+- `=== ESTRUCTURA ===` → [estructura.md](estructura.md)
 
-Si algo no coincide, se corrige el `.md` a mano, con la fecha del cambio
-anotada en [cambios.md](cambios.md). El script nunca escribe en los `.md`
-directamente.
+El script nunca escribe en los `.md` directamente.
