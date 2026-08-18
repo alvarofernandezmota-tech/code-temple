@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+611933e Delete docs/infra/madre/backups directory
+fb4d625 chore(changelog): Actualizar automáticamente
 a7ade81 Delete docs/infra/madre/automatizaciones directory
 99445d1 chore(changelog): Actualizar automáticamente
 74a1932 Delete docs/infra/madre/adr directory
@@ -24,5 +26,3 @@ e121e60 feat: Agregar contexto-repo
 76eb313 docs: Auto-update Madre structure and README
 7166219 docs: Documentar python/
 7064eba docs: Agregar índice de scripts
-e41a0bd feat: Agregar workflow de test-madre
-8a98221 chore(changelog): Actualizar automáticamente
