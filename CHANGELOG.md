@@ -6,6 +6,10 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+2ab4e2c Actualiza README de infra madre con la estructura final real
+de25e76 docs(estado): Actualizar fecha y hora automáticamente [skip ci]
+e9cabdf Consolida infra madre: solo README, estado, cambios, sistema, software y docker con contenido real
+61686bf chore(changelog): Actualizar automáticamente
 368ca55 Infra madre queda solo con documentación de qué corre en Madre; adr y python archivados/eliminados
 0cb4f94 chore(changelog): Actualizar automáticamente
 3cc0bec Limpia carpeta python/ vacía en infra madre
@@ -22,7 +26,3 @@ a7ade81 Delete docs/infra/madre/automatizaciones directory
 99445d1 chore(changelog): Actualizar automáticamente
 74a1932 Delete docs/infra/madre/adr directory
 4c987a7 docs(estado): Actualizar fecha y hora automáticamente [skip ci]
-51a62f0 Elimina todo el código/automatización de infra madre; conserva toda la documentación .md
-9cbd67d docs: Auto-cierre de sesión
-3f96046 docs: Auto-cierre de sesión
-c91a2be chore(changelog): Actualizar automáticamente
