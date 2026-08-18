@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+368ca55 Infra madre queda solo con documentación de qué corre en Madre; adr y python archivados/eliminados
+0cb4f94 chore(changelog): Actualizar automáticamente
 3cc0bec Limpia carpeta python/ vacía en infra madre
 af922f2 docs(estado): Actualizar fecha y hora automáticamente [skip ci]
 1383453 Simplifica infra madre: solo queda lo relativo a qué hay dentro de Madre (hardware, servicios, docker); gestión de proyecto (issues, procedimientos, sesiones, scripts) archivada
@@ -24,5 +26,3 @@ a7ade81 Delete docs/infra/madre/automatizaciones directory
 9cbd67d docs: Auto-cierre de sesión
 3f96046 docs: Auto-cierre de sesión
 c91a2be chore(changelog): Actualizar automáticamente
-3931007 docs(sesion): iniciar auditoría de reconciliación del 2026-08-16
-876bf45 docs: Auto-cierre Temple
