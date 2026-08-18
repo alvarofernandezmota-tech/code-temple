@@ -13,3 +13,7 @@ Ejemplo:
 python3 docs/sesiones/scripts/nueva_sesion.py "reorganizacion-madre"
 
 Crea: docs/sesiones/2026/08-agosto/2026-08-18-reorganizacion-madre.md
+
+Tras crearlo, abre el archivo directamente en tu editor (usa `$EDITOR` si lo
+tienes configurado; si no, `nano` por defecto), para que escribas la sesión
+en el momento.

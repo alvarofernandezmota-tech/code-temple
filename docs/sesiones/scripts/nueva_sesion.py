@@ -1,10 +1,13 @@
 """
 Crea el archivo de una sesion nueva en la carpeta del mes correspondiente,
-con la plantilla minima ya rellenada. No toca sesiones existentes.
+con la plantilla minima ya rellenada, y lo abre directamente en el editor
+para escribir. No toca sesiones existentes.
 
 Uso: python3 docs/sesiones/scripts/nueva_sesion.py "nombre-corto-sesion"
 """
 
+import os
+import subprocess
 import sys
 from datetime import date
 from pathlib import Path
@@ -45,12 +48,18 @@ def crear_sesion(nombre_corto: str) -> Path:
     return destino
 
 
+def abrir_en_editor(ruta: Path) -> None:
+    editor = os.environ.get("EDITOR", "nano")
+    subprocess.call([editor, str(ruta)])
+
+
 def main() -> None:
     if len(sys.argv) < 2:
         print('Uso: python3 nueva_sesion.py "nombre-corto-sesion"')
         sys.exit(1)
     nombre_corto = sys.argv[1].strip().lower().replace(" ", "-")
-    crear_sesion(nombre_corto)
+    destino = crear_sesion(nombre_corto)
+    abrir_en_editor(destino)
 
 
 if __name__ == "__main__":
