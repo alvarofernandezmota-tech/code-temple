@@ -1,9 +1,11 @@
 """
-Crea el archivo de una sesion nueva en la carpeta del mes correspondiente,
-con la plantilla minima ya rellenada, y lo abre directamente en el editor
-para escribir. No toca sesiones existentes.
+Crea (o abre si ya existe) el archivo de sesion del dia en su carpeta de
+mes, y lo abre en el editor para escribir. No toca sesiones existentes de
+otros dias.
 
-Uso: python3 docs/sesiones/scripts/nueva_sesion.py "nombre-corto-sesion"
+Uso:
+  python3 nueva_sesion.py hoy                  -> docs/sesiones/AAAA/MM-mes/AAAA-MM-DD.md
+  python3 nueva_sesion.py "nombre-corto-sesion" -> docs/sesiones/AAAA/MM-mes/AAAA-MM-DD-nombre-corto.md
 """
 
 import os
@@ -21,19 +23,29 @@ MESES = {
 }
 
 
-def crear_sesion(nombre_corto: str) -> Path:
-    hoy = date.today()
-    carpeta_mes = RAIZ / str(hoy.year) / f"{hoy.month:02d}-{MESES[hoy.month]}"
-    carpeta_mes.mkdir(parents=True, exist_ok=True)
+def ruta_carpeta_mes(hoy: date) -> Path:
+    carpeta = RAIZ / str(hoy.year) / f"{hoy.month:02d}-{MESES[hoy.month]}"
+    carpeta.mkdir(parents=True, exist_ok=True)
+    return carpeta
 
-    nombre_archivo = f"{hoy.isoformat()}-{nombre_corto}.md"
+
+def crear_o_abrir_sesion(nombre_corto: str | None) -> Path:
+    hoy = date.today()
+    carpeta_mes = ruta_carpeta_mes(hoy)
+
+    if nombre_corto:
+        nombre_archivo = f"{hoy.isoformat()}-{nombre_corto}.md"
+    else:
+        nombre_archivo = f"{hoy.isoformat()}.md"
+
     destino = carpeta_mes / nombre_archivo
 
     if destino.exists():
-        print(f"Ya existe: {destino.relative_to(RAIZ)}")
+        print(f"Ya existe, abriendo: {destino.relative_to(RAIZ)}")
         return destino
 
-    plantilla = f"""# Sesion {hoy.isoformat()} - {nombre_corto}
+    titulo = f"{hoy.isoformat()}" + (f" - {nombre_corto}" if nombre_corto else "")
+    plantilla = f"""# Sesion {titulo}
 
 ## Objetivo
 
@@ -55,10 +67,13 @@ def abrir_en_editor(ruta: Path) -> None:
 
 def main() -> None:
     if len(sys.argv) < 2:
-        print('Uso: python3 nueva_sesion.py "nombre-corto-sesion"')
+        print('Uso: python3 nueva_sesion.py hoy   |   python3 nueva_sesion.py "nombre-corto"')
         sys.exit(1)
-    nombre_corto = sys.argv[1].strip().lower().replace(" ", "-")
-    destino = crear_sesion(nombre_corto)
+
+    argumento = sys.argv[1].strip().lower()
+    nombre_corto = None if argumento == "hoy" else argumento.replace(" ", "-")
+
+    destino = crear_o_abrir_sesion(nombre_corto)
     abrir_en_editor(destino)
 
 
