@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+63fad80 Elimina FETCH_HEAD y main: archivos basura creados por paste accidental en terminal
+c9ae21a chore(changelog): Actualizar automáticamente
 76f8c3f Reorganiza docs/sesiones/ por mes; neural-os-sesion-01 queda aparte al no tener fecha
 028c27f chore(changelog): Actualizar automáticamente
 a9f5d20 Añade revisar-madre.sh: script manual de solo lectura para comparar estado real vs documentado
@@ -24,5 +26,3 @@ b1998fd chore(changelog): Actualizar automáticamente
 cd02ed7 chore(changelog): Actualizar automáticamente
 bec734c Consolida estados vacíos de infra madre en archivo; conserva ADRs, issues, procedimientos y sesiones reales
 32a46ef chore(changelog): Actualizar automáticamente
-611933e Delete docs/infra/madre/backups directory
-fb4d625 chore(changelog): Actualizar automáticamente
