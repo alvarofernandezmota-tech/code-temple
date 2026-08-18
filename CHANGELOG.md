@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+c419a95 Organiza scripts en carpeta propia; anade programas.md y estructura.md como documentacion minima real de Madre
+fb47abb chore(changelog): Actualizar automáticamente
 e637e28 Añade auditoria.md y actualiza README con la estructura real completa de infra madre
 4e86230 chore(changelog): Actualizar automáticamente
 63fad80 Elimina FETCH_HEAD y main: archivos basura creados por paste accidental en terminal
@@ -24,5 +26,3 @@ e9cabdf Consolida infra madre: solo README, estado, cambios, sistema, software y
 af922f2 docs(estado): Actualizar fecha y hora automáticamente [skip ci]
 1383453 Simplifica infra madre: solo queda lo relativo a qué hay dentro de Madre (hardware, servicios, docker); gestión de proyecto (issues, procedimientos, sesiones, scripts) archivada
 b1998fd chore(changelog): Actualizar automáticamente
-6617598 Restaura docs/infra/madre/adr — se borró por error, son ADRs reales, no automatización
-cd02ed7 chore(changelog): Actualizar automáticamente
