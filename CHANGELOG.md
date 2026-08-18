@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+45903bd Rellena estructura.md y docker.md con la auditoria real del 2026-08-18
+690c967 chore(changelog): Actualizar automáticamente
 72e6e0e Rellena programas.md y estructura.md con la auditoria real de Madre
 f084d71 chore(changelog): Actualizar automáticamente
 c419a95 Organiza scripts en carpeta propia; anade programas.md y estructura.md como documentacion minima real de Madre
@@ -24,5 +26,3 @@ e9cabdf Consolida infra madre: solo README, estado, cambios, sistema, software y
 61686bf chore(changelog): Actualizar automáticamente
 368ca55 Infra madre queda solo con documentación de qué corre en Madre; adr y python archivados/eliminados
 0cb4f94 chore(changelog): Actualizar automáticamente
-3cc0bec Limpia carpeta python/ vacía en infra madre
-af922f2 docs(estado): Actualizar fecha y hora automáticamente [skip ci]
