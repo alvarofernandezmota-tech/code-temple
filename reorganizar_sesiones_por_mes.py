@@ -1,25 +1,3 @@
-#!/bin/bash
-# Revisar estado real de Madre — solo lectura, no modifica nada.
-# Uso: bash revisar-madre.sh
-# Compara la salida con sistema.md / software.md / docker.md y actualiza a mano si algo cambió.
-
-echo "=== SISTEMA ==="
-echo "Kernel: $(uname -r)"
-echo "Hostname: $(hostname)"
-echo "Distro: $(cat /etc/os-release | grep PRETTY_NAME | cut -d= -f2)"
-
-echo ""
-echo "=== PAQUETES ==="
-echo "Explícitos: $(pacman -Qe | wc -l)"
-echo "Totales: $(pacman -Q | wc -l)"
-echo "AUR: $(pacman -Qm | wc -l)"
-
-echo ""
-echo "=== DOCKER ==="
-[varopc@archlinux code-temple]$ cd ~/GitHub/trabajo/code-temple
-git pull --rebase origin main
-
-cat > reorganizar_sesiones_por_mes.py << 'EOF'
 """
 Reorganiza docs/sesiones/ en subcarpetas por mes, igual que se hizo con
 diario/personal/ en midgaror.
@@ -38,7 +16,7 @@ RAIZ = Path(__file__).parent / "docs" / "sesiones"
 MESES = {
     "01": "enero", "02": "febrero", "03": "marzo", "04": "abril",
     "05": "mayo", "06": "junio", "07": "julio", "08": "agosto",
-    "09": "septiembre", "10": "octubre", "11": "noviembre", "12": "diciembre", 
+    "09": "septiembre", "10": "octubre", "11": "noviembre", "12": "diciembre",
 }
 
 PATRON_FECHA = re.compile(r"(\d{4})-(\d{2})-(\d{2})")
@@ -47,18 +25,18 @@ PATRON_FECHA = re.compile(r"(\d{4})-(\d{2})-(\d{2})")
 def mover(origen: Path) -> None:
     match = PATRON_FECHA.search(origen.name)
     if not match:
-        print(f"⚠  Sin fecha reconocible, no se mueve: {origen.name}")
+        print(f"⚠️  Sin fecha reconocible, no se mueve: {origen.name}")
         return
     anio, mes, _ = match.groups()
     nombre_mes = MESES.get(mes)
     if not nombre_mes:
-        print(f"⚠  Mes no reconocido en: {origen.name}")
+        print(f"⚠️  Mes no reconocido en: {origen.name}")
         return
     carpeta_destino = RAIZ / anio / f"{mes}-{nombre_mes}"
     carpeta_destino.mkdir(parents=True, exist_ok=True)
     destino = carpeta_destino / origen.name
     if destino.exists():
-        print(f"⚠  Ya existe destino, revisa a mano: {destino}")
+        print(f"⚠️  Ya existe destino, revisa a mano: {destino}")
         return
     shutil.move(str(origen), str(destino))
     print(f"  {origen.name} -> {destino.relative_to(RAIZ)}")
