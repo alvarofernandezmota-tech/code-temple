@@ -1,16 +1,7 @@
 # Auditoría de Madre
 
-Cómo se comprueba que lo documentado en `sistema.md`, `software.md`,
-`programas.md`, `docker.md` y `estructura.md` sigue siendo cierto.
-
-## scripts/revisar-madre.sh
-
-Script de solo lectura. No modifica nada, no se ejecuta solo (sin cron, sin
-GitHub Action). Se lanza a mano:
-
-```bash
-bash docs/infra/madre/scripts/revisar-madre.sh
-```
+Cómo se comprueba que lo documentado en esta carpeta sigue siendo cierto.
+El script que genera los datos está en [scripts/](scripts/README.md).
 
 ## Qué hacer con la salida
 
