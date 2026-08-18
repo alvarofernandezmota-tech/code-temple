@@ -6,6 +6,8 @@ Todos los cambios importantes en este proyecto.
 
 ### Cambios Recientes
 
+bec734c Consolida estados vacíos de infra madre en archivo; conserva ADRs, issues, procedimientos y sesiones reales
+32a46ef chore(changelog): Actualizar automáticamente
 611933e Delete docs/infra/madre/backups directory
 fb4d625 chore(changelog): Actualizar automáticamente
 a7ade81 Delete docs/infra/madre/automatizaciones directory
@@ -24,5 +26,3 @@ d2d2ce0 docs: Auto-cierre de sesión
 624a815 chore(changelog): Actualizar automáticamente
 e121e60 feat: Agregar contexto-repo
 76eb313 docs: Auto-update Madre structure and README
-7166219 docs: Documentar python/
-7064eba docs: Agregar índice de scripts
