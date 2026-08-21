@@ -1,7 +1,7 @@
 # Programas instalados en Madre
 
 Lista completa de paquetes explícitos (instalados a propósito, no dependencias).
-Generada con `pacman -Qe` desde [revisar-madre.sh](scripts/revisar-madre.sh).
+Generada con `pacman -Qe` desde [revisar-madre.sh](revisar-madre.sh).
 
 Última actualización: 2026-08-21
 

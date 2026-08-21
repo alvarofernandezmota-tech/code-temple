@@ -1,7 +1,7 @@
 # Auditoría de Madre
 
 Cómo se comprueba que lo documentado en esta carpeta sigue siendo cierto.
-El script que genera los datos está en [scripts/](scripts/README.md).
+El script que genera los datos está en [esta carpeta](README.md).
 
 ## Qué hacer con la salida
 
