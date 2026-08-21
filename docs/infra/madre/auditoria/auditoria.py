@@ -27,7 +27,7 @@ def leer_md(nombre: str) -> str:
 def comprobar_sistema() -> list[str]:
     avisos = []
     kernel_real = ejecutar("uname -r")
-    contenido = leer_md("../sistema/sistema.md")
+    contenido = leer_md("sistema/sistema.md")
     if kernel_real and kernel_real not in contenido:
         avisos.append(f"sistema.md desactualizado: kernel real es {kernel_real}")
     return avisos
@@ -36,7 +36,7 @@ def comprobar_sistema() -> list[str]:
 def comprobar_paquetes() -> list[str]:
     avisos = []
     explicitos_real = ejecutar("pacman -Qe | wc -l")
-    contenido = leer_md("../sistema/software.md")
+    contenido = leer_md("sistema/software.md")
     match = re.search(r"Expl[íi]citos:\s*(\d+)", contenido)
     if match and match.group(1) != explicitos_real:
         avisos.append(
@@ -49,7 +49,7 @@ def comprobar_paquetes() -> list[str]:
 def comprobar_docker() -> list[str]:
     avisos = []
     version_real = ejecutar("docker --version")
-    contenido = leer_md("../sistema/docker.md")
+    contenido = leer_md("sistema/docker.md")
     if version_real and version_real.split(",")[0].split()[-1] not in contenido:
         avisos.append(f"docker.md podría estar desactualizado: docker real reporta '{version_real}'")
     return avisos
