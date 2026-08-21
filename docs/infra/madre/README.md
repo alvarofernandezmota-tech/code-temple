@@ -13,7 +13,7 @@ información real y verificada — sin checklists vacíos ni automatización.
 - [docker.md](sistema/docker.md) — versión de Docker, Compose, contenedores e imágenes
 - [estructura.md](sistema/estructura.md) — árbol de carpetas relevantes del servidor
 - [auditoria.md](auditoria/auditoria.md) — cómo se comprueba que todo lo anterior sigue siendo cierto
-- [auditoria/](auditoria/) — scripts manuales de solo lectura (revisar-madre.sh, auditoria.py) — scripts manuales de solo lectura usados en la auditoría
+- [auditoria/](auditoria/) — scripts manuales de solo lectura (revisar-madre.sh, auditoria.py)
 
 ## Regla
 
