@@ -1,5 +1,12 @@
 # 📝 HISTORIAL DE CAMBIOS - MADRE INFRASTRUCTURE
 
+## 📅 2026-08-21 - Instalación de VS Code y auditoría de programas
+
+### Cambios realizados
+- Instalado `visual-studio-code-bin` (1.131.0-1) vía AUR/yay, sustituyendo problema previo de arranque.
+- Rellenado `programas.md` con salida real de `pacman -Qe` (123 paquetes explícitos, 834 totales, 3 AUR).
+- Actualizado `software.md` con las cifras reales.
+
 Última actualización: 2026-08-12
 
 ## 📅 2026-08-12 - Auditoría Completa de Infraestructura

@@ -1,9 +1,133 @@
-
 # Programas instalados en Madre
 
 Lista completa de paquetes explícitos (instalados a propósito, no dependencias).
 Generada con `pacman -Qe` desde [revisar-madre.sh](scripts/revisar-madre.sh).
 
-<!-- Pega aquí la salida real de "=== PAQUETES (lista completa explícitos) ===" -->
+Última actualización: 2026-08-21
 
-Última comprobación: PENDIENTE
+```
+7zip 26.02-1
+aria2 1.37.0-3
+aurorae 6.7.3-1
+base 3-3
+base-devel 1-2
+bluedevil 1:6.7.3-1
+bluez 5.87-2
+bluez-utils 5.87-2
+breeze 6.7.3-1
+breeze-cursors 6.7.3-1
+breeze-gtk 6.7.3-1
+breeze-plymouth 6.7.3-1
+discover 6.7.3-1
+docker 1:29.7.1-1
+docker-compose 5.4.0-1
+drkonqi 6.7.3-1
+flatpak-kcm 6.7.3-1
+git 2.55.0-1
+github-cli 2.97.0-1
+grub 2:2.14-1
+gst-plugin-pipewire 1:1.6.8-1
+htop 3.5.2-1
+hyprland 0.56.1-3
+inetutils 2.8-1
+intel-media-driver 26.2.4-1
+intel-ucode 20260512-1
+kactivitymanagerd 6.7.3-1
+kde-cli-tools 6.7.3-1
+kde-gtk-config 6.7.3-1
+kdecoration 6.7.3-1
+kdeplasma-addons 6.7.3-1
+kgamma 6.7.3-1
+kglobalacceld 6.7.3-1
+kinfocenter 6.7.3-1
+kitty 0.48.2-1
+kmenuedit 6.7.3-1
+knighttime 6.7.3-1
+kpipewire 6.7.3-1
+krdp 6.7.3-1
+kscreen 6.7.3-1
+kscreenlocker 6.7.3-1
+ksshaskpass 6.7.3-1
+ksystemstats 6.7.3-1
+kwallet-pam 6.7.3-1
+kwayland 6.7.3-1
+kwin 6.7.3-1
+kwin-x11 6.7.3-1
+kwrited 6.7.3-1
+layer-shell-qt 6.7.3-1
+less 1:704-1
+libkscreen 6.7.3-1
+libksysguard 6.7.3-1
+libplasma 6.7.3-1
+libpulse 17.0+r98+gb096704c0-1
+libva-intel-driver 2.4.5-1
+linux 7.1.5.arch1-2
+linux-firmware 20260622-1
+milou 6.7.3-1
+mkinitcpio 41-4
+nano 9.1-1
+network-manager-applet 1.36.0-2
+networkmanager 1.58.0-1
+ocean-sound-theme 6.7.3-1
+oxygen 6.7.3-1
+oxygen-cursors 6.7.3-1
+oxygen-sounds 6.7.3-1
+pipewire 1:1.6.8-1
+pipewire-alsa 1:1.6.8-1
+pipewire-jack 1:1.6.8-1
+pipewire-pulse 1:1.6.8-1
+plasma-activities 6.7.3-1
+plasma-activities-stats 6.7.3-1
+plasma-bigscreen 6.7.3-1
+plasma-browser-integration 6.7.3-1
+plasma-desktop 6.7.3-1
+plasma-disks 6.7.3-1
+plasma-firewall 6.7.3-1
+plasma-integration 6.7.3-1
+plasma-keyboard 6.7.3-1
+plasma-login-manager 6.7.3-1
+plasma-nm 6.7.3-1
+plasma-pa 6.7.3-1
+plasma-sdk 6.7.3-1
+plasma-systemmonitor 6.7.3-1
+plasma-thunderbolt 6.7.3-1
+plasma-vault 6.7.3-1
+plasma-welcome 6.7.3-1
+plasma-workspace 6.7.3-1
+plasma-workspace-wallpapers 6.7.3-1
+plasma5support 6.7.3-1
+plymouth-kcm 6.7.3-1
+polkit-kde-agent 6.7.3-1
+powerdevil 6.7.3-1
+print-manager 1:6.7.3-1
+qqc2-breeze-style 6.7.3-1
+reflector 2023-5
+sddm-kcm 6.7.3-1
+smartmontools 7.5-1
+sof-firmware 2025.12.2-1
+spectacle 1:6.7.3-1
+sudo 1.9.17.p2-6
+systemsettings 6.7.3-1
+tree 2.3.2-1
+ufw 0.36.2-7
+union 6.7.3-1
+unzip 6.0-23
+vim 9.2.0849-1
+visual-studio-code-bin 1.131.0-1
+vulkan-intel 1:26.1.6-1
+vulkan-nouveau 1:26.1.6-1
+vulkan-radeon 1:26.1.6-1
+wacomtablet 6.7.3-1
+wget 1.25.0-6
+wireplumber 0.5.15-1
+wpa_supplicant 2:2.11-5
+xdg-desktop-portal-kde 6.7.3-1
+xdg-utils 1.2.1-2
+xf86-video-amdgpu 25.0.0-1
+xf86-video-ati 1:22.0.0-3
+xf86-video-nouveau 1.0.18-1
+yay-git 13.0.1.r29.g19a67d1d-1
+yay-git-debug 13.0.1.r29.g19a67d1d-1
+zram-generator 1.2.1-1
+
+```

@@ -2,8 +2,8 @@
 
 ## Resumen
 
-- Paquetes explícitos: 119
-- Paquetes totales: 829
+- Paquetes explícitos: 123
+- Paquetes totales: 834
 - Paquetes AUR: 3
 
 ## Herramientas principales
