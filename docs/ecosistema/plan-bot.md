@@ -28,3 +28,22 @@ todo el ecosistema.
 
 ## Regla de este plan
 No se empieza una fase sin cerrar la anterior con commit y documentación.
+
+## Decisión Fase 2 (2026-08-21)
+Bifrost se construye primero solo para midgaror (diario personal).
+No se toca code-temple hasta que el bot funcione de forma estable
+en midgaror durante un tiempo de uso real.
+
+### Fase 2a — Bifrost mínimo (solo midgaror)
+- Comando /hoy <texto> -> crea/actualiza diario/personal/AAAA/MM-mes/AAAA-MM-DD.md
+- Solo tu chat_id de Telegram autorizado
+- Sin base de datos, sin systemd todavía: correr en foreground para probar
+
+### Fase 2b — Estabilizar
+- Correr como servicio systemd en Madre
+- Manejo de errores (token caducado, repo inaccesible, rate limit de GitHub)
+- Uso real durante al menos 1-2 semanas
+
+### Fase 2c — Extender a code-temple
+- Solo después de 2a y 2b validadas
+- Comando /sesion <texto> -> nueva_sesion.py equivalente vía bot
