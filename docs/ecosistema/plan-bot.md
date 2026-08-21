@@ -47,3 +47,13 @@ en midgaror durante un tiempo de uso real.
 ### Fase 2c — Extender a code-temple
 - Solo después de 2a y 2b validadas
 - Comando /sesion <texto> -> nueva_sesion.py equivalente vía bot
+
+## Regla de arquitectura bifrost (2026-08-21)
+Bifrost es solo interfaz, nunca lógica. Toda función nueva (diario,
+tareas, hábitos) se construye y prueba primero como script en
+midgaror. Bifrost solo expone esa función ya validada como comando
+de Telegram, sin reimplementarla.
+
+## Pendiente próxima sesión
+Auditar que todo lo documentado hoy (infra madre, ecosistema, plan
+bifrost) sigue siendo cierto antes de seguir avanzando.
