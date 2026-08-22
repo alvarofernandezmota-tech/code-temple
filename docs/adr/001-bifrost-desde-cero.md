@@ -24,5 +24,10 @@ lógica; toda función nueva se construye y prueba primero como script
 en midgaror) no encaja con reciclar el código de THDORA-PERSONAL, que
 mezclaba lógica e interfaz.
 
+## Replica en otros repos
+Este mismo patron (AGENTS.md, CONTEXT.md, docs/adr/) se adopto tambien
+en midgaror el 2026-08-22. Ver midgaror/docs/adr/001-gobernanza-agents
+-context.md.
+
 ## Estado
 Aceptado — 2026-08-22.
