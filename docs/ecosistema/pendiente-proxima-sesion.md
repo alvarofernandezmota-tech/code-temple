@@ -37,3 +37,19 @@ interfaz, no lógica.
 ## Regla
 No se empieza nada de la lista 2-4 sin repasar primero el punto 1
 (auditoría de lo ya hecho).
+
+## Ampliacion futura del formatter en midgaror (no en esta sesion)
+diario/personal/ ya tiene su script (diario.py, parcheado con frontmatter
+el 2026-08-22) y es lo unico probado hasta ahora.
+
+Pendiente para cuando se retome:
+- habitos/ y tareas/: necesitan su propio script equivalente a diario.py
+  (mismo patron: genera el archivo del dia, inyecta frontmatter), con
+  un JSON dentro de cada carpeta para el dato estructurado (no solo
+  texto libre como el diario)
+- formacion/: retomar los diarios de formacion de la carpeta raiz
+  02-FORMACION/, actualmente aplazados; decidir si usan el mismo
+  patron de script o uno propio
+- La idea de fondo: completar un diario con lo que se hace por hora
+  (igual que se ha hecho hoy en docs/sesiones/ de code-temple), pero
+  aplicado a habitos y tareas dentro de midgaror
