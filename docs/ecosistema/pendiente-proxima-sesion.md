@@ -53,3 +53,16 @@ Pendiente para cuando se retome:
 - La idea de fondo: completar un diario con lo que se hace por hora
   (igual que se ha hecho hoy en docs/sesiones/ de code-temple), pero
   aplicado a habitos y tareas dentro de midgaror
+
+## Diseño futuro: diario unificado con tablas de habitos/tareas/horario
+Decision pendiente: el diario de cada dia (diario/personal/AAAA-MM-DD.md)
+deberia mostrar 3 tablas (habitos, tareas, horario del dia) ademas del
+texto libre de siempre.
+
+Propuesta de diseño (sin implementar aun):
+- El dato real de habitos y tareas vive en JSON separado (uno por
+  carpeta, como ya se documento arriba)
+- Un script regenera las tablas markdown dentro del diario del dia a
+  partir de ese JSON cada vez que cambia algo
+- Asi el diario sigue siendo un unico archivo legible, pero el bot
+  actualiza datos estructurados fiables, no texto libre parseado
