@@ -62,3 +62,8 @@ Si se añade un documento nuevo relevante a docs/ecosistema/ o
 docs/estandares/, hay que añadirlo a la lista ARCHIVOS dentro del
 propio script. No se detecta automáticamente — es intencional, para
 no volcar contenido irrelevante sin revisión.
+
+## auditoria-repo.py
+Audita que los enlaces relativos en Markdown (docs/, AGENTS.md, CONTEXT.md)
+apuntan a archivos reales. Excluye docs/_archivo/. No modifica nada.
+Uso: python scripts/auditoria-repo.py
