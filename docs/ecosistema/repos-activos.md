@@ -1,6 +1,6 @@
 # Repos activos
 
-Última revisión: 2026-08-21
+Última revisión: 2026-08-22
 
 | Repo | Propósito |
 |---|---|
@@ -13,8 +13,7 @@
 | impresion-3d | Proyecto impresora 3D, independiente |
 | alvarofernandezmota-tech | README de perfil |
 
-## Pendiente de decidir
-
-THDORA-PERSONAL ya cubre bot Telegram + Ollama. Decidir si se reutiliza
-para el proyecto de conectar midgaror/code-temple o si se crea bifrost
-aparte y THDORA-PERSONAL queda para otro ecosistema (THEA IA).
+## Actualizacion 2026-08-22
+midgaror ya tiene AGENTS.md, CONTEXT.md, docs/adr/ y
+scripts/validar-frontmatter.py propios. Decision de bifrost resuelta,
+ver docs/ecosistema/plan-bot.md.
