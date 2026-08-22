@@ -96,9 +96,7 @@ Para documentar nuevos cambios, usar el siguiente formato:
 
 ## 🔗 Links Útiles
 
-- [README Principal](README.md)
 - [Estado](estado.md)
-- [Issues](issues/)
 
 ---
 
@@ -153,8 +151,6 @@ Para documentar nuevos cambios, usar el siguiente formato:
 - 2026-09-12 (mensual)
 
 **Responsable:** @alvarofernandezmota-tech
-# Actualización manual
-# Actualización manual
 
 ## 2026-08-18
 

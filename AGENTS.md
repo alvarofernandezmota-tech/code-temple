@@ -1,4 +1,4 @@
-# AGENT.md — reglas para trabajar en este repo
+# AGENTS.md — reglas para trabajar en este repo
 
 ## Antes de cualquier cambio en docs/infra/madre
 - Correr docs/infra/madre/auditoria/revisar-madre.sh y verificar con
@@ -13,6 +13,7 @@
 - docs/infra/ — estado real de servidores (madre, futuro acer)
 - docs/sesiones/ — diario de trabajo, uno por día
 - docs/ecosistema/ — mapa de repos y plan del bot bifrost
+- scripts/ — automatizacion y auditoria del propio repo (generar-contexto.py, auditoria-repo.py)
 - docs/estandares/ — convenciones compartidas (frontmatter YAML)
 
 ## Arquitectura bifrost (cuando exista)

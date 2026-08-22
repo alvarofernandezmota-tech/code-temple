@@ -1,5 +1,8 @@
 # Pendiente para la próxima sesión
 
+> **Estado: RESUELTO 2026-08-22.** Los 3 puntos de abajo se completaron
+> en la sesion de hoy. Ver docs/sesiones/2026/08-agosto/2026-08-22.md.
+
 Última sesión: 2026-08-21
 
 ## 1. Auditar todo lo hecho hoy
@@ -7,15 +10,15 @@
 - Revisar que docs/ecosistema/ y docs/estandares/ siguen reflejando la realidad
 - Confirmar que docs/sesiones/2026/08-agosto/2026-08-21.md quedó completo
 
-## 2. Crear AGENT.md y CONTEXT.md en code-temple
-Siguiendo el patrón de THDORA-PERSONAL (AGENT.md con reglas, CONTEXT.md
+## 2. Crear AGENTS.md y CONTEXT.md en code-temple
+Siguiendo el patrón de THDORA-PERSONAL (AGENTS.md con reglas, CONTEXT.md
 con resumen de 30 segundos). Contenido ya redactado, pendiente de crear
 los archivos y commitear:
-- AGENT.md: reglas de esta base de código (auditoría antes de tocar
+- AGENTS.md: reglas de esta base de código (auditoría antes de tocar
   infra/madre, formato de commits, arquitectura bifrost, lista de
   "nunca hacer")
 - CONTEXT.md: qué es code-temple, sustituto de yggdrasil-dew, puntero
-  a docs/ecosistema/README.md y AGENT.md
+  a docs/ecosistema/README.md y AGENTS.md
 
 ## 3. Documentar fuente de verdad por repo (si no se hizo ya)
 docs/ecosistema/fuente-de-verdad.md — midgaror=personal,

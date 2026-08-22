@@ -8,6 +8,11 @@ Detectado solape con THDORA-PERSONAL, local-brain y ollama-stack.
 Revisar THDORA-PERSONAL (código + issues) antes de crear repo nuevo.
 Decidir: reutilizar o crear bifrost desde cero.
 
+**Resuelto (2026-08-21/22):** se reaprovecha el patron de documentacion
+de THDORA-PERSONAL (AGENTS.md/CONTEXT.md), pero bifrost se construye
+desde cero porque la regla de arquitectura (interfaz pura, sin logica)
+no encaja con reciclar el codigo existente de THDORA-PERSONAL.
+
 ## Fase 2 — Bot conector (bifrost o adaptación de THDORA-PERSONAL)
 Telegram + PyGithub, comando /hoy para escribir en midgaror y code-temple.
 Correr como servicio systemd en Madre, sin Docker de momento.
