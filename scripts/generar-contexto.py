@@ -1,7 +1,8 @@
 """
 Genera un volcado de contexto del repo: concatena AGENTS.md, CONTEXT.md
-y los README de docs/ecosistema y docs/estandares en un solo bloque de
-texto, listo para pegar en una sesion de IA o indexar con Mimir/Ollama.
+y los documentos clave de docs/ecosistema y docs/estandares en un solo
+bloque de texto, listo para pegar en una sesion de IA o indexar con
+Mimir/Ollama.
 
 Uso: python scripts/generar-contexto.py > /tmp/contexto-code-temple.txt
 """
