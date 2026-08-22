@@ -1,5 +1,5 @@
 ---
-tipo: infra
+tipo: procedimiento
 fecha: 2026-08-22
 repo: code-temple
 etiquetas: [procedimiento]

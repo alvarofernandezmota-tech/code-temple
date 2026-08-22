@@ -15,9 +15,10 @@
 - docs/ecosistema/ — mapa de repos y plan del bot bifrost
 - scripts/ — automatizacion y auditoria del propio repo (generar-contexto.py, auditoria-repo.py)
 - docs/estandares/ — convenciones compartidas (frontmatter YAML)
+- docs/procedimientos/ — checklists paso a paso para tareas recurrentes
 
 ## Regla de mantenimiento
-Cuando se cree o modifique un archivo en docs/ecosistema/, docs/adr/
+Cuando se cree o modifique un archivo en docs/ecosistema/, docs/adr/, docs/procedimientos/
 o docs/estandares/, actualizar tambien scripts/generar-contexto.py
 (lista ARCHIVOS) en el mismo commit. El volcado de contexto no puede
 quedarse desactualizado.

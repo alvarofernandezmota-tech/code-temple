@@ -20,6 +20,8 @@ ARCHIVOS = [
     "docs/ecosistema/pendiente-proxima-sesion.md",
     "docs/estandares/frontmatter.md",
     "docs/adr/001-bifrost-desde-cero.md",
+    "docs/procedimientos/cierre-sesion.md",
+    "docs/adr/002-regla-enganche-cuadruple.md",
 ]
 
 def main():

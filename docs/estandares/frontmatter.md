@@ -6,7 +6,7 @@ relacionar el contenido entre repos.
 
 ## Campos obligatorios
 
-- tipo: uno de [diario, sesion, infra, decision, auditoria]
+- tipo: uno de [diario, sesion, infra, decision, auditoria, ecosistema, procedimiento]
 - fecha: formato AAAA-MM-DD
 - repo: uno de [midgaror, code-temple, bifrost, heimdall, mimir]
 
