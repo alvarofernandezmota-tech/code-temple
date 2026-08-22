@@ -16,6 +16,12 @@
 - scripts/ — automatizacion y auditoria del propio repo (generar-contexto.py, auditoria-repo.py)
 - docs/estandares/ — convenciones compartidas (frontmatter YAML)
 
+## Regla de mantenimiento
+Cuando se cree o modifique un archivo en docs/ecosistema/, docs/adr/
+o docs/estandares/, actualizar tambien scripts/generar-contexto.py
+(lista ARCHIVOS) en el mismo commit. El volcado de contexto no puede
+quedarse desactualizado.
+
 ## Arquitectura bifrost (cuando exista)
 - Bifrost es solo interfaz, nunca lógica
 - Toda función nueva se prueba primero en midgaror antes de exponerla

@@ -16,7 +16,10 @@ ARCHIVOS = [
     "docs/ecosistema/README.md",
     "docs/ecosistema/fuente-de-verdad.md",
     "docs/ecosistema/plan-bot.md",
+    "docs/ecosistema/vision.md",
+    "docs/ecosistema/pendiente-proxima-sesion.md",
     "docs/estandares/frontmatter.md",
+    "docs/adr/001-bifrost-desde-cero.md",
 ]
 
 def main():
