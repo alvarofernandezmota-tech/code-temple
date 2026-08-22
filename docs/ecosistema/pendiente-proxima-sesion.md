@@ -39,6 +39,7 @@ No se empieza nada de la lista 2-4 sin repasar primero el punto 1
 (auditoría de lo ya hecho).
 
 ## Ampliacion futura del formatter en midgaror (no en esta sesion)
+**Pertenece a: midgaror + bifrost (bot), no a code-temple.**
 diario/personal/ ya tiene su script (diario.py, parcheado con frontmatter
 el 2026-08-22) y es lo unico probado hasta ahora.
 
@@ -55,6 +56,7 @@ Pendiente para cuando se retome:
   aplicado a habitos y tareas dentro de midgaror
 
 ## Diseño futuro: diario unificado con tablas de habitos/tareas/horario
+**Pertenece a: midgaror + bifrost (bot), no a code-temple.**
 Decision pendiente: el diario de cada dia (diario/personal/AAAA-MM-DD.md)
 deberia mostrar 3 tablas (habitos, tareas, horario del dia) ademas del
 texto libre de siempre.
