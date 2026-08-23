@@ -23,6 +23,7 @@ ARCHIVOS = [
     "docs/estandares/frontmatter.md",
     "docs/adr/001-bifrost-desde-cero.md",
     "docs/procedimientos/cierre-sesion.md",
+    "docs/procedimientos/inicio-sesion.md",
     "docs/adr/002-regla-enganche-cuadruple.md",
     "docs/adr/003-orden-rollout-formatter.md",
 ]
