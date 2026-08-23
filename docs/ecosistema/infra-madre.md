@@ -1,51 +1,70 @@
 # Infra-madre — Mapa físico del ecosistema
 
-## Estructura de carpetas en el servidor
+## Separación Trabajo / Personal
+
+| Ámbito | Repos | Ruta local | Propósito |
+|--------|-------|-----------|-----------|
+| **Personal** | `midgaror`, `bifrost`, `impresion-3d` | `~/GitHub/personal/` | Diario, hábitos, vida privada, hobbies |
+| **Trabajo** | `code-temple`, `thea-ia`, `ai-toolkit`, `THDORA-PERSONAL`, `image-calculator` | `~/GitHub/trabajo/` | Infraestructura técnica, proyectos IA, bots, portfolio |
+
+## Estructura completa de carpetas
 
 /home/varopc/GitHub/
 ├── personal/
-│ ├── code-temple/ # code-temple (GitHub: alvarofernandezmota-tech/code-temple)
-│ │ └── docs/
-│ │ ├── ecosistema/ # Documentación de infraestructura
-│ │ │ ├── repos-activos.md # Lista de repos en GitHub
-│ │ │ ├── infra-madre.md # Este archivo — mapa físico
-│ │ │ └── fuente-de-verdad.md # Qué repo es la fuente de verdad para cada cosa
-│ │ └── sesiones/ # Diario de trabajo
-│ └── midgaror/ # midgaror (GitHub: alvarofernandezmota-tech/midgaror)
-│ └── diario/
-│ ├── diario.py # Función escribir_entrada() usada por bifrost
-│ ├── tareas/ # tareas.py + datos/
-│ ├── habitos/ # habitos.py + datos/
-│ ├── personal/ # Entradas del diario (AAAA/MM-mes/AAAA-MM-DD.md)
-│ └── bifrost/ # bifrost local (GitHub: alvarofernandezmota-tech/bifrost)
-│ ├── AGENTS.md
-│ ├── CONTEXT.md
-│ └── README.md
-
-/home/varopc/GitHub/trabajo/
-├── code-temple/ # code-temple (otra copia local, en servidor de trabajo)
-├── theodora/ # THDORA-PERSONAL (GitHub)
-├── yggdrasil-dew/ # yggdrasil-dew (GitHub, archivado)
-└── ... # Futuros repos de trabajo (thea-ia, ai-toolkit, etc. — aún no clonados)
+│ ├── midgaror/
+│ │ └── diario/
+│ │ ├── diario.py # Función escribir_entrada()
+│ │ ├── tareas/
+│ │ ├── habitos/
+│ │ ├── personal/ # Entradas del diario
+│ │ └── bifrost/ # Bot Telegram (Fase 2a)
+│ └── impresion-3d/
+└── trabajo/
+├── code-temple/ # Documentación del ecosistema
+├── theodora/ # THDORA-PERSONAL (bot Telegram antiguo)
+└── yggdrasil-dew/ # (archivado)
 
 text
 
+## Cómo acceder a cada componente (comandos rápidos)
+
+### Personal
+
+```bash
+# Diario personal
+cd ~/GitHub/personal/midgaror/diario
+python diario.py hoy                    # Crear/abrir entrada de hoy
+python diario.py escribir "texto"       # Añadir texto sin editor (usa bifrost)
+python diario.py listar                 # Ver últimas entradas
+
+# Bifrost (bot Telegram)
+cd ~/GitHub/personal/midgaror/diario/bifrost
+# (aquí irá el código del bot cuando se implemente)
+```
+
+### Trabajo
+
+```bash
+# code-temple (documentación)
+cd ~/GitHub/trabajo/code-temple
+cd docs/sesiones/                       # Diario de trabajo
+cd docs/ecosistema/                     # Infraestructura
+
+# THDORA-PERSONAL (bot Telegram antiguo)
+cd ~/GitHub/trabajo/theodora/
+```
+
 ## Dependencias entre componentes
 
-| Componente | Ruta local | Repo GitHub | Depende de |
-|------------|-----------|-------------|------------|
-| `diario.py` | `~/GitHub/personal/midgaror/diario/diario.py` | `midgaror` | — |
-| `bifrost` (bot) | `~/GitHub/personal/midgaror/diario/bifrost/` | `bifrost` | `diario.py` |
-| `code-temple` (docs) | `~/GitHub/personal/code-temple/` | `code-temple` | — |
+| Componente | Ruta local | Repo GitHub | Ámbito | Depende de |
+|------------|-----------|-------------|--------|------------|
+| `diario.py` | `~/GitHub/personal/midgaror/diario/diario.py` | `midgaror` | Personal | — |
+| `bifrost` | `~/GitHub/personal/midgaror/diario/bifrost/` | `bifrost` | Personal | `diario.py` |
+| `code-temple` | `~/GitHub/trabajo/code-temple/` | `code-temple` | Trabajo | — |
 
-## Reglas de ubicación
+## Documentación en cada repo
 
-1. **Repos personales** (midgaror, bifrost) → `~/GitHub/personal/`
-2. **Repos de trabajo** (thea-ia, ai-toolkit, THDORA-PERSONAL, etc.) → `~/GitHub/trabajo/` (clonar cuando se necesiten)
-3. **Documentación del ecosistema** → siempre en `code-temple/docs/ecosistema/`
-
-## Estado actual
-
-- [x] bifrost clonado en `~/GitHub/personal/midgaror/diario/bifrost/`
-- [ ] bifrost en `~/GitHub/trabajo/bifrost/` (mover cuando se decida separación total)
-- [ ] Repos de trabajo clonados en `~/GitHub/trabajo/` (thea-ia, ai-toolkit, image-calculator, THDORA-PERSONAL)
+Cada repo debe tener en su `README.md` o `CONTEXT.md`:
+1. **Ruta local** donde vive en este servidor.
+2. **Ámbito** (trabajo o personal).
+3. **Comandos básicos** para acceder y usar sus funciones principales.
