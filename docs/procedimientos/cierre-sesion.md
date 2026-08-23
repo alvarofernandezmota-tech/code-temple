@@ -28,3 +28,16 @@ con `cat > archivo << EOF` que sobrescribe todo el archivo. Esto ya
 causo la perdida de la linea "COMIENZO A LAS 17 HORAS" del diario
 del 2026-08-22 al rellenar la plantilla vacia con overwrite completo.
 `cat >` solo se usa para crear un archivo nuevo que no existia antes.
+
+## Registro de tiempo
+Al final de cada sesión, añadir en el archivo de sesión:
+
+```markdown
+## Tiempo invertido
+- **Inicio:** HH:MM CEST
+- **Fin:** HH:MM CEST
+- **Total:** ~X minutos
+- **Dedicación:** Alta/Media/Baja (codificación, documentación, infraestructura, etc.)
+```
+
+Esto permite revisar después cuánto tiempo se invirtió en cada sesión y en qué tipo de trabajo.
