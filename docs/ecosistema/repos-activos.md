@@ -1,19 +1,20 @@
-# Repos activos
+## Repos activos del ecosistema (agosto 2026)
 
-Última revisión: 2026-08-22
+### Trabajo (infraestructura, código, decisiones)
 
-| Repo | Propósito |
-|---|---|
-| midgaror | Diario y gestión personal |
-| code-temple | Base técnica del ecosistema, sustituto de yggdrasil-dew |
-| thea-ia | Proyecto IA (pendiente de revisar contenido) |
-| ai-toolkit | Stack IA local: Claude Code + OpenRouter + Ollama + n8n |
-| THDORA-PERSONAL | Bot Telegram + FastAPI + Ollama local, 10 issues abiertas |
-| image-calculator | App OCR, independiente |
-| impresion-3d | Proyecto impresora 3D, independiente |
-| alvarofernandezmota-tech | README de perfil |
+| Repo | Descripción |
+|------|-------------|
+| `code-temple` | Base técnica limpia del ecosistema — infra, decisiones y código |
+| `thea-ia` | Proyecto IA en Python, activo |
+| `THDORA-PERSONAL` | Bot Telegram + FastAPI + Ollama local (precedente de bifrost, no se reutiliza por ADR-001) |
+| `ai-toolkit` | Stack IA open source (Claude Code, Ollama, n8n) |
+| `image-calculator` | App Python con OCR, portfolio técnico |
+| `bifrost` | Bot Telegram para diario personal (Fase 2a, conecta con midgaror/diario.py) |
 
-## Actualizacion 2026-08-22
-midgaror ya tiene AGENTS.md, CONTEXT.md, docs/adr/ y
-scripts/validar-frontmatter.py propios. Decision de bifrost resuelta,
-ver docs/ecosistema/plan-bot.md.
+### Personal (diario, hobbies, vida)
+
+| Repo | Descripción |
+|------|-------------|
+| `midgaror` | Diario personal, finanzas, gimnasio, salud, ideas |
+| `impresion-3d` | Proyecto de impresión 3D, diarios de sesión |
+| `alvarofernandezmota-tech` | Profile README de GitHub |
