@@ -14,12 +14,19 @@
 │ └── midgaror/ # midgaror (GitHub: alvarofernandezmota-tech/midgaror)
 │ └── diario/
 │ ├── diario.py # Función escribir_entrada() usada por bifrost
-│ └── personal/ # Entradas del diario (YYYY/MM-mes/YYYY-MM-DD.md)
+│ ├── tareas/ # tareas.py + datos/
+│ ├── habitos/ # habitos.py + datos/
+│ ├── personal/ # Entradas del diario (AAAA/MM-mes/AAAA-MM-DD.md)
 │ └── bifrost/ # bifrost local (GitHub: alvarofernandezmota-tech/bifrost)
 │ ├── AGENTS.md
 │ ├── CONTEXT.md
 │ └── README.md
-└── work/ # NO EXISTE aún — futuro espacio para repos de trabajo
+
+/home/varopc/GitHub/trabajo/
+├── code-temple/ # code-temple (otra copia local, en servidor de trabajo)
+├── theodora/ # THDORA-PERSONAL (GitHub)
+├── yggdrasil-dew/ # yggdrasil-dew (GitHub, archivado)
+└── ... # Futuros repos de trabajo (thea-ia, ai-toolkit, etc. — aún no clonados)
 
 text
 
@@ -34,11 +41,11 @@ text
 ## Reglas de ubicación
 
 1. **Repos personales** (midgaror, bifrost) → `~/GitHub/personal/`
-2. **Repos de trabajo** (thea-ia, ai-toolkit, etc.) → `~/GitHub/work/` (crear cuando exista el primer repo de trabajo)
+2. **Repos de trabajo** (thea-ia, ai-toolkit, THDORA-PERSONAL, etc.) → `~/GitHub/trabajo/` (clonar cuando se necesiten)
 3. **Documentación del ecosistema** → siempre en `code-temple/docs/ecosistema/`
 
-## Próximos pasos
+## Estado actual
 
-- [ ] Crear `~/GitHub/work/` y mover repos de trabajo allí (thea-ia, ai-toolkit, image-calculator, THDORA-PERSONAL).
-- [ ] Clonar bifrost en `~/GitHub/work/bifrost/` (ubicación definitiva, separada de midgaror).
-- [ ] Actualizar bifrost para que llame a `../midgaror/diario/diario.py` desde su nueva ubicación.
+- [x] bifrost clonado en `~/GitHub/personal/midgaror/diario/bifrost/`
+- [ ] bifrost en `~/GitHub/trabajo/bifrost/` (mover cuando se decida separación total)
+- [ ] Repos de trabajo clonados en `~/GitHub/trabajo/` (thea-ia, ai-toolkit, image-calculator, THDORA-PERSONAL)
