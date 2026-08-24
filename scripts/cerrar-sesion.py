@@ -12,7 +12,6 @@ Uso:
 import subprocess
 import sys
 from datetime import datetime
-import re
 
 def get_commits_today(fecha):
     """Obtener commits de hoy (o fecha especificada)."""
