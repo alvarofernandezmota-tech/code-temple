@@ -13,10 +13,10 @@
 - docs/infra/ — estado real de servidores (madre, futuro acer)
 - docs/sesiones/ — diario de trabajo, uno por día
 - docs/ecosistema/ — mapa de repos y plan del bot bifrost
-- scripts/ — automatización (generar-contexto.py, generar-estructura.py, auditoria-repo.py, cerrar-sesion.py, nueva_sesion.py)
+- scripts/ — automatización (auditoria-repo, generar-contexto, actualizar-agents-context, generar-estructura, nueva_sesion)
 - docs/estandares/ — convenciones compartidas (frontmatter YAML)
 - docs/procedimientos/ — checklists paso a paso para tareas recurrentes
-- docs/adr/ — decisiones de arquitectura (001-005)
+- docs/adr/ — decisiones de arquitectura (5 ADRs: 001-bifrost-desde-cero.md, 002-regla-enganche-cuadruple.md, 003-orden-rollout-formatter.md, 004-convencion-scripts-procedimientos.md, 005-plan-maestro-ecosistema.md)
 
 ## Regla de mantenimiento
 Cuando se cree o modifique un archivo en docs/ecosistema/, docs/adr/, docs/procedimientos/
