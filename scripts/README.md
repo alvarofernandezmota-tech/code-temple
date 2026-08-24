@@ -1,24 +1,50 @@
-# Scripts de sesiones
+# Scripts
 
-## nueva_sesion.py
+Automatizaciones de procedimientos. Convención: cada script 1:1 con un procedimiento en `docs/procedimientos/`.
 
-Crea el archivo de una sesion nueva directamente en docs/sesiones/AAAA/MM-mes/,
-con la fecha de hoy y una plantilla minima (Objetivo, Contexto, Decisiones,
-Cierre), y lo abre en el editor para que escribas al momento.
+## Estructura
 
-python3 docs/sesiones/scripts/nueva_sesion.py "nombre-corto-sesion"
+scripts/
+├── README.md
+├── auditoria-repo.py ← procedimiento: docs/procedimientos/auditoria-repo.md
+├── cerrar-sesion.py ← procedimiento: docs/procedimientos/cierre-sesion.md
+├── generar-contexto.py ← procedimiento: docs/procedimientos/generar-contexto.md
+└── nueva_sesion.py ← procedimiento: docs/procedimientos/nueva-sesion.md (pendiente)
 
-Ejemplo:
+text
 
-python3 docs/sesiones/scripts/nueva_sesion.py "reorganizacion-madre"
+## Scripts
 
-Crea: docs/sesiones/2026/08-agosto/2026-08-18-reorganizacion-madre.md, y lo
-abre directamente en `$EDITOR` (o `nano` si no tienes ninguno configurado).
+### auditoria-repo.py
+Auditoría automática del repo (enlaces rotos, frontmatter, estructura).
 
-## Modo "hoy"
+```bash
+python3 scripts/auditoria-repo.py
+```
 
-python3 docs/sesiones/scripts/nueva_sesion.py hoy
+### cerrar-sesion.py
+Genera cierre automático de sesión (commits, issues, ADRs del día).
 
-Crea (o si ya existe, abre directamente) la sesión del día en curso, sin
-necesidad de darle un nombre corto. Equivalente a `python diario.py hoy` en
-midgaror.
+```bash
+python3 scripts/cerrar-sesion.py [--fecha YYYY-MM-DD]
+```
+
+### generar-contexto.py
+Volcado de contexto completo a IA (todos los archivos críticos del repo).
+
+```bash
+python3 scripts/generar-contexto.py
+```
+
+### nueva_sesion.py
+Crea archivo de sesión nueva en `docs/sesiones/YYYY/MM-mes/`.
+
+```bash
+python3 scripts/nueva_sesion.py "nombre-corto"
+python3 scripts/nueva_sesion.py hoy
+```
+
+## Relacionado con
+
+- [docs/procedimientos/README.md](../docs/procedimientos/README.md) — procedimientos 1:1 con scripts
+- [docs/adr/004-convencion-scripts-procedimientos.md](../docs/adr/004-convencion-scripts-procedimientos.md) — ADR de convención
