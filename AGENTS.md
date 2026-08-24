@@ -13,9 +13,10 @@
 - docs/infra/ — estado real de servidores (madre, futuro acer)
 - docs/sesiones/ — diario de trabajo, uno por día
 - docs/ecosistema/ — mapa de repos y plan del bot bifrost
-- scripts/ — automatizacion y auditoria del propio repo (generar-contexto.py, auditoria-repo.py)
+- scripts/ — automatización (generar-contexto.py, generar-estructura.py, auditoria-repo.py, cerrar-sesion.py, nueva_sesion.py)
 - docs/estandares/ — convenciones compartidas (frontmatter YAML)
 - docs/procedimientos/ — checklists paso a paso para tareas recurrentes
+- docs/adr/ — decisiones de arquitectura (001-005)
 
 ## Regla de mantenimiento
 Cuando se cree o modifique un archivo en docs/ecosistema/, docs/adr/, docs/procedimientos/
