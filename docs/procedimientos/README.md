@@ -7,9 +7,11 @@ el script vive en `scripts/[nombre].py` con el MISMO nombre base.
 
 docs/procedimientos/
 ├── README.md
+├── actualizar-agents-context.md ← script: scripts/actualizar-agents-context.py
 ├── auditoria-repo.md ← script: scripts/auditoria-repo.py
 ├── cierre-sesion.md ← script: scripts/cerrar-sesion.py
 ├── generar-contexto.md ← script: scripts/generar-contexto.py
+├── generar-estructura.md ← script: scripts/generar-estructura.py (pendiente)
 ├── inicio-sesion.md
 ├── mantenimiento-documentacion.md
 ├── nueva-sesion.md ← script: scripts/nueva_sesion.py
@@ -22,6 +24,7 @@ text
 ## Índice
 
 ### Procedimientos con script (1:1)
+- [actualizar-agents-context.md](actualizar-agents-context.md) — actualizar AGENTS.md y CONTEXT.md → `scripts/actualizar-agents-context.py`
 - [auditoria-repo.md](auditoria-repo.md) — auditoría del repo → `scripts/auditoria-repo.py`
 - [cierre-sesion.md](cierre-sesion.md) — cierre automático de sesión → `scripts/cerrar-sesion.py`
 - [generar-contexto.md](generar-contexto.md) — volcado de contexto → `scripts/generar-contexto.py`
