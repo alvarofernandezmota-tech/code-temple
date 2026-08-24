@@ -88,3 +88,14 @@ revisará en un issue propio de `midgaror`.
 La infraestructura documental base de Madre queda sincronizada y publicada en
 `code-temple`. La siguiente conversación puede comenzar desde los issues y
 tareas pendientes sin repetir la auditoría inicial.
+
+---
+
+**Fin de sesión 2026-08-12-infra-madre-auditoria**
+
+- **Primer commit:** 5c9eb82 (2026-08-12 16:29)
+- **Último commit:** c5f1a30 (2026-08-12 21:21)
+- **Horas de trabajo:** 4 horas 52 minutos
+- **Autor:** +0200 Álvaro Fernández Mota docs: corregir estructura.md — code-temple vive en trabajo/, no en
+- **Total commits:** 78
+- **Última actualización:** 2026-08-24 18:47 CEST
