@@ -14,7 +14,8 @@ docs/adr/
 ├── 001-bifrost-desde-cero.md
 ├── 002-regla-enganche-cuadruple.md
 ├── 003-orden-rollout-formatter.md
-└── 004-convencion-scripts-procedimientos.md
+├── 004-convencion-scripts-procedimientos.md
+└── 005-plan-maestro-ecosistema.md
 
 ## Índice
 
@@ -22,10 +23,11 @@ docs/adr/
 - [002-regla-enganche-cuadruple.md](002-regla-enganche-cuadruple.md) — regla para carpetas nuevas en docs/: README + índice + 3 docs mínimos + frontmatter
 - [003-orden-rollout-formatter.md](003-orden-rollout-formatter.md) — orden de despliegue del validador de frontmatter: bifrost → midgaror → code-temple
 - [004-convencion-scripts-procedimientos.md](004-convencion-scripts-procedimientos.md) — convención scripts + procedimientos por repo (1:1 entre script y doc)
+- [005-plan-maestro-ecosistema.md](005-plan-maestro-ecosistema.md) — plan maestro que relaciona code-temple, midgaror, bifrost (fases de rollout, dependencias)
 
 ## Relacionado con
 
 - [docs/procedimientos/plantilla-repo.md](../procedimientos/plantilla-repo.md) — estructura mínima de repos (aplica ADR-004)
-- [docs/ecosistema/plan-bot.md](../ecosistema/plan-bot.md) — plan que implementa ADR-001 (bifrost)
+- [docs/ecosistema/plan-bot.md](../ecosistema/plan-bot.md) — plan específico del bot (implementa ADR-005)
 - [docs/estandares/frontmatter.md](../estandares/frontmatter.md) — estándar que implementa ADR-003
 - [docs/procedimientos/plantilla-readme.md](../procedimientos/plantilla-readme.md) — plantilla usada para este README
