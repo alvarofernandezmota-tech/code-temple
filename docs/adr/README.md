@@ -12,4 +12,4 @@ que referencia al anterior como "supersedido").
 - [001-bifrost-desde-cero.md](001-bifrost-desde-cero.md)
 - [002-regla-enganche-cuadruple.md](002-regla-enganche-cuadruple.md)
 - [003-orden-rollout-formatter.md](003-orden-rollout-formatter.md)
-- [004-estructura-documentacion.md](004-estructura-documentacion.md)
+- [004-convencion-scripts-procedimientos.md](004-convencion-scripts-procedimientos.md)

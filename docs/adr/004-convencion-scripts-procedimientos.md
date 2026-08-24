@@ -1,4 +1,4 @@
-# ADR-002: Convención scripts + procedimientos por repo
+# ADR-004: Convención scripts + procedimientos por repo
 
 ## Estado
 Aceptado
