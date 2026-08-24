@@ -1,2 +1,0 @@
-=== INFO ===
-bash: [comando]: orden no encontrada
