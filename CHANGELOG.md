@@ -53,3 +53,9 @@ e9cabdf Consolida infra madre: solo README, estado, cambios, sistema, software y
 ### Estado final
 - ✅ code-temple listo para usar como base de bifrost
 - ✅ Plantilla lista para migrar a midgaror
+
+### Mejoras de contexto y automatización (Bloque 7)
+- Creado `scripts/actualizar-agents-context.py` — actualiza AGENTS.md y CONTEXT.md automáticamente
+- Creado `docs/procedimientos/actualizar-agents-context.md` — procedimiento 1:1
+- Actualizados `inicio-sesion.md` y `cierre-sesion.md` — incluyen paso de actualizar AGENTS/CONTEXT
+- Actualizados `scripts/README.md` y `docs/procedimientos/README.md` — nuevos scripts/procedimientos
