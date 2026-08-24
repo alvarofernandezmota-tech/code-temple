@@ -26,3 +26,30 @@ e9cabdf Consolida infra madre: solo README, estado, cambios, sistema, software y
 61686bf chore(changelog): Actualizar automáticamente
 368ca55 Infra madre queda solo con documentación de qué corre en Madre; adr y python archivados/eliminados
 0cb4f94 chore(changelog): Actualizar automáticamente
+
+## [2026.08.24] - 2026-08-24
+
+### Sesión principal (Bloques 1-6)
+- 10 issues cerradas (#54, #53, #55, #52, #60, #57, #58, #59, #35, #34)
+- 5 ADRs completos (001-005)
+- 7 carpetas en docs/ con READMEs alineados
+- 25 commits en 6 bloques
+
+### Mejoras de contexto (Bloque 7)
+- Actualizado `generar-contexto.py` con todos los READMEs y ADRs (001-005)
+- Creado `generar-estructura.py` (describe automáticamente toda la estructura)
+- Actualizado `AGENTS.md` con scripts/ y estructura completa
+- Actualizado `CONTEXT.md` con estado actual y referencia a scripts
+- Actualizado `scripts/README.md` y `docs/procedimientos/README.md`
+- Creado procedimiento `nueva-sesion.md`
+
+### Scripts
+- `auditoria-repo.py` — auditoría del repo
+- `generar-contexto.py` — volcado de contexto completo (38 archivos)
+- `generar-estructura.py` — descripción automática de estructura
+- `cerrar-sesion.py` — cierre automático de sesión
+- `nueva_sesion.py` — crear sesión nueva
+
+### Estado final
+- ✅ code-temple listo para usar como base de bifrost
+- ✅ Plantilla lista para migrar a midgaror
