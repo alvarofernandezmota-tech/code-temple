@@ -1,6 +1,6 @@
 # Scripts
 
-Automatizaciones de procedimientos. Convención: cada script 1:1 con un procedimiento en `docs/procedimientos/`.
+Scripts de automatización de procedimientos de code-temple. Cada script tiene un procedimiento 1:1 en docs/procedimientos/. Convención: cada script 1:1 con un procedimiento en `docs/procedimientos/`.
 
 ## Estructura
 
