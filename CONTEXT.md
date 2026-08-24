@@ -21,6 +21,6 @@ yggdrasil-dew (archivado). Aquí vive:
 ## Estado actual (2026-08-24)
 - ✅ 5 ADRs completos (001-bifrost-desde-cero.md, 002-regla-enganche-cuadruple.md, 003-orden-rollout-formatter.md, 004-convencion-scripts-procedimientos.md, 005-plan-maestro-ecosistema.md)
 - ✅ 7 carpetas en docs/ con READMEs alineados
-- ✅ 6 scripts automatizados (auditoria-repo, generar-contexto, actualizar-agents-context, generar-estructura, nueva_sesion, cerrar-sesion)
+- ✅ 12 scripts automatizados (auditoria-repo, generar-contexto, actualizar-agents-context, actualizar-changelog, auditoria-enlaces, actualizar-readmes, cierre-completo, auditoria-duplicados, generar-estructura, nueva_sesion, cerrar-sesion, auditoria-frontmatter)
 - ✅ Procedimientos 1:1 con scripts
 - ✅ Lista para migrar plantilla a bifrost/midgaror
