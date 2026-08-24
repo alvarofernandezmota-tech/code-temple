@@ -6,16 +6,20 @@ Scripts de automatización de procedimientos de code-temple. Cada script tiene u
 
 scripts/
 ├── README.md
-├── actualizar-agents-context.py ← procedimiento: docs/procedimientos/actualizar-agents-context.md
-├── auditoria-repo.py ← procedimiento: docs/procedimientos/auditoria-repo.md
-├── cerrar-sesion.py ← procedimiento: docs/procedimientos/cierre-sesion.md
-├── generar-contexto.py ← procedimiento: docs/procedimientos/generar-contexto.md
-├── generar-estructura.py ← procedimiento: docs/procedimientos/generar-estructura.md (pendiente)
-└── nueva_sesion.py ← procedimiento: docs/procedimientos/nueva-sesion.md
+├── actualizar-agents-context.py   ← docs/procedimientos/actualizar-agents-context.md
+├── actualizar-changelog.py        ← docs/procedimientos/actualizar-changelog.md (pendiente)
+├── actualizar-readmes.py          ← docs/procedimientos/actualizar-readmes.md (pendiente)
+├── auditoria-duplicados.py        ← docs/procedimientos/auditoria-duplicados.md (pendiente)
+├── auditoria-enlaces.py           ← docs/procedimientos/auditoria-enlaces.md (pendiente)
+├── auditoria-frontmatter.py       ← docs/procedimientos/auditoria-frontmatter.md (pendiente)
+├── auditoria-repo.py              ← docs/procedimientos/auditoria-repo.md
+├── cerrar-sesion.py               ← docs/procedimientos/cierre-sesion.md
+├── cierre-completo.py             ← docs/procedimientos/cierre-completo.md
+├── generar-contexto.py            ← docs/procedimientos/generar-contexto.md
+├── generar-estructura.py          ← docs/procedimientos/generar-estructura.md (pendiente)
+└── nueva_sesion.py                ← docs/procedimientos/nueva-sesion.md
 
-text
-
-## Scripts
+## Scripts de actualización
 
 ### actualizar-agents-context.py
 Actualiza automáticamente AGENTS.md y CONTEXT.md con la estructura actual.
@@ -24,18 +28,64 @@ Actualiza automáticamente AGENTS.md y CONTEXT.md con la estructura actual.
 python3 scripts/actualizar-agents-context.py
 ```
 
+### actualizar-changelog.py
+Añade entry automático al CHANGELOG.md con commits del día.
+
+```bash
+python3 scripts/actualizar-changelog.py [--fecha YYYY-MM-DD]
+```
+
+### actualizar-readmes.py
+Actualiza READMEs de carpetas en docs/ con estructura real.
+
+```bash
+python3 scripts/actualizar-readmes.py
+```
+
+## Scripts de auditoría
+
+### auditoria-duplicados.py
+Busca archivos duplicados o solapados.
+
+```bash
+python3 scripts/auditoria-duplicados.py
+```
+
+### auditoria-enlaces.py
+Verifica enlaces rotos en archivos .md.
+
+```bash
+python3 scripts/auditoria-enlaces.py
+```
+
+### auditoria-frontmatter.py
+Verifica frontmatter YAML en archivos .md.
+
+```bash
+python3 scripts/auditoria-frontmatter.py
+```
+
 ### auditoria-repo.py
-Auditoría automática del repo (enlaces rotos, frontmatter, estructura).
+Auditoría completa del repo (enlaces, frontmatter, estructura).
 
 ```bash
 python3 scripts/auditoria-repo.py
 ```
+
+## Scripts de sesión
 
 ### cerrar-sesion.py
 Genera cierre automático de sesión (commits, issues, ADRs del día).
 
 ```bash
 python3 scripts/cerrar-sesion.py [--fecha YYYY-MM-DD]
+```
+
+### cierre-completo.py
+Automatiza cierre completo (actualiza AGENTS/CONTEXT, CHANGELOG, genera resumen).
+
+```bash
+python3 scripts/cierre-completo.py [--fecha YYYY-MM-DD]
 ```
 
 ### generar-contexto.py
