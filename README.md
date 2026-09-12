@@ -166,6 +166,17 @@ Los mapas de campaña están en `tank_scrap/levels.py` como 13 filas de 13 carac
 (`#` ladrillo, `@` acero, `~` agua, `x` árboles, `-` hielo, `A` águila).
 Añadir una fase es añadir un bloque de texto.
 
+## Los números
+
+Todos los valores de juego viven en `tank_scrap/constants.py`, y
+[docs/diseno-numeros.md](docs/diseno-numeros.md) los recoge con su medición,
+su rango sano y qué se rompe fuera de él. Las mediciones las hace el propio
+juego:
+
+```bash
+SDL_VIDEODRIVER=dummy python3 scripts/medir_balance.py
+```
+
 ## Hoja de ruta
 
 Las decisiones abiertas (meta-progresión, salas especiales, dos jugadores,

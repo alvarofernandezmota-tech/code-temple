@@ -5,7 +5,7 @@ import pygame
 
 from . import sprites
 from .constants import (
-    BOSS_PX, BULLET_PX, PLAYER_FIRE_INTERVAL, DIR_VECTORS, DOWN, ENEMY_COLORS, ENEMY_FIRE_MAX, ENEMY_FIRE_MIN,
+    BOSS_PX, BULLET_PX, MULTI_BARREL_PENALTY, PLAYER_FIRE_INTERVAL, DIR_VECTORS, DOWN, ENEMY_COLORS, ENEMY_FIRE_MAX, ENEMY_FIRE_MIN,
     ENEMY_HUNT_CHANCE, ENEMY_TURN_CHANCE, FIELD_PX, LEFT, PLAYER_A, PLAYER_B,
     PLAYER_BULLET_SPEED, PLAYER_C, PLAYER_MAX_BULLETS, PLAYER_SPEED, RIGHT,
     SCRAP_LIFETIME, TANK_PX, TILE, UP,
@@ -110,6 +110,10 @@ class PlayerTank(Tank):
         self.scrap_bonus = 0
         self.supply = 0
         self.hurt_flash = 0.0
+
+    def reload_time(self):
+        """Recarga real: la base mas un 15% por cada canon extra."""
+        return self.fire_interval * (1 + MULTI_BARREL_PENALTY * (self.max_bullets - 1))
 
     def carry_over(self, other):
         """Copia el estado que sobrevive de una sala a la siguiente."""

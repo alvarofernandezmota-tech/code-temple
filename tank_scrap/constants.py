@@ -23,6 +23,10 @@ PLAYER_SPEED = 0.85
 PLAYER_BULLET_SPEED = 2.6
 PLAYER_MAX_BULLETS = 1
 PLAYER_FIRE_INTERVAL = 0.55     # cadencia base (la usa el disparo automatico)
+# Cada canon extra alarga la recarga un 15%: asi el dano crece sublinealmente.
+# Sin esto, 4 canones x cadencia x4 daban 19,7 impactos/s y cualquier oleada
+# tardia se limpiaba en menos de dos segundos.
+MULTI_BARREL_PENALTY = 0.15
 PLAYER_LIVES = 3
 PLAYER_SPAWN_SHIELD = 2.5             # segundos de invulnerabilidad al nacer
 
@@ -38,8 +42,16 @@ ENEMIES_ON_FIELD = 4                  # maximo simultaneo
 # gastas construyendo muro donde tu quieras: el escenario es tu arsenal.
 SCRAP_PER_BRICK = 1
 SCRAP_LIFETIME = 14.0                 # segundos antes de oxidarse y desaparecer
-COST_BRICK = 1
-COST_STEEL = 6
+# Los costes salen de una medicion, no del gusto: un mapa de campana ofrece
+# ~170 de chatarra y una sala de arena ~73, y un bot que no la busca acaba la
+# segunda sala con 46-79 en mano. Con ladrillo a 1 y acero a 6 la economia no
+# tenia tension: reponer el anillo del aguila costaba 8 de un presupuesto
+# practicamente infinito. Al doble, y con techo en mano, cada muro se paga.
+COST_BRICK = 2
+COST_STEEL = 10
+# Techo de chatarra encima: acumular deja de ser gratis y hay que gastar antes
+# de seguir. Lo que pasa del techo se pierde (el HUD lo avisa).
+SCRAP_CAP = 20
 BUILD_RANGE_TILES = 5                 # alcance del cursor de construccion
 BUILD_COOLDOWN = 0.12
 SCRAP_START = 4                       # con lo que arrancas cada partida
@@ -55,8 +67,12 @@ ARENA_MOVING_FIRE_PENALTY = 1.6
 # El jefe: 32x32 (4x4 subtiles), lento, muy duro, y suelta un monton de
 # chatarra al caer.
 BOSS_PX = 32
-BOSS_HP_BASE = 10
-BOSS_HP_PER_ROOM = 2
+# La vida del jefe tiene que crecer como crece el dano del jugador, que es
+# multiplicativo (canones x cadencia). Con 10 + 2 por ciclo, el jefe de la
+# sala 5 moria en 1,7 s con dos canones y cadencia x2. Ahora crece un 35% por
+# ciclo, que es el orden de lo que gana el jugador entre jefe y jefe.
+BOSS_HP_BASE = 18
+BOSS_HP_GROWTH = 1.35
 BOSS_SCRAP_DROP = 12
 
 # --- Puntuacion ------------------------------------------------------------

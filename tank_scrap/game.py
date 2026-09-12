@@ -14,7 +14,7 @@ from . import field as fld
 from . import levels, pixfont, sprites, storage
 from .constants import (
     ARENA_AUTOFIRE, ARENA_MANUAL_FIRE, ARENA_MOVING_FIRE_PENALTY,
-    ARENA_PLAYER_HP, BLACK, BOSS_PX, BOSS_SCRAP_DROP, BUILD_COOLDOWN, BUILD_RANGE_TILES, COST_BRICK,
+    ARENA_PLAYER_HP, BLACK, BOSS_PX, BOSS_SCRAP_DROP, SCRAP_CAP, BUILD_COOLDOWN, BUILD_RANGE_TILES, COST_BRICK,
     COST_STEEL, DIR_VECTORS, DOWN, ENEMIES_ON_FIELD, ENEMY_COLORS,
     ENEMY_SPAWN_DELAY, FIELD_PX, FIELD_TILES, FPS, GHOST_NO, GHOST_OK,
     GREY_FRAME, HUD_DIM, LEFT, MARGIN_PX, PLAYER_A, PLAYER_B, PLAYER_LIVES,
@@ -87,6 +87,10 @@ class Game:
         self.scrap_collected = 0
         self.scrap_spent = 0
         self.clear_delay = 0.0
+        # Los de arriba se reinician en cada fase o sala; estos cuentan la
+        # partida entera, que es lo que mide el balance de verdad.
+        self.run_collected = 0
+        self.run_wasted = 0
         self.quit = False
         self.hiscore = storage.load_hiscore()
         self.new_record = False
@@ -120,6 +124,8 @@ class Game:
         self.clear_delay = 0.0
         self.stage_score = 0
         if reset_run:
+            self.run_collected = 0
+            self.run_wasted = 0
             self.score = 0
             self.lives = 0 if self.mode == ARENA else PLAYER_LIVES
             self.scrap = SCRAP_START
@@ -128,7 +134,7 @@ class Game:
         keep = None if reset_run or self.mode != ARENA else self.player
         self._spawn_player(keep)
         if self.mode == ARENA and self.player.supply:
-            self.scrap += self.player.supply
+            self._gain_scrap(self.player.supply)
         self.build_mode = False
         self.state = INTRO
         self.state_timer = 0.0
@@ -179,7 +185,12 @@ class Game:
                                          arena.boss_hp(self.stage_index)))
         else:
             self.queue.pop()
-            self.enemies.append(EnemyTank(spot.x, spot.y, kind))
+            foe = EnemyTank(spot.x, spot.y, kind)
+            if self.mode == ARENA:
+                bonus = arena.enemy_hp_bonus(self.stage_index)
+                foe.hp += bonus
+                foe.max_hp += bonus
+            self.enemies.append(foe)
         self.explosions.append(Explosion(spot.centerx, spot.centery, big=True))
 
     # --- entrada ----------------------------------------------------------
@@ -310,14 +321,20 @@ class Game:
         self.build_cd = BUILD_COOLDOWN
 
     def _demolish(self):
+        """Recupera un muro propio. Si el material no te cabe encima, no lo
+        derriba: perder lo que recuperas seria destruir valor en silencio."""
         tx, ty = self.build_cursor
-        refund = self.field.demolish(tx, ty)
-        if refund:
-            self.scrap += refund
-            self.scrap_spent -= refund
-            self.build_cd = BUILD_COOLDOWN
-        else:
+        refund = self.field.refund_value(tx, ty)
+        if not refund:
             self._say("no es tuyo")
+            return
+        if self.scrap + refund > SCRAP_CAP:
+            self._say("no te cabe", 1.2)
+            return
+        self.field.demolish(tx, ty)
+        self._gain_scrap(refund)
+        self.scrap_spent -= refund
+        self.build_cd = BUILD_COOLDOWN
 
     def _player_fire(self, force=True, penalty=1.0):
         """Dispara si cabe otra bala y el canon esta cargado.
@@ -336,9 +353,22 @@ class Game:
         self.bullets.append(Bullet(mx, my, p.direction, p.bullet_speed, "player",
                                    pierce_brick=p.pierce_brick,
                                    bounces=p.bounces))
-        p.fire_cd = p.fire_interval * penalty
+        p.fire_cd = p.reload_time() * penalty
         self.sfx.play("disparo")
         return True
+
+    def _gain_scrap(self, amount):
+        """Suma chatarra respetando el techo. Devuelve lo que se perdio."""
+        room = max(0, SCRAP_CAP - self.scrap)
+        taken = min(amount, room)
+        self.scrap += taken
+        self.scrap_collected += taken
+        self.run_collected += taken
+        wasted = amount - taken
+        self.run_wasted += wasted
+        if wasted:
+            self._say("techo %d" % SCRAP_CAP, 1.0)
+        return wasted
 
     def _say(self, text, seconds=1.1):
         self.message = text
@@ -430,8 +460,7 @@ class Game:
                 continue
             if p.rect.colliderect(s.rect) or (p.magnet and reach.colliderect(s.rect)):
                 s.dead = True
-                self.scrap += s.amount
-                self.scrap_collected += s.amount
+                self._gain_scrap(s.amount)
                 self.sfx.play("chatarra")
 
     def _update_enemies(self, dt):
@@ -884,7 +913,7 @@ class Game:
             y += 9
             # barra de recarga: lleno = canon listo
             bar_w = 32
-            ready = 1.0 - min(1.0, p.fire_cd / max(0.01, p.fire_interval))
+            ready = 1.0 - min(1.0, p.fire_cd / max(0.01, p.reload_time()))
             pygame.draw.rect(s, (48, 48, 48), (px, y, bar_w, 3))
             pygame.draw.rect(s, (152, 216, 248) if ready >= 1.0 else (96, 128, 160),
                              (px, y, int(bar_w * ready), 3))
@@ -896,7 +925,10 @@ class Game:
                 s.blit(sprites.mini_tank(PLAYER_A, PLAYER_B), (px + i * 7, y))
             y += 12
 
-        y = self._panel_row(px, y, "CHATARRA", "%d" % self.scrap, (248, 216, 120),
+        tope = self.scrap >= SCRAP_CAP
+        y = self._panel_row(px, y, "CHATARRA",
+                            "%d%s" % (self.scrap, "!" if tope else ""),
+                            (248, 96, 96) if tope else (248, 216, 120),
                             label_color=(248, 216, 120))
         y = self._panel_row(px, y, "PUNTOS", "%d" % self.score, WHITE)
 

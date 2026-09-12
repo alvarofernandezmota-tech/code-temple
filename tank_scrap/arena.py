@@ -12,7 +12,7 @@ acabar la run se funde en puntos.
 import random
 
 BOSS_EVERY = 5           # cada 5 salas, una de jefe
-REROLL_COST = 3
+REROLL_COST = 5          # la mitad de un muro de acero: elegir cuesta
 SCRAP_TO_SCORE = 10      # cada chatarra sin gastar valen 10 puntos al final
 ROOM_CLEAR_SCORE = 300
 BOSS_CLEAR_SCORE = 1200
@@ -112,12 +112,18 @@ def room_roster(index, rng=None):
     return roster
 
 
-def boss_hp(index, base=None, per_room=None):
-    """Vida del jefe segun lo avanzada que este la run."""
-    from .constants import BOSS_HP_BASE, BOSS_HP_PER_ROOM
-    base = BOSS_HP_BASE if base is None else base
-    per_room = BOSS_HP_PER_ROOM if per_room is None else per_room
-    return base + per_room * (index // BOSS_EVERY)
+def boss_hp(index):
+    """Vida del jefe: crece un 35% por ciclo, como el dano del jugador."""
+    from .constants import BOSS_HP_BASE, BOSS_HP_GROWTH
+    return int(round(BOSS_HP_BASE * (BOSS_HP_GROWTH ** (index // BOSS_EVERY))))
+
+
+def enemy_hp_bonus(index):
+    """Vida extra de la escolta a partir de la sala 11, y otra vez en la 21.
+
+    Sin esto, la oleada tardia son 36 impactos: el contenido se consume mas
+    rapido de lo que crece."""
+    return index // 10
 
 
 # --- Mejoras ---------------------------------------------------------------
@@ -171,7 +177,9 @@ def _up_supply(g):
 
 UPGRADES = [
     ("canon", "DOBLE CANON", ("UNA BALA MAS", "EN VUELO"), 3, _up_cannon),
-    ("cadencia", "CADENCIA", ("DISPARAS UN", "22% MAS RAPIDO"), 4, _up_rate),
+    # 3 y no 4: el cuarto escalon bajaba el intervalo a 0,20 s y rompia la
+    # curva de dano junto a los canones.
+    ("cadencia", "CADENCIA", ("DISPARAS UN", "22% MAS RAPIDO"), 3, _up_rate),
     ("veloz", "BALA VELOZ", ("LA BALA VUELA", "MAS RAPIDO"), 3, _up_speed_bullet),
     ("blindaje", "BLINDAJE", ("+1 DE VIDA", "MAXIMA Y CURA 1"), 4, _up_armor),
     ("orugas", "ORUGAS", ("TE MUEVES", "MAS RAPIDO"), 3, _up_tracks),

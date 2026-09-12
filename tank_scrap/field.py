@@ -1,7 +1,8 @@
 """El campo de batalla: rejilla de subtiles, destruccion y construccion."""
 import pygame
 
-from .constants import FIELD_TILES, SCRAP_PER_BRICK, TILE
+from .constants import (
+    COST_BRICK, COST_STEEL, FIELD_TILES, SCRAP_PER_BRICK, TILE)
 from . import sprites
 
 EMPTY = "."
@@ -126,15 +127,28 @@ class Field:
         self.grid[ty][tx] = kind
         return True
 
+    def refund_value(self, tx, ty):
+        """Lo que devolveria recuperar este muro, sin tocarlo."""
+        kind = self.at(tx, ty)
+        if kind == BUILT_BRICK:
+            return COST_BRICK
+        if kind == BUILT_STEEL:
+            return COST_STEEL
+        return 0
+
     def demolish(self, tx, ty):
-        """Retira un muro propio y devuelve la chatarra que costo, o 0."""
+        """Retira un muro propio y devuelve lo que costo, o 0.
+
+        El reembolso sale de las constantes de coste a proposito: si suben los
+        precios y esto se queda con numeros a mano, recuperar un muro pasa a
+        ser un negocio o una estafa."""
         kind = self.at(tx, ty)
         if kind == BUILT_BRICK:
             self.grid[ty][tx] = EMPTY
-            return 1
+            return COST_BRICK
         if kind == BUILT_STEEL:
             self.grid[ty][tx] = EMPTY
-            return 6
+            return COST_STEEL
         return 0
 
     # --- dibujado ----------------------------------------------------------

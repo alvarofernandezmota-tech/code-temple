@@ -348,3 +348,83 @@ def test_el_juego_funciona_sin_tarjeta_de_sonido():
     assert isinstance(g.sfx, audio.NullSfx)     # los tests corren mudos
     g.sfx.play("disparo")                       # no revienta
     assert g.sfx.toggle_mute() is True
+
+
+# --- Balance: reglas que salen de las mediciones -----------------------------
+
+def test_el_techo_de_chatarra_no_se_pasa_y_cuenta_lo_perdido():
+    from tank_scrap.constants import SCRAP_CAP
+    g = arena_game()
+    g.scrap = SCRAP_CAP - 2
+    perdido = g._gain_scrap(10)
+    assert g.scrap == SCRAP_CAP
+    assert perdido == 8
+    assert g.run_wasted == 8
+    assert g.run_collected == 2
+    assert g._gain_scrap(5) == 5          # en el techo, todo se pierde
+
+
+def test_recuperar_un_muro_devuelve_exactamente_su_coste():
+    """Regresion: los reembolsos estaban a mano y no siguieron a los costes."""
+    g = arena_game()
+    g.scrap = COST_STEEL + 2
+    tx, ty = free_tile(g)
+    g.build_cursor = [tx, ty]
+    g._build(fld.BUILT_BRICK, COST_BRICK)
+    g.build_cd = 0.0
+    antes = g.scrap
+    g._demolish()
+    assert g.scrap - antes == COST_BRICK
+    tx, ty = free_tile(g, skip={(tx, ty)})
+    g.build_cursor = [tx, ty]
+    g.build_cd = 0.0
+    g._build(fld.BUILT_STEEL, COST_STEEL)
+    g.build_cd = 0.0
+    antes = g.scrap
+    g._demolish()
+    assert g.scrap - antes == COST_STEEL
+
+
+def test_no_derriba_su_muro_si_el_material_no_le_cabe():
+    """Con el techo puesto, recuperar sin sitio borraba el muro y no devolvia
+    nada. Ahora se niega y el muro sigue en pie."""
+    from tank_scrap.constants import SCRAP_CAP
+    g = arena_game()
+    g.scrap = 4
+    tx, ty = free_tile(g)
+    g.build_cursor = [tx, ty]
+    g._build(fld.BUILT_BRICK, COST_BRICK)
+    g.scrap = SCRAP_CAP
+    g.build_cd = 0.0
+    g._demolish()
+    assert g.field.at(tx, ty) == fld.BUILT_BRICK
+    assert g.scrap == SCRAP_CAP
+
+
+def test_cada_canon_extra_alarga_la_recarga():
+    g = arena_game()
+    p = g.player
+    p.max_bullets = 1
+    uno = p.reload_time()
+    p.max_bullets = 4
+    cuatro = p.reload_time()
+    assert cuatro > uno
+    # el dano crece, pero menos que el numero de canones
+    assert 4 / cuatro < 4 * (1 / uno)
+
+
+def test_la_vida_del_jefe_crece_mas_que_lineal():
+    from tank_scrap import arena
+    v = [arena.boss_hp(i) for i in (4, 9, 14, 19)]
+    assert v == sorted(v)
+    saltos = [v[i + 1] - v[i] for i in range(len(v) - 1)]
+    assert saltos == sorted(saltos)       # cada salto es mayor que el anterior
+    assert v[0] >= 18
+
+
+def test_la_escolta_engorda_en_salas_tardias():
+    from tank_scrap import arena
+    assert arena.enemy_hp_bonus(0) == 0
+    assert arena.enemy_hp_bonus(9) == 0
+    assert arena.enemy_hp_bonus(10) == 1
+    assert arena.enemy_hp_bonus(20) == 2

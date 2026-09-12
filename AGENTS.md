@@ -25,6 +25,14 @@ vuelta de tuerca es la economia de chatarra (ver README).
 Las tres cosas tienen que pasar. Los tests corren sin ventana (SDL dummy), asi
 que valen en CI.
 
+## Numeros de juego
+- Ningun valor de balance se cambia "a ojo": se mide antes y despues con
+  scripts/medir_balance.py y se actualiza la tabla de docs/diseno-numeros.md
+  en el mismo commit.
+- Los reembolsos y los costes salen de las mismas constantes. Nunca vuelvas a
+  escribir un coste a mano en el codigo (ya paso una vez: recuperar un muro
+  devolvia los precios viejos).
+
 ## Convenciones
 - Commits: `tipo: descripcion breve en presente`.
 - Un mapa nuevo se anade a `levels.STAGES`, siempre 13 filas de 13 caracteres
