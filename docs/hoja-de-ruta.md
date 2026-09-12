@@ -136,7 +136,12 @@ HUD, que son 30 cadenas.
 
 ---
 
-## 4. Orden propuesto
+## 4. El cómo
+
+Los pasos concretos de cada punto —qué archivos toca, tamaño, dependencias y
+cómo se comprueba— están en [plan.md](plan.md).
+
+## 5. Orden propuesto
 
 1. **D1, D2, D3** — mergear, renombrar, licencia. Media hora y dejan de
    arrastrarse.

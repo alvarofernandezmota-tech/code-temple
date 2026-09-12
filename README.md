@@ -88,6 +88,19 @@ y `GAME OVER` con total y récord.
 
 ## Jugar
 
+Un comando, sin preparar nada:
+
+```bash
+./jugar.sh          # Linux y macOS
+jugar.bat           # Windows (o doble clic)
+```
+
+Crea su propio entorno la primera vez, instala pygame y arranca. No toca el
+Python del sistema. Acepta los mismos argumentos que el módulo:
+`./jugar.sh --arena` entra directo al roguelite.
+
+A mano, si lo prefieres:
+
 ```bash
 pip install -r requirements.txt
 python3 -m tank_scrap             # menu: CAMPANA o ARENA
@@ -181,7 +194,9 @@ SDL_VIDEODRIVER=dummy python3 scripts/medir_balance.py
 
 Las decisiones abiertas (meta-progresión, salas especiales, dos jugadores,
 publicación, licencia...) están recogidas y priorizadas en
-[docs/hoja-de-ruta.md](docs/hoja-de-ruta.md), cada una con una recomendación.
+[docs/hoja-de-ruta.md](docs/hoja-de-ruta.md), cada una con una recomendación,
+y [docs/plan.md](docs/plan.md) dice cómo se resuelve cada una: pasos, archivos
+que toca, tamaño y de qué depende.
 
 ## Aviso sobre el historial de este repo
 
