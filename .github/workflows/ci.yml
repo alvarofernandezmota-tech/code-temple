@@ -1,0 +1,42 @@
+name: CI
+
+# Solo un run por cambio: las ramas se validan por su pull request, no
+# tambien por el push (antes salian dos runs identicos por commit).
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      # El juego se prueba sin ventana ni tarjeta de sonido.
+      SDL_VIDEODRIVER: dummy
+      SDL_AUDIODRIVER: dummy
+    strategy:
+      matrix:
+        # Dos versiones bastan para un juego sin dependencias exoticas.
+        python-version: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Instalar dependencias
+        run: pip install -r requirements-dev.txt
+
+      - name: Lint
+        run: python -m pyflakes tank_scrap/*.py tests/*.py
+
+      - name: Tests
+        run: python -m pytest tests -q
+
+      - name: Autotest campana (1800 fotogramas)
+        run: python -m tank_scrap --selftest 1800 --seed 1
+
+      - name: Autotest arena (1800 fotogramas)
+        run: python -m tank_scrap --selftest 1800 --seed 1 --arena

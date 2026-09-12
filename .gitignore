@@ -1,5 +1,7 @@
-.env
-*.log
-.obsidian/
-node_modules/
 __pycache__/
+build/            # salida de pygbag (version web)
+*.py[cod]
+.pytest_cache/
+.venv/
+*.png
+!docs/*.png
