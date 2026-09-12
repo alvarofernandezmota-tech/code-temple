@@ -1,8 +1,10 @@
 name: CI
 
+# Solo un run por cambio: las ramas se validan por su pull request, no
+# tambien por el push (antes salian dos runs identicos por commit).
 on:
   push:
-    branches: ["**"]
+    branches: [main]
   pull_request:
 
 jobs:
@@ -14,7 +16,8 @@ jobs:
       SDL_AUDIODRIVER: dummy
     strategy:
       matrix:
-        python-version: ["3.9", "3.11", "3.12"]
+        # Dos versiones bastan para un juego sin dependencias exoticas.
+        python-version: ["3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
 

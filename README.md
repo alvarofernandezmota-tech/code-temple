@@ -140,7 +140,8 @@ Si la máquina no tiene tarjeta de sonido, el juego se queda mudo sin quejarse.
 ## Desarrollo
 
 Hay CI en GitHub Actions (`.github/workflows/ci.yml`): lint, tests y los dos
-autotests sin ventana, en Python 3.9, 3.11 y 3.12.
+autotests sin ventana, en Python 3.11 y 3.12. Un run por pull request (los
+push a ramas no disparan uno aparte).
 
 ```bash
 pip install -r requirements-dev.txt
