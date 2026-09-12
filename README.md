@@ -166,6 +166,12 @@ Los mapas de campaña están en `tank_scrap/levels.py` como 13 filas de 13 carac
 (`#` ladrillo, `@` acero, `~` agua, `x` árboles, `-` hielo, `A` águila).
 Añadir una fase es añadir un bloque de texto.
 
+## Hoja de ruta
+
+Las decisiones abiertas (meta-progresión, salas especiales, dos jugadores,
+publicación, licencia...) están recogidas y priorizadas en
+[docs/hoja-de-ruta.md](docs/hoja-de-ruta.md), cada una con una recomendación.
+
 ## Aviso sobre el historial de este repo
 
 `code-temple` era un repo de documentación archivado (todo migrado a
