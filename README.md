@@ -99,6 +99,24 @@ Crea su propio entorno la primera vez, instala pygame y arranca. No toca el
 Python del sistema. Acepta los mismos argumentos que el módulo:
 `./jugar.sh --arena` entra directo al roguelite.
 
+### En el navegador, servido desde tu red
+
+Para jugarlo desde el móvil o otro PC de casa, sin instalar nada en ellos:
+
+```bash
+scripts/servir_web.sh          # construye y sirve en el puerto 8000
+```
+
+Compila el juego a WebAssembly con [pygbag](https://pypi.org/project/pygbag/)
+y lo sirve en tu red local (no en internet); el script imprime la dirección
+`http://TU-IP:8000` que hay que abrir en el otro aparato. La primera
+construcción descarga el runtime de `pygame-web.github.io`, así que necesita
+internet una vez.
+
+El punto de entrada web es `main.py` —el mismo `Game`, con el bucle en
+`asyncio` porque el navegador necesita respirar entre fotogramas—, y también
+funciona en el escritorio con `python3 main.py`.
+
 A mano, si lo prefieres:
 
 ```bash

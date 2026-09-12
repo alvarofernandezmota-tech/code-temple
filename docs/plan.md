@@ -154,14 +154,22 @@ mismo teclado es incómodo).
 
 ## Bloque 5 — Que lo pueda jugar cualquiera
 
-### D14 · Web e itch.io · **M, en tu máquina**
-1. `main.py` en la raíz con el bucle en `async` (pygbag lo exige): mismo
-   `Game`, solo cambia el bucle a `await asyncio.sleep(0)` por fotograma.
-2. `pip install pygbag && pygbag --build main.py` → `build/web/`.
-3. Probar en local con `pygbag main.py` (levanta un servidor en el 8000).
-4. Subir `build/web` a itch.io como HTML5, o a GitHub Pages.
-5. Aquí no se puede construir: la red de este entorno rechaza
-   `pygame-web.github.io`. En tu máquina sí.
+### D14 · Web e itch.io · **M, en tu máquina** *(la mitad ya está)*
+1. ~~`main.py` con el bucle en `async`~~ **hecho**: mismo `Game`, un
+   `await asyncio.sleep(0)` por fotograma. Probado nativo (240 fotogramas,
+   salida limpia).
+2. ~~Script de construcción y servidor~~ **hecho**: `scripts/servir_web.sh`
+   instala pygbag, construye y sirve en la red local (imprime la IP para
+   abrirlo desde el móvil).
+3. **Pendiente, en tu máquina:** ejecutar ese script una vez. Aquí no se
+   puede: la red de este entorno rechaza `pygame-web.github.io` con 403 y es
+   de donde pygbag baja su runtime. El paso de construcción es, por tanto, lo
+   único de este repo que no he podido probar.
+4. Subir `build/web` a itch.io como HTML5 (o a GitHub Pages) cuando el juego
+   esté como quieres: cada publicación es una versión que la gente ve.
+
+*Si la construcción falla en tu máquina*, lo típico es la versión de Python
+(pygbag pide 3.8-3.12) o que el firewall bloquee la descarga del runtime.
 
 *Depende de:* D1 (mergeado) y de que el juego esté como quieres, porque cada
 publicación es una versión que la gente ve.
