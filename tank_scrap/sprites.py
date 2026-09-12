@@ -116,41 +116,126 @@ def base_sprite(destroyed=False):
 
 # --- Tanques ---------------------------------------------------------------
 
-def _tank_up(dark, light, shadow, treads):
-    """Tanque mirando arriba, 16x16. treads desplaza las orugas (animacion)."""
-    s = _surf(16, 16)
-    # orugas
-    for tx in (0, 12):
-        pygame.draw.rect(s, shadow, (tx, 2, 4, 14))
-        for y in range(2 + treads % 2, 16, 3):
-            pygame.draw.rect(s, light, (tx + 1, y, 2, 1))
-    # casco
+def _tracks(s, dark, light, shadow, treads, width=4, top=2, bottom=16):
+    """Orugas laterales; treads desplaza los eslabones para animarlas."""
+    for tx in (0, 16 - width):
+        pygame.draw.rect(s, shadow, (tx, top, width, bottom - top))
+        for y in range(top + treads % 3, bottom, 3):
+            pygame.draw.rect(s, light, (tx + 1, y, width - 2, 1))
+
+
+def _chassis_player(s, dark, light, shadow, treads):
+    """Tanque del jugador: casco compacto y una estrella en la torreta."""
+    _tracks(s, dark, light, shadow, treads)
     pygame.draw.rect(s, dark, (4, 4, 8, 11))
     pygame.draw.rect(s, shadow, (4, 4, 8, 11), 1)
-    # torreta
     pygame.draw.rect(s, light, (5, 6, 6, 7))
-    pygame.draw.rect(s, shadow, (7, 9, 2, 2))
-    # canon
-    pygame.draw.rect(s, light, (7, 0, 2, 7))
+    pygame.draw.rect(s, shadow, (7, 8, 2, 2))       # escotilla
+    pygame.draw.rect(s, light, (6, 10, 1, 1))
+    pygame.draw.rect(s, light, (9, 10, 1, 1))
+    pygame.draw.rect(s, light, (7, 0, 2, 7))        # canon
     pygame.draw.rect(s, shadow, (7, 0, 1, 7))
-    return s
 
 
-def tank_sprite(dark, light, shadow, direction, treads=0):
-    key = ("tank", dark, light, shadow, direction, treads % 2)
+def _chassis_basic(s, dark, light, shadow, treads):
+    """Gris: el tanque de infanteria, silueta corta y cuadrada."""
+    _tracks(s, dark, light, shadow, treads, top=3)
+    pygame.draw.rect(s, dark, (4, 5, 8, 10))
+    pygame.draw.rect(s, shadow, (4, 5, 8, 10), 1)
+    pygame.draw.rect(s, light, (5, 7, 6, 6))
+    pygame.draw.rect(s, shadow, (6, 9, 4, 2))
+    pygame.draw.rect(s, light, (7, 1, 2, 6))
+    pygame.draw.rect(s, shadow, (7, 1, 1, 6))
+
+
+def _chassis_fast(s, dark, light, shadow, treads):
+    """Azul: orugas finas, morro en punta y canon largo. Se lee veloz."""
+    _tracks(s, dark, light, shadow, treads, width=3, top=4)
+    pygame.draw.rect(s, dark, (4, 6, 8, 9))
+    pygame.draw.rect(s, shadow, (4, 6, 8, 9), 1)
+    for i in range(3):                               # morro escalonado
+        pygame.draw.rect(s, dark, (5 + i, 5 - i, 6 - i * 2, 1))
+    pygame.draw.rect(s, light, (6, 9, 4, 5))
+    pygame.draw.rect(s, shadow, (6, 9, 4, 5), 1)
+    pygame.draw.rect(s, light, (7, 0, 2, 9))         # canon largo
+    pygame.draw.rect(s, shadow, (7, 0, 1, 9))
+    pygame.draw.rect(s, light, (5, 14, 6, 1))        # aleta trasera
+
+
+def _chassis_power(s, dark, light, shadow, treads):
+    """Rojo: torreta redonda y canon grueso con freno de boca."""
+    _tracks(s, dark, light, shadow, treads)
+    pygame.draw.rect(s, dark, (4, 4, 8, 11))
+    pygame.draw.rect(s, shadow, (4, 4, 8, 11), 1)
+    pygame.draw.circle(s, light, (8, 10), 4)
+    pygame.draw.circle(s, shadow, (8, 10), 4, 1)
+    pygame.draw.rect(s, light, (6, 1, 4, 8))         # canon grueso
+    pygame.draw.rect(s, shadow, (6, 1, 1, 8))
+    pygame.draw.rect(s, shadow, (6, 2, 4, 1))        # freno de boca
+
+
+def _chassis_armor(s, dark, light, shadow, treads):
+    """Morado: faldones blindados que sobresalen y remaches. Se lee pesado."""
+    _tracks(s, dark, light, shadow, treads, top=3)
+    pygame.draw.rect(s, dark, (2, 5, 12, 10))        # faldones
+    pygame.draw.rect(s, shadow, (2, 5, 12, 10), 1)
+    pygame.draw.rect(s, shadow, (2, 9, 12, 1))       # linea de blindaje
+    pygame.draw.rect(s, light, (5, 7, 6, 5))
+    pygame.draw.rect(s, shadow, (5, 7, 6, 5), 1)
+    for (rx, ry) in ((3, 6), (12, 6), (3, 13), (12, 13)):
+        pygame.draw.rect(s, light, (rx, ry, 1, 1))   # remaches
+    pygame.draw.rect(s, light, (7, 2, 2, 5))
+    pygame.draw.rect(s, shadow, (7, 2, 1, 5))
+
+
+CHASSIS = {
+    "player": _chassis_player,
+    "basic": _chassis_basic,
+    "fast": _chassis_fast,
+    "power": _chassis_power,
+    "armor": _chassis_armor,
+}
+
+
+def tank_sprite(chassis, colors, direction, treads=0):
+    """Sprite 16x16 del chasis pedido, girado a la direccion dada."""
+    dark, light, shadow = colors
+    key = ("tank", chassis, dark, light, shadow, direction, treads % 3)
     if key not in _cache:
-        base = _tank_up(dark, light, shadow, treads)
+        s = _surf(16, 16)
+        CHASSIS.get(chassis, _chassis_basic)(s, dark, light, shadow, treads)
         angle = {UP: 0, LEFT: 90, DOWN: 180, RIGHT: 270}[direction]
-        _cache[key] = pygame.transform.rotate(base, angle)
+        _cache[key] = pygame.transform.rotate(s, angle)
+    return _cache[key]
+
+
+def mini_tank(color, light=None):
+    """Iconito de tanque 6x7 para el marcador (vidas y oleada pendiente)."""
+    key = ("mini", color, light)
+    if key not in _cache:
+        s = _surf(6, 7)
+        light = light or color
+        pygame.draw.rect(s, color, (0, 1, 2, 6))
+        pygame.draw.rect(s, color, (4, 1, 2, 6))
+        pygame.draw.rect(s, light, (2, 2, 2, 4))
+        pygame.draw.rect(s, light, (2, 0, 2, 2))
+        _cache[key] = s
     return _cache[key]
 
 
 def shield_sprite(frame):
+    """Escudo de aparicion: chispas girando alrededor del tanque."""
     s = _surf(16, 16)
     color = (152, 216, 248) if frame % 2 == 0 else (248, 248, 248)
-    pygame.draw.rect(s, color, (0, 0, 16, 16), 1)
-    for (x, y) in ((0, 7), (15, 7), (7, 0), (7, 15)):
-        pygame.draw.rect(s, color, (x, y, 1, 2))
+    ring = ((4, 0), (8, 0), (12, 1), (15, 4), (15, 8), (14, 12), (11, 15),
+            (7, 15), (3, 14), (0, 11), (0, 7), (1, 3))
+    phase = frame % 3
+    for i, (x, y) in enumerate(ring):
+        if i % 3 == phase:
+            continue
+        pygame.draw.rect(s, color, (x, y, 1, 1))
+    for (x, y) in ((0, 0), (15, 0), (0, 15), (15, 15)):
+        pygame.draw.rect(s, color, (x, y, 1, 1))
     return s
 
 

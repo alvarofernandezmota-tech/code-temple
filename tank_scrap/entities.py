@@ -32,6 +32,7 @@ class Tank:
         self.hp = 1
         self.piercing = False
         self.treads = 0
+        self.chassis = "basic"
         self._tread_acc = 0.0
         self.dead = False
         self.slide = 0.0
@@ -86,14 +87,14 @@ class Tank:
         return moved
 
     def draw(self, surf, origin, colors):
-        dark, light, shadow = colors
-        spr = sprites.tank_sprite(dark, light, shadow, self.direction, self.treads)
+        spr = sprites.tank_sprite(self.chassis, colors, self.direction, self.treads)
         surf.blit(spr, (origin[0] + int(self.x), origin[1] + int(self.y)))
 
 
 class PlayerTank(Tank):
     def __init__(self, x, y):
         super().__init__(x, y, UP)
+        self.chassis = "player"
         self.speed = PLAYER_SPEED
         self.shield = 0.0
         self.max_bullets = PLAYER_MAX_BULLETS
@@ -110,6 +111,7 @@ class EnemyTank(Tank):
         super().__init__(x, y, DOWN)
         speed, bullet_speed, hp, piercing = ENEMY_STATS[kind]
         self.kind = kind
+        self.chassis = kind
         self.speed = speed
         self.bullet_speed = bullet_speed
         self.hp = hp

@@ -9,9 +9,9 @@ import random
 import pygame
 
 from . import field as fld
-from . import levels, pixfont, sprites
+from . import levels, pixfont, sprites, storage
 from .constants import (
-    BLACK, DIR_VECTORS, BUILD_COOLDOWN, BUILD_RANGE_TILES, COST_BRICK, COST_STEEL, DOWN,
+    BLACK, DIR_VECTORS, ENEMY_COLORS, PLAYER_A, PLAYER_B, BUILD_COOLDOWN, BUILD_RANGE_TILES, COST_BRICK, COST_STEEL, DOWN,
     ENEMIES_ON_FIELD, ENEMY_SPAWN_DELAY, FIELD_PX, FIELD_TILES, FPS, GHOST_NO,
     GHOST_OK, GREY_FRAME, HUD_DIM, LEFT, MARGIN_PX, PLAYER_LIVES,
     PLAYER_SPAWN_SHIELD, RIGHT, SCALE, SCORE_BY_KIND, SCORE_STAGE_CLEAR,
@@ -21,7 +21,11 @@ from .entities import Bullet, EnemyTank, Explosion, PlayerTank, Scrap
 
 ORIGIN = (MARGIN_PX, MARGIN_PX)
 
-TITLE, PLAY, CLEARED, GAME_OVER = "title", "play", "cleared", "over"
+TITLE, INTRO, PLAY, TALLY, GAME_OVER = "title", "intro", "play", "tally", "over"
+
+INTRO_TIME = 1.5          # cortinilla de entrada de fase
+CLEAR_DELAY = 1.4         # margen tras el ultimo enemigo, para ver la explosion
+TALLY_MIN = 1.0           # tiempo minimo en el recuento antes de poder saltarlo
 
 SPAWN_TILES = ((0, 0), (12, 0), (24, 0))
 PLAYER_SPAWN_TILE = (8, 24)
@@ -63,7 +67,13 @@ class Game:
         self.message_timer = 0.0
         self.state_timer = 0.0
         self.paused = False
+        self.kills = {}
+        self.scrap_collected = 0
+        self.scrap_spent = 0
+        self.clear_delay = 0.0
         self.quit = False
+        self.hiscore = storage.load_hiscore()
+        self.new_record = False
         self._load_stage(0, reset_run=True)
 
     # --- ciclo de vida de la fase -----------------------------------------
@@ -77,12 +87,19 @@ class Game:
         self.queue = stage_roster(index)
         self.spawn_timer = 0.6
         self.spawn_slot = 0
+        self.kills = {}
+        self.scrap_collected = 0
+        self.scrap_spent = 0
+        self.clear_delay = 0.0
+        self.stage_score = 0
         if reset_run:
             self.score = 0
             self.lives = PLAYER_LIVES
             self.scrap = SCRAP_START
         self._spawn_player()
         self.build_mode = False
+        self.state = INTRO
+        self.state_timer = 0.0
 
     def _spawn_player(self):
         tx, ty = PLAYER_SPAWN_TILE
@@ -118,10 +135,13 @@ class Game:
         elif self.state == TITLE:
             if key in (pygame.K_RETURN, pygame.K_SPACE):
                 self._load_stage(0, reset_run=True)
-                self.state = PLAY
+        elif self.state == TALLY:
+            if key in (pygame.K_RETURN, pygame.K_SPACE) and self.state_timer > TALLY_MIN:
+                self._next_stage()
         elif self.state == GAME_OVER:
             if key in (pygame.K_RETURN, pygame.K_SPACE, pygame.K_r):
                 self.state = TITLE
+                self.new_record = False
         elif self.state == PLAY:
             self._handle_play_key(key)
 
@@ -183,6 +203,7 @@ class Game:
             return
         self.field.build(tx, ty, kind)
         self.scrap -= cost
+        self.scrap_spent += cost
         self.build_cd = BUILD_COOLDOWN
 
     def _demolish(self):
@@ -190,6 +211,7 @@ class Game:
         refund = self.field.demolish(tx, ty)
         if refund:
             self.scrap += refund
+            self.scrap_spent -= refund
             self.build_cd = BUILD_COOLDOWN
         else:
             self._say("no es tuyo")
@@ -212,12 +234,14 @@ class Game:
         self.state_timer += dt
         if self.message_timer > 0:
             self.message_timer -= dt
-        if self.state == CLEARED:
-            if self.state_timer > 2.2:
-                self.score += SCORE_STAGE_CLEAR
-                self._load_stage(self.stage_index + 1)
+        if self.state == INTRO:
+            if self.state_timer >= INTRO_TIME:
                 self.state = PLAY
                 self.state_timer = 0.0
+            return
+        if self.state == TALLY:
+            if self.state_timer > TALLY_MIN + 4.0:
+                self._next_stage()
             return
         if self.state != PLAY or self.paused:
             return
@@ -244,8 +268,9 @@ class Game:
         if not self.field.base_alive:
             self._game_over("base perdida")
         elif not self.queue and not self.enemies:
-            self.state = CLEARED
-            self.state_timer = 0.0
+            self.clear_delay += dt
+            if self.clear_delay >= CLEAR_DELAY:
+                self._finish_stage()
 
     def _update_player(self, dt, keys):
         p = self.player
@@ -271,6 +296,7 @@ class Game:
             if not s.dead and p.rect.colliderect(s.rect):
                 s.dead = True
                 self.scrap += s.amount
+                self.scrap_collected += s.amount
 
     def _update_enemies(self, dt):
         others = self.enemies + [self.player]
@@ -347,6 +373,8 @@ class Game:
                 if e.hp <= 0:
                     e.dead = True
                     self.score += SCORE_BY_KIND[e.kind]
+                    self.stage_score += SCORE_BY_KIND[e.kind]
+                    self.kills[e.kind] = self.kills.get(e.kind, 0) + 1
                     self.explosions.append(
                         Explosion(e.rect.centerx, e.rect.centery, big=True))
                 else:
@@ -377,6 +405,15 @@ class Game:
             self._spawn_player()
             self._say("-%d chatarra" % dropped if dropped else "cuidado")
 
+    def _finish_stage(self):
+        self.score += SCORE_STAGE_CLEAR
+        self.state = TALLY
+        self.state_timer = 0.0
+        self.build_mode = False
+
+    def _next_stage(self):
+        self._load_stage(self.stage_index + 1)
+
     def _scatter_scrap(self, tx, ty, amount):
         spots = [(tx + dx, ty + dy) for dx in range(-2, 3) for dy in range(-2, 3)]
         random.shuffle(spots)
@@ -390,6 +427,10 @@ class Game:
     def _game_over(self, reason):
         self.state = GAME_OVER
         self.state_timer = 0.0
+        if self.score > self.hiscore:
+            self.hiscore = self.score
+            self.new_record = True
+            storage.save_hiscore(self.score)
         self._say(reason, 4.0)
         self.build_mode = False
 
@@ -400,8 +441,12 @@ class Game:
         pygame.draw.rect(s, BLACK, (*ORIGIN, FIELD_PX, FIELD_PX))
         if self.state == TITLE:
             self._draw_title()
+        elif self.state == TALLY:
+            self._draw_tally()
         else:
             self._draw_battlefield()
+            if self.state == INTRO:
+                self._draw_curtain()
         self._draw_panel()
         return s
 
@@ -411,6 +456,9 @@ class Game:
         pixfont.draw_centered(self.surface, "TANK SCRAP", cx, y, (248, 216, 120))
         pixfont.draw_centered(self.surface, "1990", cx, y + 10, (248, 216, 120))
         self.surface.blit(sprites.base_sprite(), (cx - 8, y + 22))
+        if self.hiscore:
+            pixfont.draw_centered(self.surface, "RECORD %d" % self.hiscore, cx,
+                                  y + 18, HUD_DIM)
         lines = [
             "EL MAPA ES MUNICION",
             "",
@@ -453,20 +501,88 @@ class Game:
             ex.draw(s, ORIGIN)
         if self.build_mode:
             self._draw_build_cursor()
-        if self.state == CLEARED:
-            pixfont.draw_centered(s, "FASE SUPERADA", ORIGIN[0] + FIELD_PX // 2,
-                                  ORIGIN[1] + FIELD_PX // 2 - 3, WHITE)
         if self.state == GAME_OVER:
             cx = ORIGIN[0] + FIELD_PX // 2
             pixfont.draw_centered(s, "GAME OVER", cx, ORIGIN[1] + FIELD_PX // 2 - 8,
                                   (248, 96, 96))
             pixfont.draw_centered(s, self.message, cx, ORIGIN[1] + FIELD_PX // 2 + 2,
                                   HUD_DIM)
-            pixfont.draw_centered(s, "ENTER", cx, ORIGIN[1] + FIELD_PX // 2 + 12,
+            pixfont.draw_centered(s, "TOTAL %d" % self.score, cx,
+                                  ORIGIN[1] + FIELD_PX // 2 + 12, WHITE)
+            if self.new_record:
+                pixfont.draw_centered(s, "NUEVO RECORD", cx,
+                                      ORIGIN[1] + FIELD_PX // 2 + 22,
+                                      (248, 216, 120))
+            else:
+                pixfont.draw_centered(s, "RECORD %d" % self.hiscore, cx,
+                                      ORIGIN[1] + FIELD_PX // 2 + 22, HUD_DIM)
+            pixfont.draw_centered(s, "ENTER", cx, ORIGIN[1] + FIELD_PX // 2 + 34,
                                   HUD_DIM)
         if self.paused:
             pixfont.draw_centered(s, "PAUSA", ORIGIN[0] + FIELD_PX // 2,
                                   ORIGIN[1] + FIELD_PX // 2 - 3, WHITE)
+
+    def _draw_curtain(self):
+        """Cortinilla de entrada: dos mitades grises que se abren, como el NES."""
+        s = self.surface
+        t = min(1.0, self.state_timer / INTRO_TIME)
+        closed = FIELD_PX // 2
+        # primera mitad del tiempo cerrada, segunda abriendose
+        open_px = 0 if t < 0.55 else int(closed * (t - 0.55) / 0.45)
+        h = max(0, closed - open_px)
+        if h > 0:
+            pygame.draw.rect(s, GREY_FRAME, (ORIGIN[0], ORIGIN[1], FIELD_PX, h))
+            pygame.draw.rect(s, GREY_FRAME,
+                             (ORIGIN[0], ORIGIN[1] + FIELD_PX - h, FIELD_PX, h))
+            cx = ORIGIN[0] + FIELD_PX // 2
+            pixfont.draw_centered(s, "FASE %d" % (self.stage_index + 1), cx,
+                                  ORIGIN[1] + closed - 10, BLACK)
+
+    def _draw_tally(self):
+        """Recuento de fase: bajas por tipo y balance de chatarra."""
+        s = self.surface
+        cx = ORIGIN[0] + FIELD_PX // 2
+        y = ORIGIN[1] + 20
+        pixfont.draw_centered(s, "FASE %d SUPERADA" % (self.stage_index + 1), cx, y,
+                              (248, 216, 120))
+        y += 16
+        names = (("basic", "GRIS"), ("fast", "RAPIDO"), ("power", "PESADO"),
+                 ("armor", "BLINDADO"))
+        left = ORIGIN[0] + 24
+        right = ORIGIN[0] + FIELD_PX - 24
+        for kind, label in names:
+            n = self.kills.get(kind, 0)
+            color = WHITE if n else HUD_DIM
+            pts = n * SCORE_BY_KIND[kind]
+            dark, lt, _ = ENEMY_COLORS[kind]
+            s.blit(sprites.mini_tank(dark, lt), (left, y - 1))
+            pixfont.draw(s, "%s X%d" % (label, n), (left + 9, y), color)
+            txt = "%d" % pts
+            pixfont.draw(s, txt, (right - pixfont.text_width(txt), y), color)
+            y += 9
+        y += 6
+        rows = (
+            ("CHATARRA COGIDA", self.scrap_collected),
+            ("CHATARRA EN OBRA", self.scrap_spent),
+            ("BONUS FASE", SCORE_STAGE_CLEAR),
+        )
+        for label, value in rows:
+            pixfont.draw(s, label, (left, y), HUD_DIM)
+            txt = "%d" % value
+            pixfont.draw(s, txt, (right - pixfont.text_width(txt), y), HUD_DIM)
+            y += 9
+        y += 6
+        pygame.draw.rect(s, HUD_DIM, (left, y, right - left, 1))
+        y += 5
+        pixfont.draw(s, "TOTAL", (left, y), WHITE)
+        txt = "%d" % self.score
+        pixfont.draw(s, txt, (right - pixfont.text_width(txt), y), WHITE)
+        y += 18
+        pixfont.draw_centered(s, "PROXIMA FASE %d" % (self.stage_index + 2), cx, y,
+                              HUD_DIM)
+        s.blit(sprites.mini_tank(PLAYER_A, PLAYER_B), (cx - 3, y + 12))
+        if self.state_timer > TALLY_MIN and (self.frame // 20) % 2 == 0:
+            pixfont.draw_centered(s, "ENTER", cx, ORIGIN[1] + FIELD_PX - 24, WHITE)
 
     def _draw_build_cursor(self):
         tx, ty = self.build_cursor
@@ -482,33 +598,41 @@ class Game:
         s = self.surface
         px = MARGIN_PX + FIELD_PX + 4
         y = MARGIN_PX + 2
-        # enemigos pendientes, como iconitos
-        pending = len(self.queue) + len(self.enemies)
-        pixfont.draw(s, "ENEM", (px, y), HUD_DIM)
-        y += 7
-        for i in range(min(pending, 20)):
-            col = px + (i % 4) * 5
-            row = y + (i // 4) * 5
-            pygame.draw.rect(s, WHITE, (col, row, 3, 3))
-        y += 5 * (min(pending, 20) // 4 + 1) + 4
 
-        pixfont.draw(s, "FASE", (px, y), HUD_DIM)
-        pixfont.draw(s, "%d" % (self.stage_index + 1), (px, y + 7), WHITE)
-        y += 18
-        pixfont.draw(s, "TANQ", (px, y), HUD_DIM)
-        pixfont.draw(s, "%d" % max(0, self.lives), (px, y + 7), WHITE)
-        y += 18
-        pixfont.draw(s, "CHAT", (px, y), (248, 216, 120))
-        pixfont.draw(s, "%d" % self.scrap, (px, y + 7), (248, 216, 120))
-        y += 18
-        pixfont.draw(s, "PUNT", (px, y), HUD_DIM)
-        pixfont.draw(s, "%d" % self.score, (px, y + 7), WHITE)
-        y += 18
-        if self.build_mode:
+        # oleada pendiente: un iconito por enemigo, del color de su tipo
+        pending = list(reversed(self.queue)) + [e.kind for e in self.enemies]
+        pixfont.draw(s, "OLEADA", (px, y), HUD_DIM)
+        y += 8
+        for i, kind in enumerate(pending[:24]):
+            col = px + (i % 5) * 7
+            row = y + (i // 5) * 8
+            dark, light, _ = ENEMY_COLORS[kind]
+            s.blit(sprites.mini_tank(dark, light), (col, row))
+        y += 8 * ((min(len(pending), 24) + 4) // 5) + 4
+
+        y = self._panel_row(px, y, "FASE", "%d" % (self.stage_index + 1), WHITE)
+
+        pixfont.draw(s, "TANQUES", (px, y), HUD_DIM)
+        y += 8
+        for i in range(max(0, self.lives)):
+            s.blit(sprites.mini_tank(PLAYER_A, PLAYER_B), (px + i * 7, y))
+        y += 12
+
+        y = self._panel_row(px, y, "CHATARRA", "%d" % self.scrap, (248, 216, 120),
+                            label_color=(248, 216, 120))
+        y = self._panel_row(px, y, "PUNTOS", "%d" % self.score, WHITE)
+
+        if self.build_mode and self.state == PLAY:
             blink = (self.frame // 10) % 2 == 0
             pixfont.draw(s, "OBRA", (px, y), GHOST_OK if blink else HUD_DIM)
-        if self.message_timer > 0:
-            pixfont.draw(s, self.message[:6], (px, MARGIN_PX + FIELD_PX - 8), WHITE)
+            pixfont.draw(s, "L%d A%d" % (COST_BRICK, COST_STEEL), (px, y + 8), HUD_DIM)
+        if self.message_timer > 0 and self.state == PLAY:
+            pixfont.draw(s, self.message[:8], (px, MARGIN_PX + FIELD_PX - 8), WHITE)
+
+    def _panel_row(self, px, y, label, value, color, label_color=None):
+        pixfont.draw(self.surface, label, (px, y), label_color or HUD_DIM)
+        pixfont.draw(self.surface, value, (px, y + 8), color)
+        return y + 18
 
 
 def run(seed=None, frames=None, headless=False):

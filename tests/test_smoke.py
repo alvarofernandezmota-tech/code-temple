@@ -1,8 +1,11 @@
 """Pruebas de humo: se ejecutan sin ventana (SDL dummy)."""
 import os
+import tempfile
 
 os.environ.setdefault("SDL_VIDEODRIVER", "dummy")
 os.environ.setdefault("SDL_AUDIODRIVER", "dummy")
+# el record no debe tocar el HOME real durante los tests
+os.environ["XDG_DATA_HOME"] = tempfile.mkdtemp(prefix="tank-scrap-test-")
 
 import pygame  # noqa: E402
 
@@ -29,6 +32,30 @@ def new_game():
     g = Game(seed=1)
     g.state = PLAY
     return g
+
+
+def test_record_va_y_vuelve(tmp_path, monkeypatch):
+    from tank_scrap import storage
+    monkeypatch.setattr(storage, "APP_DIR", str(tmp_path))
+    monkeypatch.setattr(storage, "HISCORE_FILE", str(tmp_path / "hiscore.json"))
+    assert storage.load_hiscore() == 0
+    assert storage.save_hiscore(4200)
+    assert storage.load_hiscore() == 4200
+
+
+def test_fin_de_fase_pasa_por_el_recuento():
+    g = new_game()
+    g.queue = []
+    g.enemies = []
+    for _ in range(int(2.0 * FPS)):
+        g.update(1.0 / FPS)
+        if g.state == "tally":
+            break
+    assert g.state == "tally"
+    g.state_timer = 99.0
+    g.update(1.0 / FPS)
+    assert g.state == "intro"
+    assert g.stage_index == 1
 
 
 def test_stages_bien_formados():

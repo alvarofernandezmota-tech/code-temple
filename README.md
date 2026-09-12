@@ -27,6 +27,26 @@ De eso salen dilemas que el juego original no tiene:
 
 ![Partida](docs/partida.png)
 
+Los muros que levantas tú se distinguen con un borde dorado: en la captura,
+el búnker de acero y ladrillo alrededor del águila es obra del jugador.
+
+## Estructura de la partida
+
+`TÍTULO → cortinilla FASE n → combate → recuento → siguiente fase`, y
+`GAME OVER` con total y récord si te quedas sin tanques o pierdes el águila.
+
+- **Cortinilla de fase** al estilo NES antes de cada mapa.
+- **Recuento al superar la fase**: bajas por tipo de tanque con sus puntos, más
+  el balance de chatarra (recogida vs. gastada en obra) y el bonus de fase.
+- **Récord** guardado en `$XDG_DATA_HOME/tank_scrap/hiscore.json`
+  (por defecto `~/.local/share/tank_scrap/`). Es lo único que se persiste.
+- **Marcador lateral**: la oleada pendiente se ve como iconos de tanque del
+  color de cada tipo, así sabes lo que queda por venir, no solo cuántos.
+
+| Pantalla | |
+| --- | --- |
+| ![Título](docs/titulo.png) | ![Recuento](docs/recuento.png) |
+
 ## Jugar
 
 ```bash
@@ -56,8 +76,11 @@ parte del juego.
 - Pierdes si te destruyen el águila o si te quedas sin tanques (3 vidas).
 - Superas la fase cuando acabas con toda la oleada; hay 3 mapas y las oleadas
   se endurecen al ciclarlos.
-- Tanques enemigos: gris (normal), azul (rápido), rojo (bala rápida que
-  **perfora acero**), morado (blindado, 4 impactos).
+- Tanques enemigos, cada uno con **silueta propia** (se distinguen sin mirar el
+  color): gris de casco corto (normal), azul de orugas finas, morro en punta y
+  cañón largo (rápido), rojo de torreta redonda y cañón grueso (bala rápida que
+  **perfora acero**, incluido el tuyo), morado con faldones blindados y remaches
+  (4 impactos).
 - El agua bloquea, los árboles tapan la vista, el hielo te hace patinar.
 - Un disparo rompe un subtile de 8 px; un tanque mide 16 px, así que hacen
   falta dos disparos para abrir un hueco por el que pasar.
