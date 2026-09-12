@@ -1,38 +1,28 @@
-# AGENTS.md — reglas para trabajar en este repo
+# AGENTS.md — reglas de este repo
 
-## Antes de cualquier cambio en docs/infra/madre
-- Correr docs/infra/madre/auditoria/revisar-madre.sh y verificar con
-  docs/infra/madre/auditoria/auditoria.py antes de commitear
-- Nunca dejar un .md como plantilla vacía sin dato real
+Repo de un juego: **TANK SCRAP 1990**, tank shooter de pixeles en pygame cuya
+vuelta de tuerca es la economia de chatarra (ver README).
 
-## Commits
-- Formato: tipo: descripción breve en presente
-- Un commit por cambio lógico, no mezclar reestructuración con contenido
+## Estructura
+- `tank_scrap/constants.py` — toda la afinacion del juego (velocidades, costes,
+  paleta). Los numeros magicos van aqui, no repartidos por el codigo.
+- `tank_scrap/sprites.py` — pixel art generado en codigo. Sin assets externos:
+  si hace falta un grafico nuevo, se dibuja con rects o con mascara ASCII.
+- `tank_scrap/field.py` — rejilla de subtiles de 8 px, destruccion y obra.
+- `tank_scrap/entities.py` — tanques, balas, chatarra, explosiones.
+- `tank_scrap/game.py` — bucle, estados, HUD.
+- `tank_scrap/levels.py` — mapas en celdas de 16 px (13x13 caracteres).
 
-## Estructura del repo (no mover sin actualizar los README)
-- docs/infra/ — estado real de servidores (madre, futuro acer)
-- docs/sesiones/ — diario de trabajo, uno por día
-- docs/ecosistema/ — mapa de repos y plan del bot bifrost
-- scripts/ — automatización (auditoria-repo, cierre-final, generar-contexto, actualizar-agents-context, actualizar-changelog)
-- docs/estandares/ — convenciones compartidas (frontmatter YAML)
-- docs/procedimientos/ — checklists paso a paso para tareas recurrentes
-- docs/adr/ — decisiones de arquitectura (5 ADRs: 001-bifrost-desde-cero.md, 002-regla-enganche-cuadruple.md, 003-orden-rollout-formatter.md, 004-convencion-scripts-procedimientos.md, 005-plan-maestro-ecosistema.md)
+## Antes de commitear
+    python3 -m pyflakes tank_scrap/*.py
+    python3 -m pytest tests -q
+    SDL_VIDEODRIVER=dummy python3 -m tank_scrap --selftest 1800
 
-## Regla de mantenimiento
-Cuando se cree o modifique un archivo en docs/ecosistema/, docs/adr/, docs/procedimientos/
-o docs/estandares/, actualizar tambien scripts/generar-contexto.py
-(lista ARCHIVOS) en el mismo commit. El volcado de contexto no puede
-quedarse desactualizado.
+Las tres cosas tienen que pasar. Los tests corren sin ventana (SDL dummy), asi
+que valen en CI.
 
-## Arquitectura bifrost (cuando exista)
-- Bifrost es solo interfaz, nunca lógica
-- Toda función nueva se prueba primero en midgaror antes de exponerla
-  como comando de Telegram
-
-## Nunca hacer
-- No crear automatizaciones que commiteen solas (nada de GitHub Actions
-  escribiendo en docs/infra)
-- No mezclar diario personal (va en midgaror) con sesiones de trabajo
-  (van aquí)
-- No dejar rutas relativas sin verificar tras mover archivos (usar
-  auditoria.py o grep antes de dar por bueno un mv)
+## Convenciones
+- Commits: `tipo: descripcion breve en presente`.
+- Un mapa nuevo se anade a `levels.STAGES`, siempre 13 filas de 13 caracteres
+  y exactamente una `A` (el aguila).
+- Nada de dependencias nuevas sin una razon buena: pygame y nada mas.
