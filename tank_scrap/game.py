@@ -9,18 +9,20 @@ import random
 import pygame
 
 from . import arena
+from . import audio
 from . import field as fld
 from . import levels, pixfont, sprites, storage
 from .constants import (
     ARENA_AUTOFIRE, ARENA_MANUAL_FIRE, ARENA_MOVING_FIRE_PENALTY,
-    ARENA_PLAYER_HP, BLACK, BUILD_COOLDOWN, BUILD_RANGE_TILES, COST_BRICK,
+    ARENA_PLAYER_HP, BLACK, BOSS_PX, BOSS_SCRAP_DROP, BUILD_COOLDOWN, BUILD_RANGE_TILES, COST_BRICK,
     COST_STEEL, DIR_VECTORS, DOWN, ENEMIES_ON_FIELD, ENEMY_COLORS,
     ENEMY_SPAWN_DELAY, FIELD_PX, FIELD_TILES, FPS, GHOST_NO, GHOST_OK,
     GREY_FRAME, HUD_DIM, LEFT, MARGIN_PX, PLAYER_A, PLAYER_B, PLAYER_LIVES,
     PLAYER_SPAWN_SHIELD, RIGHT, SCALE, SCORE_BY_KIND, SCORE_STAGE_CLEAR,
     SCRAP_START, SCREEN_H, SCREEN_W, TANK_PX, TILE, UP, WHITE,
 )
-from .entities import Bullet, EnemyTank, Explosion, PlayerTank, Scrap
+from .entities import (
+    BossTank, Bullet, EnemyTank, Explosion, PlayerTank, Scrap)
 
 ORIGIN = (MARGIN_PX, MARGIN_PX)
 
@@ -61,9 +63,12 @@ def stage_roster(stage_index):
 
 
 class Game:
-    def __init__(self, seed=None):
+    def __init__(self, seed=None, sfx=None):
         if seed is not None:
             random.seed(seed)
+        # Sin sonido por defecto: lo enchufa run() al abrir ventana, y los
+        # tests corren mudos.
+        self.sfx = sfx if sfx is not None else audio.NullSfx()
         self.surface = pygame.Surface((SCREEN_W, SCREEN_H))
         self.state = TITLE
         self.frame = 0
@@ -127,6 +132,8 @@ class Game:
         self.build_mode = False
         self.state = INTRO
         self.state_timer = 0.0
+        self.sfx.play("jefe" if (self.mode == ARENA
+                                 and arena.is_boss_room(index)) else "sala")
 
     def _spawn_player(self, keep=None):
         tx, ty = ARENA_SPAWN_TILE if self.mode == ARENA else PLAYER_SPAWN_TILE
@@ -157,9 +164,23 @@ class Game:
         for t in self.enemies + [self.player]:
             if t and not t.dead and t.rect.colliderect(spot):
                 return
-        kind = self.queue.pop()
-        self.enemies.append(EnemyTank(spot.x, spot.y, kind))
-        self.explosions.append(Explosion(spot.centerx, spot.centery))
+        kind = self.queue[-1]
+        if kind == "boss":
+            spot = pygame.Rect(FIELD_PX // 2 - BOSS_PX // 2, 0, BOSS_PX, BOSS_PX)
+            if self.field.blocks_tank_rect(spot):
+                self.field.clear_rect(spot)      # el jefe se abre paso al entrar
+                if self.field.blocks_tank_rect(spot):
+                    return                       # habia acero: se espera
+            if any(t and not t.dead and t.rect.colliderect(spot)
+                   for t in self.enemies + [self.player]):
+                return
+            self.queue.pop()
+            self.enemies.append(BossTank(spot.x, spot.y,
+                                         arena.boss_hp(self.stage_index)))
+        else:
+            self.queue.pop()
+            self.enemies.append(EnemyTank(spot.x, spot.y, kind))
+        self.explosions.append(Explosion(spot.centerx, spot.centery, big=True))
 
     # --- entrada ----------------------------------------------------------
     def handle_event(self, event):
@@ -192,6 +213,9 @@ class Game:
     def _handle_play_key(self, key):
         if key == pygame.K_p:
             self.paused = not self.paused
+            return
+        if key == pygame.K_m:
+            self._say("mudo" if self.sfx.toggle_mute() else "sonido")
             return
         if self.paused:
             return
@@ -242,6 +266,7 @@ class Game:
             return
         up_id, _name, _lines, _maxn, apply_fn = self.offer[index]
         apply_fn(self)
+        self.sfx.play("mejora")
         self.taken[up_id] = self.taken.get(up_id, 0) + 1
         self.offer = []
         self._load_stage(self.stage_index + 1)
@@ -281,6 +306,7 @@ class Game:
         self.field.build(tx, ty, kind)
         self.scrap -= cost
         self.scrap_spent += cost
+        self.sfx.play("obra")
         self.build_cd = BUILD_COOLDOWN
 
     def _demolish(self):
@@ -311,6 +337,7 @@ class Game:
                                    pierce_brick=p.pierce_brick,
                                    bounces=p.bounces))
         p.fire_cd = p.fire_interval * penalty
+        self.sfx.play("disparo")
         return True
 
     def _say(self, text, seconds=1.1):
@@ -405,6 +432,7 @@ class Game:
                 s.dead = True
                 self.scrap += s.amount
                 self.scrap_collected += s.amount
+                self.sfx.play("chatarra")
 
     def _update_enemies(self, dt):
         others = self.enemies + [self.player]
@@ -417,8 +445,11 @@ class Game:
             target = self.player.rect.center
         for e in self.enemies:
             e.think(dt, self.field, others, target)
-            if e.wants_to_fire():
-                mx, my = e.muzzle()
+            if not e.wants_to_fire():
+                continue
+            spots = e.muzzles() if hasattr(e, "muzzles") else [e.muzzle()]
+            self.sfx.play("disparo_jefe" if e.kind == "boss" else "disparo")
+            for (mx, my) in spots:
                 self.bullets.append(
                     Bullet(mx, my, e.direction, e.bullet_speed, "enemy", e.piercing))
 
@@ -455,6 +486,9 @@ class Game:
             base_down = base_down or base
             if scrap:
                 self.scraps.append(Scrap(tx, ty, scrap + bonus))
+                self.sfx.play("ladrillo")
+            elif not base:
+                self.sfx.play("acero")
             if was_brick and b.pierce_brick:
                 went_through = True      # la mejora PERFORANTE no frena la bala
         if not hit_any:
@@ -491,11 +525,21 @@ class Game:
                 e.hp -= 1
                 if e.hp <= 0:
                     e.dead = True
+                    if e.kind == "boss":
+                        self._scatter_scrap(e.rect.centerx // TILE,
+                                            e.rect.centery // TILE,
+                                            BOSS_SCRAP_DROP)
+                        for _ in range(3):
+                            self.explosions.append(Explosion(
+                                e.rect.centerx + self.rng.randint(-10, 10),
+                                e.rect.centery + self.rng.randint(-10, 10),
+                                big=True))
                     self.score += SCORE_BY_KIND[e.kind]
                     self.stage_score += SCORE_BY_KIND[e.kind]
                     self.kills[e.kind] = self.kills.get(e.kind, 0) + 1
                     self.explosions.append(
                         Explosion(e.rect.centerx, e.rect.centery, big=True))
+                    self.sfx.play("explosion_grande")
                 else:
                     self.explosions.append(Explosion(b.rect.centerx, b.rect.centery))
                 break
@@ -509,12 +553,14 @@ class Game:
                     return
                 p.hp -= 1
                 p.hurt_flash = 0.35
+                self.sfx.play("dano")
                 if p.hp > 0:
                     self.explosions.append(Explosion(b.rect.centerx, b.rect.centery))
                     self._say("-1 vida", 0.8)
                 else:
                     self.explosions.append(
                         Explosion(p.rect.centerx, p.rect.centery, big=True))
+                    self.sfx.play("explosion_grande")
                     self._player_died()
 
     def _player_died(self):
@@ -566,6 +612,7 @@ class Game:
     def _game_over(self, reason):
         self.state = GAME_OVER
         self.state_timer = 0.0
+        self.sfx.play("game_over")
         self.melted = 0
         if self.mode == ARENA and self.scrap > 0:
             # La chatarra que no gastaste se funde en puntos: acumular no sale
@@ -683,6 +730,9 @@ class Game:
         self.field.draw_trees(s, ORIGIN)
         for ex in self.explosions:
             ex.draw(s, ORIGIN)
+        boss = next((e for e in self.enemies if e.kind == "boss"), None)
+        if boss is not None:
+            self._draw_boss_bar(boss)
         if self.build_mode:
             self._draw_build_cursor()
         if self.state == GAME_OVER:
@@ -780,6 +830,18 @@ class Game:
         if self.state_timer > TALLY_MIN and (self.frame // 20) % 2 == 0:
             pixfont.draw_centered(s, "ENTER", cx, ORIGIN[1] + FIELD_PX - 24, WHITE)
 
+    def _draw_boss_bar(self, boss):
+        """Barra de vida del jefe, arriba del campo."""
+        s = self.surface
+        w = FIELD_PX - 40
+        x = ORIGIN[0] + 20
+        y = ORIGIN[1] + 3
+        pygame.draw.rect(s, (32, 32, 32), (x - 1, y - 1, w + 2, 6))
+        frac = max(0.0, boss.hp / float(boss.max_hp))
+        pygame.draw.rect(s, (96, 32, 32), (x, y, w, 4))
+        pygame.draw.rect(s, (248, 96, 96), (x, y, int(w * frac), 4))
+        pixfont.draw(s, "JEFE", (x - 19, y - 1), (248, 96, 96))
+
     def _draw_build_cursor(self):
         tx, ty = self.build_cursor
         ok = (self.field.can_build(tx, ty) and self.scrap >= COST_BRICK
@@ -872,7 +934,8 @@ def run(seed=None, frames=None, headless=False, mode=None):
     pygame.display.set_caption("TANK SCRAP 1990 - el mapa es municion")
     screen = pygame.display.set_mode((SCREEN_W * SCALE, SCREEN_H * SCALE))
     clock = pygame.time.Clock()
-    game = Game(seed=seed)
+    sfx = audio.NullSfx() if frames else audio.Sfx()
+    game = Game(seed=seed, sfx=sfx)
     if mode:
         game.mode = mode
         game.menu_index = [m[0] for m in MODES].index(mode)

@@ -5,7 +5,7 @@ import pygame
 
 from . import sprites
 from .constants import (
-    BULLET_PX, PLAYER_FIRE_INTERVAL, DIR_VECTORS, DOWN, ENEMY_COLORS, ENEMY_FIRE_MAX, ENEMY_FIRE_MIN,
+    BOSS_PX, BULLET_PX, PLAYER_FIRE_INTERVAL, DIR_VECTORS, DOWN, ENEMY_COLORS, ENEMY_FIRE_MAX, ENEMY_FIRE_MIN,
     ENEMY_HUNT_CHANCE, ENEMY_TURN_CHANCE, FIELD_PX, LEFT, PLAYER_A, PLAYER_B,
     PLAYER_BULLET_SPEED, PLAYER_C, PLAYER_MAX_BULLETS, PLAYER_SPEED, RIGHT,
     SCRAP_LIFETIME, TANK_PX, TILE, UP,
@@ -21,9 +21,8 @@ ENEMY_STATS = {
 
 
 class Tank:
-    size = TANK_PX
-
     def __init__(self, x, y, direction=UP):
+        self.size = TANK_PX
         self.x = float(x)
         self.y = float(y)
         self.direction = direction
@@ -174,6 +173,50 @@ class EnemyTank(Tank):
         super().draw(surf, origin, (dark, light, shadow))
 
 
+class BossTank(EnemyTank):
+    """El jefe de las salas de jefe: 32x32, lento, con dos canones.
+
+    Hereda la IA del blindado pero dispara en pareja y no se deja empujar por
+    la cadencia: lo que le sobra es vida.
+    """
+
+    def __init__(self, x, y, hp):
+        super().__init__(x, y, "armor")
+        self.kind = "boss"
+        self.chassis = "boss"
+        self.size = BOSS_PX
+        self.hp = hp
+        self.max_hp = hp
+        self.speed = 0.42
+        self.bullet_speed = 2.2
+        self.piercing = True              # sus balas se comen el acero
+        self.fire_timer = 1.2
+
+    def muzzles(self):
+        """Las dos bocas del jefe, separadas del centro."""
+        r = self.rect
+        dx, dy = DIR_VECTORS[self.direction]
+        half = self.size // 2
+        # perpendicular a la direccion, para separar los dos canones
+        px, py = (1, 0) if dx == 0 else (0, 1)
+        out = []
+        for off in (-6, 6):
+            out.append((r.centerx + dx * half + px * off,
+                        r.centery + dy * half + py * off))
+        return out
+
+    def draw(self, surf, origin, frame=0):
+        spr = sprites.boss_sprite(self.direction, self.treads)
+        if self.hurt_blink(frame):
+            spr = spr.copy()
+            spr.fill((255, 255, 255, 90), special_flags=pygame.BLEND_RGBA_ADD)
+        surf.blit(spr, (origin[0] + int(self.x), origin[1] + int(self.y)))
+
+    def hurt_blink(self, frame):
+        """Parpadea cuando esta por debajo de un tercio de vida."""
+        return self.hp <= self.max_hp // 3 and (frame // 4) % 2 == 0
+
+
 class Bullet:
     def __init__(self, x, y, direction, speed, owner, piercing=False,
                  pierce_brick=False, bounces=0):
@@ -234,6 +277,8 @@ class Scrap:
 
 
 class Explosion:
+    """Explosion de 2 o 4 pasos. El sonido lo lanza quien la crea."""
+
     def __init__(self, cx, cy, big=False):
         self.cx = cx
         self.cy = cy

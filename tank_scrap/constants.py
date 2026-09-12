@@ -52,8 +52,16 @@ ARENA_MANUAL_FIRE = True              # ademas puedes disparar con espacio
 # A 1.0 el movimiento deja de tener penalizacion.
 ARENA_MOVING_FIRE_PENALTY = 1.6
 
+# El jefe: 32x32 (4x4 subtiles), lento, muy duro, y suelta un monton de
+# chatarra al caer.
+BOSS_PX = 32
+BOSS_HP_BASE = 10
+BOSS_HP_PER_ROOM = 2
+BOSS_SCRAP_DROP = 12
+
 # --- Puntuacion ------------------------------------------------------------
-SCORE_BY_KIND = {"basic": 100, "fast": 200, "power": 300, "armor": 400}
+SCORE_BY_KIND = {"basic": 100, "fast": 200, "power": 300, "armor": 400,
+                 "boss": 2500}
 SCORE_STAGE_CLEAR = 500
 
 # --- Direcciones -----------------------------------------------------------
@@ -87,6 +95,9 @@ ENEMY_COLORS = {
     "fast":  ((72, 160, 216), (152, 216, 248), (24, 80, 136)),
     "power": ((200, 72, 72), (248, 152, 152), (120, 24, 24)),
     "armor": ((168, 88, 200), (224, 168, 248), (88, 32, 112)),
+    # El jefe va en acero oscuro con vivos naranjas: pesa a la vista y no se
+    # confunde con el dorado del jugador.
+    "boss":  ((88, 88, 104), (248, 152, 56), (40, 40, 56)),
 }
 HUD_DIM = (136, 136, 136)
 GHOST_OK = (120, 224, 120)

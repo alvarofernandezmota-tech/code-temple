@@ -188,6 +188,37 @@ def _chassis_armor(s, dark, light, shadow, treads):
     pygame.draw.rect(s, shadow, (7, 2, 1, 5))
 
 
+def _chassis_boss(s, dark, light, shadow, treads):
+    """Jefe 32x32: orugas dobles, faldones remachados y dos canones."""
+    for tx in (0, 25):
+        pygame.draw.rect(s, shadow, (tx, 4, 7, 28))
+        for y in range(4 + treads % 3, 32, 4):
+            pygame.draw.rect(s, light, (tx + 1, y, 5, 2))
+    pygame.draw.rect(s, dark, (5, 8, 22, 22))
+    pygame.draw.rect(s, shadow, (5, 8, 22, 22), 1)
+    pygame.draw.rect(s, shadow, (5, 18, 22, 1))
+    pygame.draw.rect(s, light, (10, 12, 12, 14))
+    pygame.draw.rect(s, shadow, (10, 12, 12, 14), 1)
+    for (rx, ry) in ((7, 10), (24, 10), (7, 27), (24, 27), (7, 19), (24, 19)):
+        pygame.draw.rect(s, light, (rx, ry, 2, 2))
+    for bx in (10, 19):                       # dos canones
+        pygame.draw.rect(s, light, (bx, 0, 3, 13))
+        pygame.draw.rect(s, shadow, (bx, 0, 1, 13))
+    pygame.draw.rect(s, shadow, (14, 18, 4, 4))
+
+
+def boss_sprite(direction, treads=0):
+    from .constants import BOSS_PX, ENEMY_COLORS
+    dark, light, shadow = ENEMY_COLORS["boss"]
+    key = ("boss", direction, treads % 3)
+    if key not in _cache:
+        s = _surf(BOSS_PX, BOSS_PX)
+        _chassis_boss(s, dark, light, shadow, treads)
+        angle = {UP: 0, LEFT: 90, DOWN: 180, RIGHT: 270}[direction]
+        _cache[key] = pygame.transform.rotate(s, angle)
+    return _cache[key]
+
+
 CHASSIS = {
     "player": _chassis_player,
     "basic": _chassis_basic,

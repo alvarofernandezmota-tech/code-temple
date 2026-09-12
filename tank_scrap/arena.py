@@ -99,7 +99,10 @@ def room_roster(index, rng=None):
     rng = rng or random
     n = index + 1
     if is_boss_room(index):
-        roster = ["armor"] * (1 + n // BOSS_EVERY) + ["power"] * 2 + ["fast"] * 2
+        # Un jefe y su escolta. La escolta crece, el jefe engorda de vida.
+        roster = ["power"] * 2 + ["fast"] * 2 + ["armor"] * (n // BOSS_EVERY)
+        rng.shuffle(roster)
+        return roster + ["boss"]         # el jefe sale primero (se saca del final)
     else:
         roster = ["basic"] * max(2, 5 - n // 3)
         roster += ["fast"] * min(5, 1 + n // 2)
@@ -107,6 +110,14 @@ def room_roster(index, rng=None):
         roster += ["armor"] * min(3, max(0, (n - 2) // 3))
     rng.shuffle(roster)
     return roster
+
+
+def boss_hp(index, base=None, per_room=None):
+    """Vida del jefe segun lo avanzada que este la run."""
+    from .constants import BOSS_HP_BASE, BOSS_HP_PER_ROOM
+    base = BOSS_HP_BASE if base is None else base
+    per_room = BOSS_HP_PER_ROOM if per_room is None else per_room
+    return base + per_room * (index // BOSS_EVERY)
 
 
 # --- Mejoras ---------------------------------------------------------------

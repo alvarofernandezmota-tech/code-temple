@@ -107,6 +107,15 @@ class Field:
                 self.grid[ty][tx] = kind
         return ring
 
+    def clear_rect(self, rect):
+        """Vacia el ladrillo de un rectangulo (lo usa el jefe al entrar)."""
+        cleared = 0
+        for tx, ty in self.tiles_in(rect):
+            if self.at(tx, ty) in BREAKABLE:
+                self.grid[ty][tx] = EMPTY
+                cleared += 1
+        return cleared
+
     # --- construccion (la vuelta de tuerca) --------------------------------
     def can_build(self, tx, ty):
         return self.inside(tx, ty) and self.at(tx, ty) in BUILDABLE_OVER

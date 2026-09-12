@@ -55,7 +55,10 @@ Salas encadenadas, sin águila que defender: lo que se pierde al morir es la
 - Al limpiar una sala eliges **1 de 3 mejoras**: doble cañón, cadencia, bala
   veloz, blindaje, orugas, perforante, rebote, desguace, imán, taller,
   suministro. Se acumulan y se llevan a la sala siguiente.
-- Cada 5 salas, **sala de jefe** con blindados de escolta.
+- Cada 5 salas, **sala de jefe**: un tanque de 32x32 en acero oscuro con dos
+  cañones, balas que perforan el acero, barra de vida en pantalla, escolta
+  alrededor y una montaña de chatarra al caer. Engorda de vida cada vez que
+  vuelve.
 - Las salas se generan con 5 arquetipos (pilares, cruz, trincheras, patio,
   molino) y van sumando agua, hielo y árboles al avanzar.
 
@@ -106,6 +109,7 @@ python3 -m tank_scrap --arena     # directo a la arena
 | `1` `2` `3` / flechas + enter | elegir mejora (Arena) |
 | `R` | volver a tirar la oferta de mejoras — cuesta 3 de chatarra |
 | `P` | pausa |
+| `M` | silenciar el sonido |
 | `Esc` | salir |
 
 El tiempo **no se detiene** en modo obra: construir mientras te disparan es
@@ -125,7 +129,18 @@ parte del juego.
 - Un disparo rompe un subtile de 8 px; un tanque mide 16 px, así que hacen
   falta dos disparos para abrir un hueco por el que pasar.
 
+## Sonido
+
+También generado en código, sin un solo fichero de audio: ondas cuadradas y
+ruido escritos a mano en PCM de 16 bits (`tank_scrap/audio.py`, 13 efectos
+que se montan en 40 ms al arrancar). Disparo, ladrillo roto, acero, dos
+explosiones, chatarra, obra, daño, entrada de sala, jefe, mejora y game over.
+Si la máquina no tiene tarjeta de sonido, el juego se queda mudo sin quejarse.
+
 ## Desarrollo
+
+Hay CI en GitHub Actions (`.github/workflows/ci.yml`): lint, tests y los dos
+autotests sin ventana, en Python 3.9, 3.11 y 3.12.
 
 ```bash
 pip install -r requirements-dev.txt
@@ -138,6 +153,9 @@ SDL_VIDEODRIVER=dummy python3 -m tank_scrap --selftest 1800 --arena   # arena
 Todo el pixel art se genera en código (`tank_scrap/sprites.py`): no hay
 assets, ni fuentes del sistema —el HUD usa una tipografía de mapa de bits 3x5
 hecha a mano en `tank_scrap/pixfont.py`.
+
+Los tests corren mudos y sin ventana: `Game` recibe un `NullSfx` por defecto y
+solo `run()` enchufa el sonido de verdad.
 
 El modo Arena vive en `tank_scrap/arena.py`: generación de salas, oleadas y la
 tabla de mejoras (cada mejora es una tupla con su nombre, su texto, cuántas

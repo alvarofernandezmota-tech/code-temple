@@ -290,3 +290,61 @@ def test_bala_con_rebote_cambia_de_sentido():
     b = Bullet(40, 40, 2, 0.1, "player", bounces=1)
     b.bounce()
     assert b.direction == 0 and b.bounces == 0
+
+
+# --- Jefe y sonido ----------------------------------------------------------
+
+def test_la_sala_de_jefe_trae_un_jefe():
+    from tank_scrap import arena
+    rng = __import__("random").Random(3)
+    roster = arena.room_roster(4, rng)          # sala 5
+    assert roster.count("boss") == 1
+    assert roster[-1] == "boss"                 # sale primero (se saca del final)
+    assert len(roster) > 1                      # y con escolta
+    assert not any("boss" in arena.room_roster(i, rng) for i in (0, 1, 2, 3))
+
+
+def test_el_jefe_es_grande_duro_y_dispara_por_dos_bocas():
+    from tank_scrap import arena
+    from tank_scrap.constants import BOSS_PX
+    from tank_scrap.entities import BossTank
+    g = arena_game()
+    boss = BossTank(40, 40, arena.boss_hp(4))
+    assert boss.size == BOSS_PX == 32
+    assert boss.hp >= 10 and boss.hp > g.player.max_hp
+    assert len(boss.muzzles()) == 2
+    assert arena.boss_hp(9) > arena.boss_hp(4)  # engorda con la run
+
+
+def test_el_jefe_suelta_chatarra_al_caer():
+    from tank_scrap import arena
+    from tank_scrap.constants import BOSS_SCRAP_DROP
+    from tank_scrap.entities import BossTank
+    g = arena_game()
+    boss = BossTank(80, 80, 1)
+    g.enemies = [boss]
+    g.scraps = []
+    b = Bullet(boss.rect.centerx, boss.rect.centery, 0, 0.1, "player")
+    g.bullets.append(b)
+    g._bullet_vs_tanks(b)
+    assert boss.dead
+    assert len(g.scraps) == BOSS_SCRAP_DROP
+    assert g.score >= 2500
+    assert arena.BOSS_CLEAR_SCORE > arena.ROOM_CLEAR_SCORE
+
+
+def test_el_banco_de_sonido_se_genera_entero():
+    from tank_scrap import audio
+    bank = audio._build_bank()
+    assert len(bank) >= 12
+    for name, buf in bank.items():
+        assert len(buf) > 100, name             # nada de efectos vacios
+        assert max(abs(v) for v in buf) > 1000, name   # y con senal de verdad
+
+
+def test_el_juego_funciona_sin_tarjeta_de_sonido():
+    from tank_scrap import audio
+    g = arena_game()
+    assert isinstance(g.sfx, audio.NullSfx)     # los tests corren mudos
+    g.sfx.play("disparo")                       # no revienta
+    assert g.sfx.toggle_mute() is True

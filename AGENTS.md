@@ -14,6 +14,7 @@ vuelta de tuerca es la economia de chatarra (ver README).
 - `tank_scrap/levels.py` — mapas de campaña en celdas de 16 px (13x13).
 - `tank_scrap/arena.py` — modo roguelite: salas generadas, oleadas y mejoras.
 - `tank_scrap/storage.py` — lo unico que se persiste es el record.
+- `tank_scrap/audio.py` — efectos en PCM generados en codigo (sin ficheros).
 
 ## Antes de commitear
     python3 -m pyflakes tank_scrap/*.py
@@ -32,4 +33,8 @@ que valen en CI.
   `_up_*`; los atributos que toca tienen que existir en `PlayerTank` y estar
   listados en `PlayerTank.carry_over`, o se perderan al cambiar de sala.
 - Las salas de arena no llevan aguila: nunca metas una `A` en `generate_room`.
+- Nada de assets: ni imagenes ni audio ni fuentes. Un grafico nuevo se dibuja
+  en `sprites.py` y un sonido nuevo se sintetiza en `audio.py`.
+- El sonido nunca puede tumbar el juego: si el mixer falla, `Sfx.enabled` se
+  queda en False. Los tests usan `NullSfx`.
 - Nada de dependencias nuevas sin una razon buena: pygame y nada mas.
