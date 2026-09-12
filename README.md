@@ -44,9 +44,13 @@ espacio.
 Salas encadenadas, sin águila que defender: lo que se pierde al morir es la
 *run* entera.
 
-- **Disparas solo al estar quieto.** Moverte y disparar son decisiones
-  opuestas, y con un tanque se lee muy bien: pararte en campo abierto es
-  ofrecerte de blanco.
+- **Parado disparas solo.** Moverte y disparar son decisiones opuestas, y con
+  un tanque se lee muy bien: pararte en campo abierto es ofrecerte de blanco.
+- **Y puedes disparar a mano con espacio, también en marcha** — misma bala,
+  pero la recarga se alarga ×1.6, porque el cañón va inestable. Huir
+  disparando es posible y cuesta cadencia; la barra de recarga del marcador
+  te dice cuándo vuelve a estar cargado. (Ajustable en
+  `constants.ARENA_MOVING_FIRE_PENALTY`; a `1.0` el movimiento deja de penalizar.)
 - **Barra de vida** (4 impactos de base) en vez de morir de un toque.
 - Al limpiar una sala eliges **1 de 3 mejoras**: doble cañón, cadencia, bala
   veloz, blindaje, orugas, perforante, rebote, desguace, imán, taller,
@@ -98,6 +102,7 @@ python3 -m tank_scrap --arena     # directo a la arena
 | Espacio (en obra) | poner ladrillo — cuesta **1** de chatarra |
 | Shift o `E` (en obra) | poner acero — cuesta **6** |
 | `X` (en obra) | recuperar un muro **tuyo** y recobrar su coste |
+| Espacio (Arena) | disparar a mano; en marcha alarga la recarga |
 | `1` `2` `3` / flechas + enter | elegir mejora (Arena) |
 | `R` | volver a tirar la oferta de mejoras — cuesta 3 de chatarra |
 | `P` | pausa |

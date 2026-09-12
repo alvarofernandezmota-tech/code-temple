@@ -12,7 +12,8 @@ from . import arena
 from . import field as fld
 from . import levels, pixfont, sprites, storage
 from .constants import (
-    ARENA_AUTOFIRE, ARENA_PLAYER_HP, BLACK, BUILD_COOLDOWN, BUILD_RANGE_TILES, COST_BRICK,
+    ARENA_AUTOFIRE, ARENA_MANUAL_FIRE, ARENA_MOVING_FIRE_PENALTY,
+    ARENA_PLAYER_HP, BLACK, BUILD_COOLDOWN, BUILD_RANGE_TILES, COST_BRICK,
     COST_STEEL, DIR_VECTORS, DOWN, ENEMIES_ON_FIELD, ENEMY_COLORS,
     ENEMY_SPAWN_DELAY, FIELD_PX, FIELD_TILES, FPS, GHOST_NO, GHOST_OK,
     GREY_FRAME, HUD_DIM, LEFT, MARGIN_PX, PLAYER_A, PLAYER_B, PLAYER_LIVES,
@@ -210,8 +211,8 @@ class Game:
                 self._demolish()
             return
         if key == pygame.K_SPACE:
-            if self.mode == ARENA and ARENA_AUTOFIRE:
-                return          # en arena disparas al pararte, no con espacio
+            if self.mode == ARENA:
+                return          # en arena el disparo se lee cada fotograma
             self._player_fire()
 
     def _handle_offer_key(self, key):
@@ -292,7 +293,13 @@ class Game:
         else:
             self._say("no es tuyo")
 
-    def _player_fire(self, force=True):
+    def _player_fire(self, force=True, penalty=1.0):
+        """Dispara si cabe otra bala y el canon esta cargado.
+
+        force=True se salta la cadencia (campana, donde el limite es el numero
+        de balas en vuelo). penalty alarga la recarga: disparar en marcha
+        cuesta mas que hacerlo parado.
+        """
         p = self.player
         mine = [b for b in self.bullets if b.owner == "player" and not b.dead]
         if len(mine) >= p.max_bullets:
@@ -303,7 +310,7 @@ class Game:
         self.bullets.append(Bullet(mx, my, p.direction, p.bullet_speed, "player",
                                    pierce_brick=p.pierce_brick,
                                    bounces=p.bounces))
-        p.fire_cd = p.fire_interval
+        p.fire_cd = p.fire_interval * penalty
         return True
 
     def _say(self, text, seconds=1.1):
@@ -379,10 +386,15 @@ class Game:
             elif p.slide > 0:
                 p.slide -= dt
                 p.step(p.direction, self.field, self.enemies, dt, factor=0.7)
-        # Disparo automatico al estar quieto, como en Archero: moverse y
-        # disparar son decisiones opuestas.
-        if self.mode == ARENA and ARENA_AUTOFIRE and not moving:
-            self._player_fire(force=False)
+        # Arena: parado disparas solo (como en Archero) y con espacio puedes
+        # disparar tambien en marcha, pero la recarga se alarga.
+        if self.mode == ARENA and not self.build_mode:
+            if ARENA_MANUAL_FIRE and keys[pygame.K_SPACE]:
+                self._player_fire(force=False,
+                                  penalty=ARENA_MOVING_FIRE_PENALTY if moving
+                                  else 1.0)
+            elif ARENA_AUTOFIRE and not moving:
+                self._player_fire(force=False)
 
         # recoger chatarra (el iman la coge a distancia)
         reach = p.rect.inflate(p.magnet, p.magnet)
@@ -615,7 +627,9 @@ class Game:
         yy += 2
         for line in ("FLECHAS ELEGIR    ENTER JUGAR",
                      "B MODO OBRA   X RECUPERAR",
-                     "EN ARENA DISPARAS AL PARARTE"):
+                     "ARENA: PARADO DISPARAS SOLO",
+                     "ESPACIO TAMBIEN, PERO EN MARCHA",
+                     "LA RECARGA ES MAS LENTA"):
             pixfont.draw_centered(s, line, cx, yy, HUD_DIM)
             yy += 8
 
@@ -805,7 +819,14 @@ class Game:
             for i in range(p.max_hp):
                 col = (248, 96, 96) if i < p.hp else (72, 40, 40)
                 pygame.draw.rect(s, col, (px + i * 4, y, 3, 5))
-            y += 10
+            y += 9
+            # barra de recarga: lleno = canon listo
+            bar_w = 32
+            ready = 1.0 - min(1.0, p.fire_cd / max(0.01, p.fire_interval))
+            pygame.draw.rect(s, (48, 48, 48), (px, y, bar_w, 3))
+            pygame.draw.rect(s, (152, 216, 248) if ready >= 1.0 else (96, 128, 160),
+                             (px, y, int(bar_w * ready), 3))
+            y += 9
         else:
             pixfont.draw(s, "TANQUES", (px, y), HUD_DIM)
             y += 8

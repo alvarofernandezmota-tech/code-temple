@@ -47,6 +47,10 @@ SCRAP_START = 4                       # con lo que arrancas cada partida
 # --- Modo ARENA ------------------------------------------------------------
 ARENA_PLAYER_HP = 4                   # el tanque aguanta varios impactos
 ARENA_AUTOFIRE = True                 # disparas solo al estar quieto
+ARENA_MANUAL_FIRE = True              # ademas puedes disparar con espacio
+# Disparar en marcha desestabiliza el canon: misma bala, recarga mas larga.
+# A 1.0 el movimiento deja de tener penalizacion.
+ARENA_MOVING_FIRE_PENALTY = 1.6
 
 # --- Puntuacion ------------------------------------------------------------
 SCORE_BY_KIND = {"basic": 100, "fast": 200, "power": 300, "armor": 400}

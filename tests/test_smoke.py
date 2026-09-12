@@ -194,10 +194,37 @@ def test_disparo_automatico_solo_al_estar_quieto():
     assert len([b for b in g.bullets if b.owner == "player"]) == 1
 
 
-def test_espacio_no_dispara_en_arena():
+def test_el_keydown_de_espacio_no_dispara_en_arena():
+    """En arena el disparo se lee cada fotograma, no en el evento de tecla."""
     g = arena_game()
     g._handle_play_key(pygame.K_SPACE)
     assert not g.bullets
+
+
+def test_espacio_dispara_en_marcha_pero_recarga_mas_lenta():
+    from tank_scrap.constants import ARENA_MOVING_FIRE_PENALTY
+    g = arena_game()
+    g.player.fire_cd = 0.0
+    g._update_player(1.0 / FPS, _KeyProxy({pygame.K_RIGHT: True,
+                                           pygame.K_SPACE: True}))
+    disparos = [b for b in g.bullets if b.owner == "player"]
+    assert len(disparos) == 1
+    esperado = g.player.fire_interval * ARENA_MOVING_FIRE_PENALTY
+    assert abs(g.player.fire_cd - esperado) < 1e-6
+
+    # parado, la misma tecla recarga a cadencia normal
+    g2 = arena_game()
+    g2.player.fire_cd = 0.0
+    g2._update_player(1.0 / FPS, _KeyProxy({pygame.K_SPACE: True}))
+    assert abs(g2.player.fire_cd - g2.player.fire_interval) < 1e-6
+
+
+def test_en_modo_obra_el_espacio_construye_y_no_dispara():
+    g = arena_game()
+    g.build_mode = True
+    g.player.fire_cd = 0.0
+    g._update_player(1.0 / FPS, _KeyProxy({pygame.K_SPACE: True}))
+    assert not [b for b in g.bullets if b.owner == "player"]
 
 
 def test_mejora_se_aplica_y_se_apunta():
