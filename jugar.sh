@@ -27,5 +27,22 @@ if ! "$VENV_PY" -c "import pygame" >/dev/null 2>&1; then
   "$VENV_PY" -m pip install --quiet -r requirements.txt
 fi
 
+# Sin sesion grafica no hay ventana posible: pasa al entrar por SSH a un
+# servidor. Mejor decirlo aqui que dejar que SDL falle a medio arrancar.
+if [ -z "${DISPLAY:-}" ] && [ -z "${WAYLAND_DISPLAY:-}" ] && [ -z "${SDL_VIDEODRIVER:-}" ]; then
+  case " $* " in
+    *--selftest*) ;;   # el autotest corre sin ventana a proposito
+    *)
+      echo "Esta maquina no tiene pantalla (sesion: ${XDG_SESSION_TYPE:-desconocida})."
+      echo
+      echo "El juego necesita escritorio para abrir ventana. Dos salidas:"
+      echo "  1. Jugarlo en un ordenador con escritorio."
+      echo "  2. Servirlo en el navegador desde aqui y abrirlo desde otro aparato:"
+      echo "       scripts/servir_web.sh"
+      exit 2
+      ;;
+  esac
+fi
+
 echo "Arrancando TANK SCRAP 1990 — flechas para moverte, B para construir."
 exec "$VENV_PY" -m tank_scrap "$@"

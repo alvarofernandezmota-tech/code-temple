@@ -992,7 +992,19 @@ def run(seed=None, frames=None, headless=False, mode=None):
         os.environ.setdefault("SDL_AUDIODRIVER", "dummy")
     pygame.init()
     pygame.display.set_caption("TANK SCRAP 1990 - el mapa es municion")
-    screen = pygame.display.set_mode((SCREEN_W * SCALE, SCREEN_H * SCALE))
+    try:
+        screen = pygame.display.set_mode((SCREEN_W * SCALE, SCREEN_H * SCALE))
+    except pygame.error as err:
+        # Pasa al ejecutarlo por SSH en una maquina sin escritorio: SDL no
+        # tiene donde dibujar. Un traceback ahi no dice que hacer.
+        raise SystemExit(
+            "No hay pantalla donde dibujar (%s).\n\n"
+            "Esta maquina no tiene sesion grafica, asi que el juego no puede\n"
+            "abrir ventana. Dos salidas:\n"
+            "  1. Jugar en un ordenador con escritorio.\n"
+            "  2. Servirlo en el navegador desde aqui:\n"
+            "       scripts/servir_web.sh\n"
+            "     y abrir la direccion que imprime desde otro aparato.\n" % err)
     clock = pygame.time.Clock()
     sfx = audio.NullSfx() if frames else audio.Sfx()
     game = Game(seed=seed, sfx=sfx)
