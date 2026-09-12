@@ -9,6 +9,7 @@ La chatarra sigue siendo el recurso central y aqui tiene tres destinos:
 levantar muro, pagar rerolls de la oferta de mejoras, y lo que sobre al
 acabar la run se funde en puntos.
 """
+import collections
 import random
 
 BOSS_EVERY = 5           # cada 5 salas, una de jefe
@@ -128,7 +129,12 @@ def enemy_hp_bonus(index):
 
 # --- Mejoras ---------------------------------------------------------------
 # Cada mejora es: id, nombre corto, dos lineas de texto, cuantas veces se
-# puede coger, y que le hace al tanque.
+# puede coger, que le hace al tanque y, si es una maldicion, la linea que
+# describe el precio. Las maldiciones salen marcadas en rojo en la oferta.
+
+Upgrade = collections.namedtuple(
+    "Upgrade", "id name lines maxn apply curse")
+Upgrade.__new__.__defaults__ = (None,)
 
 def _up_cannon(g):
     g.player.max_bullets += 1
@@ -175,28 +181,74 @@ def _up_supply(g):
     g.player.supply += 6
 
 
+def _lose_max_hp(player, n=1):
+    """Quita vida maxima sin dejarla por debajo de 1."""
+    player.max_hp = max(1, player.max_hp - n)
+    player.hp = min(player.hp, player.max_hp)
+
+
+def _curse_overload(g):
+    """Cadencia brutal a cambio de un corazon."""
+    g.player.fire_interval = max(0.12, g.player.fire_interval * 0.65)
+    _lose_max_hp(g.player)
+
+
+def _curse_twin(g):
+    """Dos canones mas, pero la recarga se alarga un 40%."""
+    g.player.max_bullets += 2
+    g.player.fire_interval *= 1.4
+
+
+def _curse_shell(g):
+    """Obus: atraviesa el acero, incluido el tuyo, y vuela mas despacio."""
+    g.player.pierce_steel = True
+    g.player.pierce_brick = True
+    g.player.bullet_speed = max(1.2, g.player.bullet_speed - 0.8)
+
+
+def _curse_plate(g):
+    """Chapa gruesa: mucha vida a cambio de moverte peor."""
+    g.player.max_hp += 3
+    g.player.hp += 3
+    g.player.speed = max(0.45, g.player.speed * 0.75)
+
+
 UPGRADES = [
-    ("canon", "DOBLE CANON", ("UNA BALA MAS", "EN VUELO"), 3, _up_cannon),
+    Upgrade("canon", "DOBLE CANON", ("UNA BALA MAS", "EN VUELO"), 3, _up_cannon),
     # 3 y no 4: el cuarto escalon bajaba el intervalo a 0,20 s y rompia la
     # curva de dano junto a los canones.
-    ("cadencia", "CADENCIA", ("DISPARAS UN", "22% MAS RAPIDO"), 3, _up_rate),
-    ("veloz", "BALA VELOZ", ("LA BALA VUELA", "MAS RAPIDO"), 3, _up_speed_bullet),
-    ("blindaje", "BLINDAJE", ("+1 DE VIDA", "MAXIMA Y CURA 1"), 4, _up_armor),
-    ("orugas", "ORUGAS", ("TE MUEVES", "MAS RAPIDO"), 3, _up_tracks),
-    ("perfora", "PERFORANTE", ("TU BALA ATRAVIESA", "EL LADRILLO"), 1, _up_pierce),
-    ("rebote", "REBOTE", ("LA BALA REBOTA", "EN EL ACERO"), 2, _up_bounce),
-    ("desguace", "DESGUACE", ("CADA LADRILLO", "DA +1 CHATARRA"), 3, _up_salvage),
-    ("iman", "IMAN", ("RECOGES CHATARRA", "A DISTANCIA"), 2, _up_magnet),
-    ("taller", "TALLER", ("CURA TODA", "LA VIDA"), 99, _up_repair),
-    ("suministro", "SUMINISTRO", ("+6 DE CHATARRA", "AL ENTRAR"), 99, _up_supply),
+    Upgrade("cadencia", "CADENCIA", ("DISPARAS UN", "22% MAS RAPIDO"), 3, _up_rate),
+    Upgrade("veloz", "BALA VELOZ", ("LA BALA VUELA", "MAS RAPIDO"), 3,
+            _up_speed_bullet),
+    Upgrade("blindaje", "BLINDAJE", ("+1 DE VIDA", "MAXIMA Y CURA 1"), 4, _up_armor),
+    Upgrade("orugas", "ORUGAS", ("TE MUEVES", "MAS RAPIDO"), 3, _up_tracks),
+    Upgrade("perfora", "PERFORANTE", ("TU BALA ATRAVIESA", "EL LADRILLO"), 1,
+            _up_pierce),
+    Upgrade("rebote", "REBOTE", ("LA BALA REBOTA", "EN EL ACERO"), 2, _up_bounce),
+    Upgrade("desguace", "DESGUACE", ("CADA LADRILLO", "DA +1 CHATARRA"), 3,
+            _up_salvage),
+    Upgrade("iman", "IMAN", ("RECOGES CHATARRA", "A DISTANCIA"), 2, _up_magnet),
+    Upgrade("taller", "TALLER", ("CURA TODA", "LA VIDA"), 99, _up_repair),
+    Upgrade("suministro", "SUMINISTRO", ("+6 DE CHATARRA", "AL ENTRAR"), 99,
+            _up_supply),
+
+    # Maldiciones: mejoras que cobran. Sin ellas, elegir era decir si a todo.
+    Upgrade("sobrecarga", "SOBRECARGA", ("35% MAS DE CADENCIA",), 2,
+            _curse_overload, "PIERDES UN CORAZON"),
+    Upgrade("gemelos", "CANONES GEMELOS", ("DOS BALAS MAS", "EN VUELO"), 1,
+            _curse_twin, "RECARGA UN 40% MAS LENTA"),
+    Upgrade("obus", "OBUS", ("ATRAVIESA EL ACERO",), 1,
+            _curse_shell, "TAMBIEN EL TUYO, Y VUELA LENTO"),
+    Upgrade("chapa", "CHAPA GRUESA", ("+3 DE VIDA MAXIMA",), 1,
+            _curse_plate, "TE MUEVES UN 25% MAS LENTO"),
 ]
 
-BY_ID = {u[0]: u for u in UPGRADES}
+BY_ID = {u.id: u for u in UPGRADES}
 
 
 def offer(taken, rng=None, count=3):
     """Saca `count` mejoras elegibles, sin repetir dentro de la misma oferta."""
     rng = rng or random
-    pool = [u for u in UPGRADES if taken.get(u[0], 0) < u[3]]
+    pool = [u for u in UPGRADES if taken.get(u.id, 0) < u.maxn]
     rng.shuffle(pool)
     return pool[:count]

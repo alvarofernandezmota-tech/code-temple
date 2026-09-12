@@ -37,8 +37,10 @@ el búnker de acero y ladrillo alrededor del águila es obra del jugador.
 | ![Arena](docs/arena.png) | ![Mejoras](docs/mejoras.png) |
 
 ### CAMPAÑA — Battle City con chatarra
-Las 3 fases clásicas: defiendes el águila, 3 tanques de vida, disparas con
-espacio.
+**Ocho fases** con progresión pensada: las 1-2 enseñan la mecánica, las 3-4
+meten acero y agua, las 5-6 aprietan los caminos hacia el águila, y las 7-8
+mezclan hielo con pasillos estrechos. Defiendes el águila, 3 tanques de vida,
+disparas con espacio.
 
 ### ARENA — roguelite por salas (estilo Archero)
 Salas encadenadas, sin águila que defender: lo que se pierde al morir es la
@@ -141,6 +143,11 @@ python3 -m tank_scrap --arena     # directo a la arena
 | `R` | volver a tirar la oferta de mejoras — cuesta 3 de chatarra |
 | `P` | pausa |
 | `M` | silenciar el sonido |
+
+**Mando**: si hay uno conectado se usa solo, a la vez que el teclado. Stick o
+cruceta para moverte, botón sur dispara, oeste entra en modo obra, este
+recupera muro, norte pone acero, start en los menús, select pausa y LB vuelve
+a tirar la oferta de mejoras.
 | `Esc` | salir |
 
 El tiempo **no se detiene** en modo obra: construir mientras te disparan es

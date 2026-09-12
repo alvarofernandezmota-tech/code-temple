@@ -118,3 +118,4 @@ ENEMY_COLORS = {
 HUD_DIM = (136, 136, 136)
 GHOST_OK = (120, 224, 120)
 GHOST_NO = (224, 88, 88)
+CURSE = (232, 88, 88)          # las mejoras que cobran van en rojo

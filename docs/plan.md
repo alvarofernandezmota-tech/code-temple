@@ -49,7 +49,7 @@ construir ahí — está en el punto D14, abajo.
 *Depende de:* D1, para no renombrar con una PR abierta. *Se comprueba:* el
 enlace viejo redirige y `git push` sigue funcionando.
 
-### D3 · Licencia · **S**
+### D3 · Licencia · **S** *(hecho)*
 1. `LICENSE` con MIT y tu nombre.
 2. Una línea en el README.
 
@@ -94,7 +94,7 @@ Es la sala donde construir muro es la respuesta, no un adorno.
 
 *Depende de:* el paso de juego (si el techo molesta, la recompensa cambia).
 
-### D7 · Mejoras con coste · **S**
+### D7 · Mejoras con coste · **S** *(hecho)*
 1. `arena.UPGRADES`: campo nuevo `coste` con el texto del castigo.
 2. Cuatro candidatas: +50 % daño / −1 vida máxima · +2 cañones / −25 % cadencia
    · bala perforante / la tuya también rompe tu muro · velocidad +40 % / −1
@@ -119,7 +119,7 @@ Es la sala donde construir muro es la respuesta, no un adorno.
 
 ## Bloque 4 — Comodidad y contenido
 
-### D13 · Mando · **S**
+### D13 · Mando · **S** *(hecho)*
 1. `pygame.joystick` en `game.py`: stick y cruceta a dirección, botón sur a
    disparo, botón oeste a modo obra, start a pausa.
 2. El teclado sigue funcionando a la vez; se detecta el mando al arrancar y al
@@ -127,7 +127,7 @@ Es la sala donde construir muro es la respuesta, no un adorno.
 3. Test: la capa de entrada traduce eventos de mando a las mismas acciones
    (sin mando físico, con eventos sintéticos).
 
-### D10 · Ocho fases de campaña · **M**
+### D10 · Ocho fases de campaña · **M** *(hecho)*
 1. Cinco mapas nuevos en `levels.py`, 13x13, escritos a mano.
 2. Criterio de progresión: la 1-2 enseñan, la 3-4 introducen acero y agua, la
    5-6 aprietan los caminos hacia el águila, la 7-8 mezclan hielo con pasillos
@@ -205,15 +205,15 @@ Queda en español. Si algún día se traduce, el HUD son ~30 cadenas en
 | --- | --- | --- | --- |
 | D1 | mergear | S | — |
 | D2 | renombrar repo | S | D1 |
-| D3 | licencia MIT | S | — |
+| D3 | licencia MIT | S | **hecho** |
 | D4 | activar Actions | S | tuyo |
 | — | **jugar una partida** | tú | D1 |
 | D6 | sala de defensa | M | jugar |
-| D7 | mejoras con coste | S | — |
+| D7 | mejoras con coste | S | **hecho** |
 | D9 | dos jefes más | M | jugar |
-| D13 | mando | S | — |
-| D10 | ocho fases | M | — |
-| D11 | dos jugadores | L | D13 |
+| D13 | mando | S | **hecho** |
+| D10 | ocho fases | M | **hecho** |
+| D11 | dos jugadores | L | D13 (ya está) |
 | D14 | web + itch.io | M | D1, tu máquina |
 | D8 | torretas | M | jugar |
 | D12 | música | M | el resto |

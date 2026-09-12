@@ -105,6 +105,7 @@ class PlayerTank(Tank):
         self.fire_interval = PLAYER_FIRE_INTERVAL
         self.fire_cd = 0.0
         self.pierce_brick = False
+        self.pierce_steel = False
         self.bounces = 0
         self.magnet = 0
         self.scrap_bonus = 0
@@ -118,8 +119,8 @@ class PlayerTank(Tank):
     def carry_over(self, other):
         """Copia el estado que sobrevive de una sala a la siguiente."""
         for attr in ("speed", "max_bullets", "max_hp", "hp", "fire_interval",
-                     "bullet_speed", "pierce_brick", "bounces", "magnet",
-                     "scrap_bonus", "supply", "chassis"):
+                     "bullet_speed", "pierce_brick", "pierce_steel", "bounces",
+                     "magnet", "scrap_bonus", "supply", "chassis"):
             setattr(self, attr, getattr(other, attr))
 
     def draw(self, surf, origin, frame=0):

@@ -428,3 +428,143 @@ def test_la_escolta_engorda_en_salas_tardias():
     assert arena.enemy_hp_bonus(9) == 0
     assert arena.enemy_hp_bonus(10) == 1
     assert arena.enemy_hp_bonus(20) == 2
+
+
+# --- Mapas de campana: reglas que deben cumplir todos --------------------------
+
+CAMPAIGN_SPAWNS = [(8, 24), (0, 0), (12, 0), (24, 0)]   # jugador y tres bocas
+
+
+def test_todas_las_fases_dejan_libres_las_apariciones():
+    """Regresion: la fase 2 tenia acero en una boca de aparicion, asi que los
+    enemigos nunca entraban por ahi y el temporizador perdia turnos."""
+    from tank_scrap.constants import TANK_PX, TILE
+    for i in range(levels.stage_count()):
+        f = fld.Field(levels.stage(i))
+        for (tx, ty) in CAMPAIGN_SPAWNS:
+            hueco = pygame.Rect(tx * TILE, ty * TILE, TANK_PX, TANK_PX)
+            assert not f.blocks_tank_rect(hueco), \
+                "fase %d: la aparicion en %s esta tapada" % (i + 1, (tx, ty))
+
+
+def test_en_todas_las_fases_se_puede_llegar_al_aguila():
+    """El ladrillo cuenta como paso (se rompe); el acero y el agua, no."""
+    import collections
+    for i in range(levels.stage_count()):
+        f = fld.Field(levels.stage(i))
+        meta = set(f.base_tiles)
+        start = (8, 24)
+        visto = {start}
+        cola = collections.deque([start])
+        llega = False
+        while cola and not llega:
+            x, y = cola.popleft()
+            if (x, y) in meta:
+                llega = True
+                break
+            for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                n = (x + dx, y + dy)
+                if n in visto or not f.inside(*n):
+                    continue
+                if f.at(*n) in (fld.STEEL, fld.WATER):
+                    continue
+                visto.add(n)
+                cola.append(n)
+        assert llega, "fase %d: no hay camino del jugador al aguila" % (i + 1)
+
+
+def test_hay_ocho_fases():
+    assert levels.stage_count() == 8
+
+
+# --- Mejoras con coste (maldiciones) -----------------------------------------
+
+def test_hay_maldiciones_y_cobran_las_dos_mitades():
+    from tank_scrap import arena
+    maldiciones = [u for u in arena.UPGRADES if u.curse]
+    assert len(maldiciones) >= 4
+    g = arena_game()
+    p = g.player
+    vida_antes, cadencia_antes = p.max_hp, p.fire_interval
+    g.offer = [arena.BY_ID["sobrecarga"]]
+    g._choose_upgrade(0)
+    assert p.fire_interval < cadencia_antes      # la mitad buena
+    assert p.max_hp == vida_antes - 1            # el precio
+
+
+def test_la_maldicion_de_vida_nunca_te_deja_en_cero():
+    from tank_scrap import arena
+    g = arena_game()
+    g.player.max_hp = 1
+    g.player.hp = 1
+    g.offer = [arena.BY_ID["sobrecarga"]]
+    g._choose_upgrade(0)
+    assert g.player.max_hp == 1 and g.player.hp == 1
+
+
+def test_el_obus_atraviesa_el_acero_tambien_el_propio():
+    from tank_scrap import arena
+    g = arena_game()
+    g.offer = [arena.BY_ID["obus"]]
+    g._choose_upgrade(0)
+    assert g.player.pierce_steel
+    g.scrap = COST_STEEL
+    tx, ty = free_tile(g)
+    g.build_cursor = [tx, ty]
+    g._build(fld.BUILT_STEEL, COST_STEEL)
+    g.player.fire_cd = 0.0
+    g._player_fire()
+    bala = [b for b in g.bullets if b.owner == "player"][0]
+    assert bala.piercing                          # se come su propio muro
+    g.field.hit(tx, ty, piercing=bala.piercing)
+    assert g.field.at(tx, ty) == fld.EMPTY
+
+
+def test_los_canones_gemelos_alargan_la_recarga():
+    from tank_scrap import arena
+    g = arena_game()
+    balas_antes = g.player.max_bullets
+    recarga_antes = g.player.reload_time()
+    g.offer = [arena.BY_ID["gemelos"]]
+    g._choose_upgrade(0)
+    assert g.player.max_bullets == balas_antes + 2
+    assert g.player.reload_time() > recarga_antes
+
+
+# --- Mando -------------------------------------------------------------------
+
+def test_el_stick_se_traduce_a_una_sola_direccion():
+    from tank_scrap.constants import DOWN, LEFT, RIGHT, UP
+    from tank_scrap.input import Pads
+    assert Pads.axes_to_directions(0.0, 0.0) == []        # zona muerta
+    assert Pads.axes_to_directions(0.2, -0.1) == []
+    assert Pads.axes_to_directions(0.9, 0.0) == [RIGHT]
+    assert Pads.axes_to_directions(-0.9, 0.0) == [LEFT]
+    assert Pads.axes_to_directions(0.0, 0.9) == [DOWN]
+    assert Pads.axes_to_directions(0.0, -0.9) == [UP]
+    # en diagonal manda el eje mas inclinado: una sola direccion, es rejilla
+    assert Pads.axes_to_directions(0.9, 0.5) == [RIGHT]
+    assert Pads.axes_to_directions(0.5, -0.9) == [UP]
+
+
+def test_los_botones_del_mando_son_las_mismas_acciones_que_el_teclado():
+    from tank_scrap.input import Pads
+    assert Pads.button_key(0) == pygame.K_SPACE       # disparar
+    assert Pads.button_key(2) == pygame.K_b           # modo obra
+    assert Pads.button_key(7) == pygame.K_RETURN      # menus
+    assert Pads.button_key(99) is None                # boton sin asignar
+
+
+def test_el_boton_de_disparo_del_mando_dispara_en_campana():
+    g = Game(seed=1)
+    g.state = PLAY
+    ev = pygame.event.Event(pygame.JOYBUTTONDOWN, button=0)
+    g.handle_event(ev)
+    assert [b for b in g.bullets if b.owner == "player"]
+
+
+def test_el_mando_y_el_teclado_suman():
+    teclado = _KeyProxy({pygame.K_UP: True})
+    mezcla = _KeyProxy({pygame.K_SPACE: True}, teclado)
+    assert mezcla[pygame.K_SPACE] and mezcla[pygame.K_UP]
+    assert not mezcla[pygame.K_LEFT]

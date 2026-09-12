@@ -10,11 +10,12 @@ import pygame
 
 from . import arena
 from . import audio
+from . import input as pads
 from . import field as fld
 from . import levels, pixfont, sprites, storage
 from .constants import (
     ARENA_AUTOFIRE, ARENA_MANUAL_FIRE, ARENA_MOVING_FIRE_PENALTY,
-    ARENA_PLAYER_HP, BLACK, BOSS_PX, BOSS_SCRAP_DROP, SCRAP_CAP, BUILD_COOLDOWN, BUILD_RANGE_TILES, COST_BRICK,
+    ARENA_PLAYER_HP, BLACK, BOSS_PX, BOSS_SCRAP_DROP, CURSE, SCRAP_CAP, BUILD_COOLDOWN, BUILD_RANGE_TILES, COST_BRICK,
     COST_STEEL, DIR_VECTORS, DOWN, ENEMIES_ON_FIELD, ENEMY_COLORS,
     ENEMY_SPAWN_DELAY, FIELD_PX, FIELD_TILES, FPS, GHOST_NO, GHOST_OK,
     GREY_FRAME, HUD_DIM, LEFT, MARGIN_PX, PLAYER_A, PLAYER_B, PLAYER_LIVES,
@@ -94,6 +95,7 @@ class Game:
         self.quit = False
         self.hiscore = storage.load_hiscore()
         self.new_record = False
+        self.pads = pads.Pads()
         self.mode = CAMPAIGN
         self.menu_index = 0
         self.taken = {}            # mejoras cogidas: id -> veces
@@ -198,9 +200,17 @@ class Game:
         if event.type == pygame.QUIT:
             self.quit = True
             return
-        if event.type != pygame.KEYDOWN:
+        if event.type in (pygame.JOYDEVICEADDED, pygame.JOYDEVICEREMOVED):
+            self.pads.rescan()
             return
-        key = event.key
+        if event.type == pygame.JOYBUTTONDOWN:
+            key = self.pads.button_key(event.button)
+            if key is None:
+                return
+        elif event.type == pygame.KEYDOWN:
+            key = event.key
+        else:
+            return
         if key == pygame.K_ESCAPE:
             self.quit = True
         elif self.state == TITLE:
@@ -275,10 +285,10 @@ class Game:
     def _choose_upgrade(self, index):
         if not (0 <= index < len(self.offer)):
             return
-        up_id, _name, _lines, _maxn, apply_fn = self.offer[index]
-        apply_fn(self)
+        up = self.offer[index]
+        up.apply(self)
         self.sfx.play("mejora")
-        self.taken[up_id] = self.taken.get(up_id, 0) + 1
+        self.taken[up.id] = self.taken.get(up.id, 0) + 1
         self.offer = []
         self._load_stage(self.stage_index + 1)
 
@@ -351,6 +361,7 @@ class Game:
             return False
         mx, my = p.muzzle()
         self.bullets.append(Bullet(mx, my, p.direction, p.bullet_speed, "player",
+                                   piercing=p.pierce_steel,
                                    pierce_brick=p.pierce_brick,
                                    bounces=p.bounces))
         p.fire_cd = p.reload_time() * penalty
@@ -396,7 +407,7 @@ class Game:
 
         self.field.update(dt)
         self.build_cd = max(0.0, self.build_cd - dt)
-        keys = keys if keys is not None else pygame.key.get_pressed()
+        keys = keys if keys is not None else self._held_keys()
 
         self._update_player(dt, keys)
         self._update_enemies(dt)
@@ -420,6 +431,13 @@ class Game:
             self.clear_delay += dt
             if self.clear_delay >= CLEAR_DELAY:
                 self._finish_stage()
+
+    def _held_keys(self):
+        """Estado de las teclas mantenidas, con el mando mezclado."""
+        keyboard = pygame.key.get_pressed()
+        if not self.pads.connected:
+            return keyboard
+        return _KeyProxy({k: True for k in self.pads.held_keys()}, keyboard)
 
     def _update_player(self, dt, keys):
         p = self.player
@@ -701,7 +719,8 @@ class Game:
             yy += 22
 
         yy += 2
-        for line in ("FLECHAS ELEGIR    ENTER JUGAR",
+        for line in (("MANDO CONECTADO" if self.pads.connected
+                      else "FLECHAS ELEGIR    ENTER JUGAR"),
                      "B MODO OBRA   X RECUPERAR",
                      "ARENA: PARADO DISPARAS SOLO",
                      "ESPACIO TAMBIEN, PERO EN MARCHA",
@@ -719,23 +738,30 @@ class Game:
 
         card_h = 40
         top = ORIGIN[1] + 40
-        for i, (up_id, name, lines, maxn, _fn) in enumerate(self.offer):
+        for i, up in enumerate(self.offer):
             y = top + i * (card_h + 6)
             picked = i == self.offer_index
-            border = (248, 216, 120) if picked else HUD_DIM
+            cursed = up.curse is not None
+            if cursed:
+                border = CURSE if picked else (136, 56, 56)
+            else:
+                border = (248, 216, 120) if picked else HUD_DIM
             rect = (ORIGIN[0] + 16, y, FIELD_PX - 32, card_h)
-            pygame.draw.rect(s, (16, 16, 16), rect)
+            pygame.draw.rect(s, (24, 14, 14) if cursed else (16, 16, 16), rect)
             pygame.draw.rect(s, border, rect, 1)
             pixfont.draw(s, "%d" % (i + 1), (rect[0] + 4, y + 4), border)
-            pixfont.draw(s, name, (rect[0] + 14, y + 4),
-                         WHITE if picked else HUD_DIM)
-            have = self.taken.get(up_id, 0)
+            pixfont.draw(s, up.name, (rect[0] + 14, y + 4),
+                         (CURSE if cursed else WHITE) if picked else HUD_DIM)
+            have = self.taken.get(up.id, 0)
             if have:
-                tag = "X%d/%d" % (have, maxn)
+                tag = "X%d/%d" % (have, up.maxn)
                 pixfont.draw(s, tag, (rect[0] + rect[2] - pixfont.text_width(tag) - 4,
                                       y + 4), HUD_DIM)
-            for j, line in enumerate(lines):
-                pixfont.draw(s, line, (rect[0] + 14, y + 16 + j * 8), HUD_DIM)
+            for j, line in enumerate(up.lines):
+                pixfont.draw(s, line, (rect[0] + 14, y + 15 + j * 8), HUD_DIM)
+            if cursed:
+                pixfont.draw(s, "- " + up.curse,
+                             (rect[0] + 14, y + card_h - 9), CURSE)
 
         y = top + len(self.offer) * (card_h + 6) + 6
         can = self.scrap >= arena.REROLL_COST
@@ -936,8 +962,10 @@ class Game:
             pixfont.draw(s, "MEJORAS", (px, y), HUD_DIM)
             y += 8
             for up_id, n in sorted(self.taken.items()):
-                name = arena.BY_ID[up_id][1].split()[0][:5]
-                pixfont.draw(s, "%s%d" % (name, n), (px, y), (248, 216, 120))
+                up = arena.BY_ID[up_id]
+                name = up.name.split()[0][:5]
+                color = CURSE if up.curse else (248, 216, 120)
+                pixfont.draw(s, "%s%d" % (name, n), (px, y), color)
                 y += 7
             y += 3
         if self.build_mode and self.state == PLAY:
@@ -1015,10 +1043,16 @@ def run(seed=None, frames=None, headless=False, mode=None):
 
 
 class _KeyProxy:
-    """Imita pygame.key.get_pressed() para el autotest."""
+    """Imita pygame.key.get_pressed(): lo usa el autotest y la capa de mando.
 
-    def __init__(self, mapping):
+    Con `fallback` (el teclado real) una tecla cuenta como pulsada si la pulsa
+    cualquiera de los dos, para poder jugar con mando y teclado a la vez."""
+
+    def __init__(self, mapping, fallback=None):
         self.mapping = mapping
+        self.fallback = fallback
 
     def __getitem__(self, key):
-        return self.mapping.get(key, False)
+        if self.mapping.get(key, False):
+            return True
+        return bool(self.fallback[key]) if self.fallback is not None else False
