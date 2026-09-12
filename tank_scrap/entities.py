@@ -5,7 +5,7 @@ import pygame
 
 from . import sprites
 from .constants import (
-    BULLET_PX, DIR_VECTORS, DOWN, ENEMY_COLORS, ENEMY_FIRE_MAX, ENEMY_FIRE_MIN,
+    BULLET_PX, PLAYER_FIRE_INTERVAL, DIR_VECTORS, DOWN, ENEMY_COLORS, ENEMY_FIRE_MAX, ENEMY_FIRE_MIN,
     ENEMY_HUNT_CHANCE, ENEMY_TURN_CHANCE, FIELD_PX, LEFT, PLAYER_A, PLAYER_B,
     PLAYER_BULLET_SPEED, PLAYER_C, PLAYER_MAX_BULLETS, PLAYER_SPEED, RIGHT,
     SCRAP_LIFETIME, TANK_PX, TILE, UP,
@@ -92,12 +92,32 @@ class Tank:
 
 
 class PlayerTank(Tank):
+    """El tanque del jugador. Los atributos que las mejoras de ARENA tocan
+    viven aqui, con los valores base del modo campana."""
+
     def __init__(self, x, y):
         super().__init__(x, y, UP)
         self.chassis = "player"
         self.speed = PLAYER_SPEED
         self.shield = 0.0
         self.max_bullets = PLAYER_MAX_BULLETS
+        self.max_hp = 1
+        self.hp = 1
+        self.fire_interval = PLAYER_FIRE_INTERVAL
+        self.fire_cd = 0.0
+        self.pierce_brick = False
+        self.bounces = 0
+        self.magnet = 0
+        self.scrap_bonus = 0
+        self.supply = 0
+        self.hurt_flash = 0.0
+
+    def carry_over(self, other):
+        """Copia el estado que sobrevive de una sala a la siguiente."""
+        for attr in ("speed", "max_bullets", "max_hp", "hp", "fire_interval",
+                     "bullet_speed", "pierce_brick", "bounces", "magnet",
+                     "scrap_bonus", "supply", "chassis"):
+            setattr(self, attr, getattr(other, attr))
 
     def draw(self, surf, origin, frame=0):
         super().draw(surf, origin, (PLAYER_A, PLAYER_B, PLAYER_C))
@@ -155,18 +175,26 @@ class EnemyTank(Tank):
 
 
 class Bullet:
-    def __init__(self, x, y, direction, speed, owner, piercing=False):
+    def __init__(self, x, y, direction, speed, owner, piercing=False,
+                 pierce_brick=False, bounces=0):
         self.x = float(x) - BULLET_PX / 2
         self.y = float(y) - BULLET_PX / 2
         self.direction = direction
         self.speed = speed
         self.owner = owner               # "player" o "enemy"
-        self.piercing = piercing
+        self.piercing = piercing        # atraviesa acero (tanque rojo)
+        self.pierce_brick = pierce_brick  # atraviesa ladrillo (mejora)
+        self.bounces = bounces            # rebotes que le quedan (mejora)
         self.dead = False
 
     @property
     def rect(self):
         return pygame.Rect(int(self.x), int(self.y), BULLET_PX, BULLET_PX)
+
+    def bounce(self):
+        """Rebota 180 grados y gasta un rebote."""
+        self.direction = (self.direction + 2) % 4
+        self.bounces -= 1
 
     def advance(self, dt):
         dx, dy = DIR_VECTORS[self.direction]

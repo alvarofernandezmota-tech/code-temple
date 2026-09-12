@@ -30,10 +30,42 @@ De eso salen dilemas que el juego original no tiene:
 Los muros que levantas tú se distinguen con un borde dorado: en la captura,
 el búnker de acero y ladrillo alrededor del águila es obra del jugador.
 
+## Dos modos
+
+| | |
+| --- | --- |
+| ![Arena](docs/arena.png) | ![Mejoras](docs/mejoras.png) |
+
+### CAMPAÑA — Battle City con chatarra
+Las 3 fases clásicas: defiendes el águila, 3 tanques de vida, disparas con
+espacio.
+
+### ARENA — roguelite por salas (estilo Archero)
+Salas encadenadas, sin águila que defender: lo que se pierde al morir es la
+*run* entera.
+
+- **Disparas solo al estar quieto.** Moverte y disparar son decisiones
+  opuestas, y con un tanque se lee muy bien: pararte en campo abierto es
+  ofrecerte de blanco.
+- **Barra de vida** (4 impactos de base) en vez de morir de un toque.
+- Al limpiar una sala eliges **1 de 3 mejoras**: doble cañón, cadencia, bala
+  veloz, blindaje, orugas, perforante, rebote, desguace, imán, taller,
+  suministro. Se acumulan y se llevan a la sala siguiente.
+- Cada 5 salas, **sala de jefe** con blindados de escolta.
+- Las salas se generan con 5 arquetipos (pilares, cruz, trincheras, patio,
+  molino) y van sumando agua, hielo y árboles al avanzar.
+
+**La chatarra tiene tres destinos en Arena**, y ahí está el dilema:
+
+1. **Muro**: levantar cobertura donde te hace falta (1 ladrillo / 6 acero).
+2. **Reroll**: 3 de chatarra para volver a tirar la oferta de mejoras.
+3. **Fundición**: lo que te sobre al acabar la run se convierte en **puntos
+   ×10**. Acumular no es gratis, pero tirarla tampoco.
+
 ## Estructura de la partida
 
-`TÍTULO → cortinilla FASE n → combate → recuento → siguiente fase`, y
-`GAME OVER` con total y récord si te quedas sin tanques o pierdes el águila.
+`TÍTULO (elige modo) → cortinilla → combate → recuento o mejoras → siguiente`,
+y `GAME OVER` con total y récord.
 
 - **Cortinilla de fase** al estilo NES antes de cada mapa.
 - **Recuento al superar la fase**: bajas por tipo de tanque con sus puntos, más
@@ -51,7 +83,8 @@ el búnker de acero y ladrillo alrededor del águila es obra del jugador.
 
 ```bash
 pip install -r requirements.txt
-python3 -m tank_scrap
+python3 -m tank_scrap             # menu: CAMPANA o ARENA
+python3 -m tank_scrap --arena     # directo a la arena
 ```
 
 ## Controles
@@ -65,6 +98,8 @@ python3 -m tank_scrap
 | Espacio (en obra) | poner ladrillo — cuesta **1** de chatarra |
 | Shift o `E` (en obra) | poner acero — cuesta **6** |
 | `X` (en obra) | recuperar un muro **tuyo** y recobrar su coste |
+| `1` `2` `3` / flechas + enter | elegir mejora (Arena) |
+| `R` | volver a tirar la oferta de mejoras — cuesta 3 de chatarra |
 | `P` | pausa |
 | `Esc` | salir |
 
@@ -91,14 +126,19 @@ parte del juego.
 pip install -r requirements-dev.txt
 python3 -m pyflakes tank_scrap/*.py
 python3 -m pytest tests -q
-SDL_VIDEODRIVER=dummy python3 -m tank_scrap --selftest 1800   # 1800 frames sin ventana
+SDL_VIDEODRIVER=dummy python3 -m tank_scrap --selftest 1800           # campaña
+SDL_VIDEODRIVER=dummy python3 -m tank_scrap --selftest 1800 --arena   # arena
 ```
 
 Todo el pixel art se genera en código (`tank_scrap/sprites.py`): no hay
 assets, ni fuentes del sistema —el HUD usa una tipografía de mapa de bits 3x5
 hecha a mano en `tank_scrap/pixfont.py`.
 
-Los mapas están en `tank_scrap/levels.py` como 13 filas de 13 caracteres
+El modo Arena vive en `tank_scrap/arena.py`: generación de salas, oleadas y la
+tabla de mejoras (cada mejora es una tupla con su nombre, su texto, cuántas
+veces se puede coger y una función que toca el tanque).
+
+Los mapas de campaña están en `tank_scrap/levels.py` como 13 filas de 13 caracteres
 (`#` ladrillo, `@` acero, `~` agua, `x` árboles, `-` hielo, `A` águila).
 Añadir una fase es añadir un bloque de texto.
 

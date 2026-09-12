@@ -22,6 +22,7 @@ BULLET_PX = 3
 PLAYER_SPEED = 0.85
 PLAYER_BULLET_SPEED = 2.6
 PLAYER_MAX_BULLETS = 1
+PLAYER_FIRE_INTERVAL = 0.55     # cadencia base (la usa el disparo automatico)
 PLAYER_LIVES = 3
 PLAYER_SPAWN_SHIELD = 2.5             # segundos de invulnerabilidad al nacer
 
@@ -42,6 +43,10 @@ COST_STEEL = 6
 BUILD_RANGE_TILES = 5                 # alcance del cursor de construccion
 BUILD_COOLDOWN = 0.12
 SCRAP_START = 4                       # con lo que arrancas cada partida
+
+# --- Modo ARENA ------------------------------------------------------------
+ARENA_PLAYER_HP = 4                   # el tanque aguanta varios impactos
+ARENA_AUTOFIRE = True                 # disparas solo al estar quieto
 
 # --- Puntuacion ------------------------------------------------------------
 SCORE_BY_KIND = {"basic": 100, "fast": 200, "power": 300, "armor": 400}

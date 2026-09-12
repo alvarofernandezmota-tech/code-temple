@@ -144,3 +144,122 @@ def test_partida_larga_no_revienta():
         if g.state == "over":
             break
     assert g.frame >= 1
+
+
+# --- Modo ARENA -------------------------------------------------------------
+
+def arena_game():
+    g = Game(seed=2)
+    g.mode = "arena"
+    g._load_stage(0, reset_run=True)
+    g.state = PLAY
+    return g
+
+
+def test_salas_bien_formadas_y_sin_aguila():
+    from tank_scrap import arena
+    rng = __import__("random").Random(7)
+    for i in range(12):
+        rows = arena.generate_room(i, rng)
+        assert len(rows) == 13 and all(len(r) == 13 for r in rows)
+        assert all("A" not in r for r in rows)      # en arena no hay aguila
+        assert rows[11][6] == "." and rows[12][6] == "."   # sitio donde apareces
+        for (cx, cy) in ((0, 0), (6, 0), (12, 0)):
+            assert rows[cy][cx] == "."              # bocas de aparicion libres
+
+
+def test_arena_tiene_vida_y_no_vidas():
+    g = arena_game()
+    assert g.player.max_hp == 4 and g.player.hp == 4
+    assert g.lives == 0
+
+
+def test_impacto_quita_vida_no_mata():
+    g = arena_game()
+    g.player.shield = 0.0
+    r = g.player.rect
+    g.bullets.append(Bullet(r.centerx, r.centery, 0, 0.1, "enemy"))
+    g.update(1.0 / FPS)
+    assert g.player.hp == 3
+    assert g.state == PLAY
+
+
+def test_disparo_automatico_solo_al_estar_quieto():
+    g = arena_game()
+    g.player.fire_cd = 0.0
+    g._update_player(1.0 / FPS, _KeyProxy({pygame.K_RIGHT: True}))
+    assert not [b for b in g.bullets if b.owner == "player"]
+    g.player.fire_cd = 0.0
+    g._update_player(1.0 / FPS, _KeyProxy({}))
+    assert len([b for b in g.bullets if b.owner == "player"]) == 1
+
+
+def test_espacio_no_dispara_en_arena():
+    g = arena_game()
+    g._handle_play_key(pygame.K_SPACE)
+    assert not g.bullets
+
+
+def test_mejora_se_aplica_y_se_apunta():
+    from tank_scrap import arena
+    g = arena_game()
+    g.offer = [arena.BY_ID["canon"]]
+    antes = g.player.max_bullets
+    g._choose_upgrade(0)
+    assert g.player.max_bullets == antes + 1
+    assert g.taken["canon"] == 1
+    assert g.stage_index == 1          # elegir mejora pasa a la sala siguiente
+
+
+def test_las_mejoras_sobreviven_a_la_sala_siguiente():
+    from tank_scrap import arena
+    g = arena_game()
+    g.offer = [arena.BY_ID["orugas"]]
+    g._choose_upgrade(0)
+    veloz = g.player.speed
+    g.offer = [arena.BY_ID["orugas"]]
+    g._choose_upgrade(0)
+    assert g.player.speed > veloz
+
+
+def test_reroll_cuesta_chatarra_y_no_va_sin_ella():
+    from tank_scrap import arena
+    g = arena_game()
+    g.scrap = arena.REROLL_COST
+    g.offer = arena.offer(g.taken, g.rng)
+    g._reroll_offer()
+    assert g.scrap == 0 and len(g.offer) == 3
+    antes = list(g.offer)
+    g._reroll_offer()                  # ya no hay chatarra: la oferta no cambia
+    assert g.offer == antes
+
+
+def test_la_chatarra_sobrante_se_funde_en_puntos():
+    from tank_scrap import arena
+    g = arena_game()
+    g.scrap = 7
+    g.score = 100
+    g.player.hp = 1
+    g.player.shield = 0.0
+    g._player_died()
+    assert g.state == "over"
+    assert g.melted == 7 * arena.SCRAP_TO_SCORE
+    assert g.score == 100 + g.melted and g.scrap == 0
+
+
+def test_bala_perforante_atraviesa_el_ladrillo():
+    g = arena_game()
+    g.player.pierce_brick = True
+    tx, ty = next((x, y) for y in range(26) for x in range(26)
+                  if g.field.at(x, y) == fld.BRICK)
+    b = Bullet(tx * TILE + 4, ty * TILE + 4, 2, 0.1, "player", pierce_brick=True)
+    g.bullets.append(b)
+    g._bullet_vs_terrain(b)
+    assert g.field.at(tx, ty) == fld.EMPTY
+    assert not b.dead                  # sigue su camino
+
+
+def test_bala_con_rebote_cambia_de_sentido():
+    b = Bullet(40, 40, 2, 0.1, "player", bounces=1)
+    b.bounce()
+    assert b.direction == 0 and b.bounces == 0
